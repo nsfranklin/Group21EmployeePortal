@@ -1,0 +1,16 @@
+1.	Schedule the employees that are in the system into a weekly timetable.
+2.	Flag times that have no assigned employee so that an employee gets assigned.
+3.	Managers can alter the timetable
+4.	Add and remove employees
+5.	Add and remove managers
+6.	Employees clock in and clock out
+7.	Display hour to be worked
+8.	Employee log in/out and Employer log in/out
+9.	Output payslip to logged in employee
+10.	Record the times which employees can work
+11.	Manage holiday requests
+12.	Managers can approve holiday requests.
+13.	Display employee statistics to managers
+	- amount of holiday taken
+	- times late
+	- times ill
