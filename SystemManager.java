@@ -37,10 +37,6 @@ public class SystemManager {
 		return this.employeeList;
 	}
 
-	/**
-	 * 
-	 * @param employeeList
-	 */
 	public void setEmployeeList(ArrayList<Employee> employeeList) {
 		this.employeeList = employeeList;
 	}

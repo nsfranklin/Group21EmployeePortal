@@ -16,6 +16,6 @@ public class Week {
 
 	public void addDay(int dayOfWeekIndex, Date d)
     {
-
+		this.days[i] = d;
     }
 }

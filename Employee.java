@@ -46,10 +46,6 @@ public class Employee {
 		return this.userName;
 	}
 
-	/**
-	 * 
-	 * @param userName
-	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -58,22 +54,14 @@ public class Employee {
 		return this.userPassword;
 	}
 
-	/**
-	 * 
-	 * @param userPassword
-	 */
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
 
 	public PayrollDetails getPayrollDetails() {
-		return this.payrollDetails;
+	    return this.payrollDetails;
 	}
 
-	/**
-	 * 
-	 * @param payrollDetails
-	 */
 	public void setPayrollDetails(PayrollDetails payrollDetails) {
 		this.payrollDetails = payrollDetails;
 	}
@@ -82,26 +70,15 @@ public class Employee {
 		return this.passwordChangeRequired;
 	}
 
-	/**
-	 * 
-	 * @param passwordChangeRequired
-	 */
 	public void setPasswordChangeRequired(Boolean passwordChangeRequired) {
 		this.passwordChangeRequired = passwordChangeRequired;
 	}
 
 	public Week getEmployeeAvalibility() {
-		// TODO - implement Employee.getEmployeeAvalibility
-		throw new UnsupportedOperationException();
+		return this.employeeAvailability;
 	}
 
-	/**
-	 * 
-	 * @param employeeAvalibility
-	 */
 	public void setEmployeeAvalibility(Week employeeAvalibility) {
-		// TODO - implement Employee.setEmployeeAvalibility
-		throw new UnsupportedOperationException();
+		this.employeeAvailability = employeeAvalibility;
 	}
-
 }
