@@ -13,9 +13,17 @@ public class Scheduler {
 	 * @param prov
 	 * @param b
 	 */
-	public Week createProvisionalSchedule(Date[][] prov, ScheduleRules b) {
-		// TODO - implement Scheduler.createProvisionalSchedule
-		throw new UnsupportedOperationException();
+	public Week createProvisionalSchedule(Date[][] prov, ScheduleRules b, ArrayList<Employee> ActiveUsers) {
+		ArrayList<Employee> timetabledEmployees = ActiveUsers;
+	    Week tempWeek = null;
+	    for(int x = ActiveUsers.size() ; i > 0 ; x++)
+		{
+            tempWeek = ActiveUsers.get(x).getEmployeeAvalibility();
+            if((tempWeek = null) || (tempWeek.getWeek.size !=7))  //preventing errors and crashes
+            {
+
+            }
+		}
 	}
 
 	public Week getSetScheduleRules() {
