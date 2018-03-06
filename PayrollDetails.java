@@ -1,6 +1,5 @@
 public class PayrollDetails {
 
-	Employee employee;
 	private int accountNumber;
 	private int sortCode;
 
