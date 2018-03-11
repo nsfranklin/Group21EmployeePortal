@@ -1,14 +1,11 @@
 public class Week {
 
-	Scheduler rulesmanager;
-	Employee employee;
-	Date date;
-	private Date[] days;
+	private Date[] days; //array because week are 7 days always
 
 	public Week() // when a week is first called it is populated with empty Date
     {
 	    days = new Date[7];
-        for(int i = 0 : i < 7 : i++)
+        for(int i = 0 ; i < 7 ; i++)
         {
             days[i] = new Date();
         }
@@ -16,6 +13,6 @@ public class Week {
 
 	public void addDay(int dayOfWeekIndex, Date d)
     {
-		this.days[i] = d;
+		this.days[dayOfWeekIndex] = d;
     }
 }

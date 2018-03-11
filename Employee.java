@@ -10,9 +10,17 @@ public class Employee {
 	private Boolean passwordChangeRequired;
 	private Week employeeAvailability;
 
+	Employee(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability)
+	{
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.payrollDetails = p;
+		this.passwordChangeRequired = passwordChangeRequired;
+		this.employeeAvailability = employeeAvailability;
+	}
+
 	public Boolean clockIn() {
-		// TODO - implement Employee.clockIn
-		throw new UnsupportedOperationException();
+
 	}
 
 	public Boolean clockOut() {
@@ -20,11 +28,6 @@ public class Employee {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param accountNo
-	 * @param sortCode
-	 */
 	public Boolean changePayroll(int accountNo, int sortCode) {
 		// TODO - implement Employee.changePayroll
 		throw new UnsupportedOperationException();

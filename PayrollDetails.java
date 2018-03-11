@@ -3,6 +3,12 @@ public class PayrollDetails {
 	private int accountNumber;
 	private int sortCode;
 
+	PayrollDetails(int accountNumber, int sortCode)
+	{
+		this.accountNumber = accountNumber;
+		this.sortCode = sortCode;
+	}
+
 	public int getAccountNumber() {
 		return this.accountNumber;
 	}
