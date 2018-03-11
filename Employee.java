@@ -20,7 +20,7 @@ public class Employee {
 	}
 
 	public Boolean clockIn() {
-
+		// TODO - implement Employee.clockIn
 	}
 
 	public Boolean clockOut() {
@@ -33,13 +33,6 @@ public class Employee {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param type
-	 * @param start
-	 * @param end
-	 * @param Description
-	 */
 	public void requestTimeOff(string type, Time start, Time end, String Description) {
 		// TODO - implement Employee.requestTimeOff
 		throw new UnsupportedOperationException();
@@ -73,9 +66,7 @@ public class Employee {
 		return this.passwordChangeRequired;
 	}
 
-	public void setPasswordChangeRequired(Boolean passwordChangeRequired) {
-		this.passwordChangeRequired = passwordChangeRequired;
-	}
+	public void setPasswordChangeRequired(Boolean passwordChangeRequired) { this.passwordChangeRequired = passwordChangeRequired; }
 
 	public Week getEmployeeAvalibility() {
 		return this.employeeAvailability;

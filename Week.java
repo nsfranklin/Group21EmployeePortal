@@ -11,6 +11,10 @@ public class Week {
         }
 	}
 
+	public Week(int startMon, int lengthMon, int startTue, int lengthTue, int startWed, int lengthWed, int startThu, int lengthThu, int startFri, int lengthFri, int startSat, int lengthSat, int startSun, int lengthSun){
+	    this.Date[0]
+    }
+
 	public void addDay(int dayOfWeekIndex, Date d)
     {
 		this.days[dayOfWeekIndex] = d;

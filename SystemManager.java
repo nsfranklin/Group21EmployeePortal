@@ -12,25 +12,38 @@ public class SystemManager {
 	private ArrayList<Requests> requestList;
 	private DataManager dataManager;
 	private Week currentSchedule;
-	private SystemManager instance;
+	private static SystemManager instance;
 
 	private SystemManager() {
 		// TODO - implement SystemManager.SystemManager
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param userName
-	 * @param Password
-	 */
 	public Boolean login(String userName, String Password) {
-		// TODO - implement SystemManager.login
-		throw new UnsupportedOperationException();
+		if(findEmployee(userName).getUserPassword().equals(Password))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
-	public SystemManager getInstance() {
-		return this.instance;
+	public Employee findEmployee(String userName) {
+		for(int i = 0 ; i < this.employeeList.size() ; i++) {
+			if (this.employeeList.get(i).getUserName().equals(userName))
+			{
+				return this.employeList.get(i);
+			}
+		}
+	}
+
+	public static SystemManager getInstance() {
+		if(instance == null){
+			instance = new SystemManager();
+		}
+		return instance;
 	}
 
 	public ArrayList<Employee> getEmployeeList() {

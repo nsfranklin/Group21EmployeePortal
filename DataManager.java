@@ -10,7 +10,8 @@ public class DataManager {
 	    String data = fetchData(employeeID);
 	    String[] splitData = data.split(",");
 	    PayrollDetails payroll = new PayrollDetails(Integer.parseInt(split[2]),Integer.parseInt(splitData[3]));
-        return new Employee(splitData[0],splitData[1],payroll,splitData[4],splitData[5]);
+	    Week availability = new Week(Integer.parseInt(splitData[6]),Integer.parseInt(splitData[7]),Integer.parseInt(splitData[8]),Integer.parseInt(splitData[9]),Integer.parseInt(splitData[10]),Integer.parseInt(splitData[11]),Integer.parseInt(splitData[12]),Integer.parseInt(splitData[13]),Integer.parseInt(splitData[14]),Integer.parseInt(splitData[15]),Integer.parseInt(splitData[16]),Integer.parseInt(splitData[17]),Integer.parseInt(splitData[18]),Integer.parseInt(splitData[19]));
+        return new Employee(splitData[0],splitData[1],payroll,Boolean.parseBoolean(splitData[4]),availability);
 	}
 
 	public Boolean addSchedule(Week s) {
