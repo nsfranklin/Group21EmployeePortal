@@ -7,7 +7,7 @@ public class DataManager {
 
 	public Employee getEmployee(String employeeID) throws IOException{
 
-	    String data = fetchData(employeeID);
+	    String data = fetchData(employeeID + ".txt");
 	    String[] splitData = data.split(",");
 	    PayrollDetails payroll = new PayrollDetails(Integer.parseInt(split[2]),Integer.parseInt(splitData[3]));
 	    Week availability = new Week(Integer.parseInt(splitData[6]),Integer.parseInt(splitData[7]),Integer.parseInt(splitData[8]),Integer.parseInt(splitData[9]),Integer.parseInt(splitData[10]),Integer.parseInt(splitData[11]),Integer.parseInt(splitData[12]),Integer.parseInt(splitData[13]),Integer.parseInt(splitData[14]),Integer.parseInt(splitData[15]),Integer.parseInt(splitData[16]),Integer.parseInt(splitData[17]),Integer.parseInt(splitData[18]),Integer.parseInt(splitData[19]));
@@ -19,23 +19,45 @@ public class DataManager {
 		throw new UnsupportedOperationException();
 	}
 
-	public Week getSchedule(int date) {
-		// TODO - implement DataManager.getSchedule
-		throw new UnsupportedOperationException();
-	}
+	public Week getSchedule(int date)  throws IOException {//Date format DDMMYY // , split starts and length and ,, split days
+		String data = fetchData(date + ".txt");
+        String[] splitData = data.split(",,");
+        String[][] furtherSplitData = new String[7][];
+        for(int i = 0 ; i < 7 ; i++)                //preparing the data for the week constructor
+        {
+            furtherSplitData[i] = splitData[i].split(",");
+        }
+        Week temp = new Week(parseScheduleStringArray(furtherSplitData[0],0), parseScheduleStringArray(furtherSplitData[0], 1),
+                parseScheduleStringArray(furtherSplitData[1],0), parseScheduleStringArray(furtherSplitData[1], 1),
+                parseScheduleStringArray(furtherSplitData[2],0), parseScheduleStringArray(furtherSplitData[2], 1),
+                parseScheduleStringArray(furtherSplitData[3],0), parseScheduleStringArray(furtherSplitData[3], 1),
+                parseScheduleStringArray(furtherSplitData[4],0), parseScheduleStringArray(furtherSplitData[4], 1),
+                parseScheduleStringArray(furtherSplitData[5],0), parseScheduleStringArray(furtherSplitData[5], 1),
+                parseScheduleStringArray(furtherSplitData[6],0), parseScheduleStringArray(furtherSplitData[6], 1));
+        return temp;
+	} //calling parseScheduleStringArray for every start time and length. (Prototype!)
+
+	private int[] parseScheduleStringArray(String[] a, int i){ //helper method return int[] for week constructor, i indicates start loop.
+	    int[] temp = new int[a.length/2];
+        for( int j = i ; j < a.length ; j = j + 2)
+        {
+            temp[i/2] = Integer.parseInt(a[i]);
+        }
+        return temp;
+    }
 
 	public Boolean setEmployeePassword(String name, String password) {
-		// TODO - implement DataManager.setEmployeePassword
+        //redundant in prototype
 		throw new UnsupportedOperationException();
 	}
 
 	public Boolean addEmployee(String name, String password) {
-		// TODO - implement DataManager.addEmployee
+        //redundant in prototype
 		throw new UnsupportedOperationException();
 	}
 
 	public Boolean setEmployeeInactive(Employee e) {
-		// TODO - implement DataManager.setEmployeeInactive
+        //redundant in prototype
 		throw new UnsupportedOperationException();
 	}
 
@@ -49,27 +71,28 @@ public class DataManager {
 		throw new UnsupportedOperationException();
 	}
 
+	public Arraylist<Requests> getRequest() {
+
+    }
+
 	public Boolean addRequest(Request r) {
-		// TODO - implement DataManager.addRequest
+        //redundant in prototype
 		throw new UnsupportedOperationException();
 	}
 
 	public Boolean removeRequest(int requestID) {
-		// TODO - implement DataManager.removeRequest
-		throw new UnsupportedOperationException();
+        //redundant in prototype
 	}
 
 	public Boolean setEmployeeAvailability(Employee employee, Week availability) {
-		// TODO - implement DataManager.setEmployeeAvailability
-		throw new UnsupportedOperationException();
+        //redundant in prototype
 	}
 
-	public void connectToDatabase() { //redundant in prototype
-		// TODO - implement DataManager.connectToDatabase
-		throw new UnsupportedOperationException();
+	public void connectToDatabase() {
+        //redundant in prototype
 	}
 
-	public String fetchData(String filename) throws IOException//file will be written as a single
+	public String fetchData(String filename) throws IOException //file will be written as a single line comma seperated
 	{
 		try
 		{
