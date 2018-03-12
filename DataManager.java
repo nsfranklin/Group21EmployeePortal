@@ -61,7 +61,7 @@ public class DataManager {
 		throw new UnsupportedOperationException();
 	}
 
-	public Boolean addClockInTime(Employee e, int clockIn) {
+	public Boolean addClockInTime(Employee e, int clockIn) { //format filename: "Date".txt FileContent username,clockIn,clockOut,,NextEntry
 		// TODO - implement DataManager.addClockInTime
 		throw new UnsupportedOperationException();
 	}
@@ -71,12 +71,13 @@ public class DataManager {
 		throw new UnsupportedOperationException();
 	}
 
-	public Arraylist<Requests> getRequest() {
-
+	public Arraylist<Requests> getRequest() throws IOException{ //dateMade,timeMade,requestID,deadline||timeOffType,startDate||"",endDate||"",description||"",userName,,NEXT ENTRY
+		String data = fetchData("request.txt");
+		// ON HOLD till request class and sub classes are finished
     }
 
 	public Boolean addRequest(Request r) {
-        //redundant in prototype
+        //redundant in prototype as
 		throw new UnsupportedOperationException();
 	}
 
