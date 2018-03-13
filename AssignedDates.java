@@ -1,6 +1,6 @@
 public class AssignedDates extends Date {
 
-	private string[][] userAssigned;
+	private ArrayList<Strings> userAssigned;
 
 	public AssignedDates() {
 		super();
