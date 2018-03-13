@@ -1,9 +1,5 @@
 public class Employee {
 
-	PayrollDetails details;
-	SystemManager userManager;
-	EmployeeController econtroller;
-	Week availability;
 	private String userName;
 	private String userPassword;
 	private PayrollDetails payrollDetails;
@@ -21,6 +17,7 @@ public class Employee {
 
 	public Boolean clockIn() {
 		// TODO - implement Employee.clockIn
+		return true;
 	}
 
 	public Boolean clockOut() {
@@ -28,14 +25,21 @@ public class Employee {
 		throw new UnsupportedOperationException();
 	}
 
-	public Boolean changePayroll(int accountNo, int sortCode) {
-		// TODO - implement Employee.changePayroll
-		throw new UnsupportedOperationException();
+	public void changePayroll(int accountNo, int sortCode) {
+        setPayrollDetails(new PayrollDetails(accountNo,sortCode));
 	}
 
-	public void requestTimeOff(string type, Time start, Time end, String Description) {
-		// TODO - implement Employee.requestTimeOff
-		throw new UnsupportedOperationException();
+	public void requestTimeOff(String type, int start, int end, String Description) {
+        int dateMade = ;
+        int timeMade = ;
+        int requestID = ;
+        String timeOffType = type;
+        int startDate = start;
+        int endDate = end;
+        String description = Description;
+        String userName = this.getUserName();
+	    timeOff temp = new timeOff(dateMade,timeMade,requestID,timeOffType,startDate,endDate,description,userName);
+	    SystemManager.addRequest(temp);
 	}
 
 	public String getUserName() {

@@ -1,12 +1,9 @@
+import java.io.IOException;
 import java.util.*;
+import java.time.*;
 
 public class SystemManager {
 
-	Collection<Employee> employees;
-	Scheduler scheduler;
-	Collection<Requests> request;
-	DataManager dateManager;
-	SystemManagerController smcontroller;
 	private ArrayList<Employee> employeeList;
 	private Scheduler schedulerInstance;
 	private ArrayList<Requests> requestList;
@@ -14,9 +11,15 @@ public class SystemManager {
 	private Week currentSchedule;
 	private static SystemManager instance;
 
-	private SystemManager() {
-		// TODO - implement SystemManager.SystemManager
-		throw new UnsupportedOperationException();
+	private SystemManager() throws IOException {
+        dataManager = new DataManager();
+        schedulerInstance = Scheduler.getInstance();
+        currentSchedule = dataManager.getSchedule(this.getTime());
+        requestList = dataManager.getRequestList();
+        ArrayList<String> employeeFileNames = dataManager.getEmployeeList();
+        for(int i = 0 ; i < employeeFileNames.size() ; i++) {
+            employeeList.add(dataManager.getEmployee(employeeFileNames.get(i)));
+        }
 	}
 
 	public Boolean login(String userName, String Password) {
@@ -30,13 +33,24 @@ public class SystemManager {
 		}
 	}
 
+	public int getTime(){
+        String[] temp = LocalTime.now().toString().split(":");
+        int local = Integer.parseInt(temp[0])*60 + Integer.parseInt(temp[1]);
+        return local;
+    }
+
+	public void addRequest(Requests r){
+	    this.requestList.add(r);
+    }
+
 	public Employee findEmployee(String userName) {
 		for(int i = 0 ; i < this.employeeList.size() ; i++) {
 			if (this.employeeList.get(i).getUserName().equals(userName))
 			{
-				return this.employeList.get(i);
+				return this.employeeList.get(i);
 			}
 		}
+		return null;
 	}
 
 	public static SystemManager getInstance() {
@@ -55,25 +69,17 @@ public class SystemManager {
 	}
 
 	public Scheduler getScheduler() {
-		return this.scheduler;
+		return this.schedulerInstance;
 	}
 
-	/**
-	 * 
-	 * @param scheduler
-	 */
 	public void setScheduler(Scheduler scheduler) {
-		this.scheduler = scheduler;
+		this.schedulerInstance = scheduler;
 	}
 
 	public ArrayList<Requests> getRequestList() {
 		return this.requestList;
 	}
 
-	/**
-	 * 
-	 * @param requestList
-	 */
 	public void setRequestList(ArrayList<Requests> requestList) {
 		this.requestList = requestList;
 	}
@@ -82,10 +88,6 @@ public class SystemManager {
 		return this.dataManager;
 	}
 
-	/**
-	 * 
-	 * @param dataManager
-	 */
 	public void setDataManager(DataManager dataManager) {
 		this.dataManager = dataManager;
 	}
@@ -94,10 +96,6 @@ public class SystemManager {
 		return this.currentSchedule;
 	}
 
-	/**
-	 * 
-	 * @param currentSchedule
-	 */
 	public void setCurrentSchedule(Week currentSchedule) {
 		this.currentSchedule = currentSchedule;
 	}

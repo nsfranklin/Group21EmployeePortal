@@ -6,14 +6,9 @@ public class Scheduler {
 	Collection<Week> scheduleRule;
 	private Week scheduleRules;
 	private Week unapprovedSchedule;
-	private Scheduler instance;
+	private static Scheduler instance;
 
-	/**
-	 * 
-	 * @param prov
-	 * @param b
-	 */
-	public Week createProvisionalSchedule(Date[][] prov, ScheduleRules b, ArrayList<Employee> ActiveUsers) {
+	public Week createProvisionalSchedule(Date[][] prov, Week scheduleRules, ArrayList<Employee> ActiveUsers) {
 		ArrayList<Employee> timetabledEmployees = ActiveUsers;
 	    Week tempWeek = null;
 	    for(int x = ActiveUsers.size() ; i > 0 ; x++)
@@ -71,8 +66,11 @@ public class Scheduler {
 		throw new UnsupportedOperationException();
 	}
 
-	public Scheduler getInstance() {
-		return this.instance;
+	public static Scheduler getInstance() {
+		if(instance == null) {
+			instance = new Scheduler();
+		}
+		return instance;
 	}
 
 }

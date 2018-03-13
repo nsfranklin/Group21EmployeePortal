@@ -1,13 +1,13 @@
+import java.util.ArrayList;
+
 public class AssignedDates extends Date {
 
-	private ArrayList<Strings> userAssigned;
+	private ArrayList<String> userAssigned;
 
-	public AssignedDates() {
-		super();
-		userAssigned = null;
+	public AssignedDates(int[] startTime, int[] length, String[] userNames) {
+		super(startTime,length);
+		for(int i = 0 ; i < userNames.length ; i++) {
+			userAssigned.add(userNames[i]);
+		}
 	}
-
-    public void addUser() {
-
-    }
 }

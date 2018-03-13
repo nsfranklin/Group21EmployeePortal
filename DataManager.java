@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class DataManager {
 
@@ -6,10 +7,9 @@ public class DataManager {
 	DataManager(){}
 
 	public Employee getEmployee(String employeeID) throws IOException{
-
 	    String data = fetchData(employeeID + ".txt");
 	    String[] splitData = data.split(",");
-	    PayrollDetails payroll = new PayrollDetails(Integer.parseInt(split[2]),Integer.parseInt(splitData[3]));
+	    PayrollDetails payroll = new PayrollDetails(Integer.parseInt(splitData[2]),Integer.parseInt(splitData[3]));
 	    Week availability = new Week(Integer.parseInt(splitData[6]),Integer.parseInt(splitData[7]),Integer.parseInt(splitData[8]),Integer.parseInt(splitData[9]),Integer.parseInt(splitData[10]),Integer.parseInt(splitData[11]),Integer.parseInt(splitData[12]),Integer.parseInt(splitData[13]),Integer.parseInt(splitData[14]),Integer.parseInt(splitData[15]),Integer.parseInt(splitData[16]),Integer.parseInt(splitData[17]),Integer.parseInt(splitData[18]),Integer.parseInt(splitData[19]));
         return new Employee(splitData[0],splitData[1],payroll,Boolean.parseBoolean(splitData[4]),availability);
 	}
@@ -46,6 +46,40 @@ public class DataManager {
         return temp;
     }
 
+    public ArrayList<Requests> getRequestsList() throws IOException{
+	    String data = fetchData("requestList.txt");
+	    String[] splitData = data.split(":");
+	    String[] temp;
+	    ArrayList<Requests> requestList = new ArrayList<>();
+	    for(int i = 0 ; i < splitData.length ; i++){
+                temp = splitData[i].split(",");
+	        if(temp.length == 4) {
+                requestList.add(new systemRequest(Integer.parseInt(temp[0]),
+                        Integer.parseInt(temp[1]),Integer.parseInt(temp[2]),
+                        Integer.parseInt(temp[3])));
+            }
+            else if(temp.length == 8){
+	            requestList.add(new timeOff(Integer.parseInt(temp[0]),
+                        Integer.parseInt(temp[1]),Integer.parseInt(temp[2]),
+                        temp[3],Integer.parseInt(temp[4]),Integer.parseInt(temp[5]),
+                        temp[6],temp[7]));
+            }
+
+
+        }
+        return requestList;
+    }
+
+    public ArrayList<String> getEmployeeList() throws IOException{
+	    String data = fetchData("employeeList.txt");
+	    String[] splitData = data.split(",");
+	    ArrayList<String> temp = new ArrayList<>();
+	    for(int i = 0 ; i < splitData.length ; i++){
+	        temp.add(splitData[i]);
+        }
+        return temp;
+    }
+
 	public Boolean setEmployeePassword(String name, String password) {
         //redundant in prototype
 		throw new UnsupportedOperationException();
@@ -71,23 +105,23 @@ public class DataManager {
 		throw new UnsupportedOperationException();
 	}
 
-	public Arraylist<Requests> getRequest() throws IOException{ //dateMade,timeMade,requestID,deadline||timeOffType,startDate||"",endDate||"",description||"",userName,,NEXT ENTRY
-		String data = fetchData("request.txt");
+	//public Arraylist<Requests> getRequest() throws IOException{ //dateMade,timeMade,requestID,deadline||timeOffType,startDate||"",endDate||"",description||"",userName,,NEXT ENTRY
+		//String data = fetchData("request.txt");
 		// ON HOLD till request class and sub classes are finished
-    }
+    //}
 
-	public Boolean addRequest(Request r) {
+	public Boolean addRequest() {
         //redundant in prototype as
 		throw new UnsupportedOperationException();
 	}
 
-	public Boolean removeRequest(int requestID) {
+	//public Boolean removeRequest(int requestID) {
         //redundant in prototype
-	}
+	//}
 
-	public Boolean setEmployeeAvailability(Employee employee, Week availability) {
+	//public Boolean setEmployeeAvailability(Employee employee, Week availability) {
         //redundant in prototype
-	}
+	//}
 
 	public void connectToDatabase() {
         //redundant in prototype
