@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b67caed8-f4e5-465b-b26f-ffd5a6e99e79" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Admin.java" afterPath="$PROJECT_DIR$/Admin.java" />
-      <change beforePath="$PROJECT_DIR$/Avalibility.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/DataManager.java" afterPath="$PROJECT_DIR$/DataManager.java" />
-      <change beforePath="$PROJECT_DIR$/Date.java" afterPath="$PROJECT_DIR$/Date.java" />
-      <change beforePath="$PROJECT_DIR$/Employee.java" afterPath="$PROJECT_DIR$/Employee.java" />
-      <change beforePath="$PROJECT_DIR$/PartTimeEmployee.java" afterPath="$PROJECT_DIR$/PartTimeEmployee.java" />
-      <change beforePath="$PROJECT_DIR$/Requests.java" afterPath="$PROJECT_DIR$/Requests.java" />
       <change beforePath="$PROJECT_DIR$/Scheduler.java" afterPath="$PROJECT_DIR$/Scheduler.java" />
-      <change beforePath="$PROJECT_DIR$/SystemManager.java" afterPath="$PROJECT_DIR$/SystemManager.java" />
+      <change beforePath="$PROJECT_DIR$/Week.java" afterPath="$PROJECT_DIR$/Week.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,19 +18,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DockManager">
-    <window id="1">
+    <window id="2">
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="Employee.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/Employee.java">
+            <file leaf-file-name="Week.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/Week.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="105">
-                    <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+                  <state relative-caret-position="903">
+                    <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
                     <folding>
-                      <element signature="imports" expanded="true" />
-                      <element signature="e#907#908#0" expanded="true" />
-                      <element signature="e#977#978#0" expanded="true" />
+                      <element signature="e#1835#1836#0" expanded="true" />
+                      <element signature="e#1874#1875#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -60,16 +52,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Week.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Week.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Date.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Date.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,24 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Admin.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Admin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="773">
-              <caret line="34" column="48" lean-forward="true" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
-              <folding>
-                <element signature="e#1792#1793#0" expanded="true" />
-                <element signature="e#1852#1853#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Manager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Manager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -135,14 +104,17 @@
       <file leaf-file-name="Scheduler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="744">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding>
+                <element signature="e#739#740#0" expanded="true" />
+                <element signature="e#776#777#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SystemManagerController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SystemManagerController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SystemManagerController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -180,21 +152,21 @@
         <option value="$PROJECT_DIR$/timeOff.java" />
         <option value="$PROJECT_DIR$/systemRequest.java" />
         <option value="$PROJECT_DIR$/DataManager.java" />
-        <option value="$PROJECT_DIR$/Scheduler.java" />
         <option value="$PROJECT_DIR$/Employee.java" />
         <option value="$PROJECT_DIR$/PartTimeEmployee.java" />
         <option value="$PROJECT_DIR$/Manager.java" />
         <option value="$PROJECT_DIR$/Requests.java" />
         <option value="$PROJECT_DIR$/Date.java" />
-        <option value="$PROJECT_DIR$/Week.java" />
         <option value="$PROJECT_DIR$/SystemManager.java" />
         <option value="$PROJECT_DIR$/Admin.java" />
+        <option value="$PROJECT_DIR$/Scheduler.java" />
+        <option value="$PROJECT_DIR$/Week.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="2539" />
+    <option name="width" value="2108" />
     <option name="height" value="2118" />
   </component>
   <component name="ProjectView">
@@ -364,12 +336,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="2539" height="2118" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="0" width="2108" height="2118" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296315" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296315" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -400,16 +371,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/SystemManager.java</url>
-          <line>115</line>
-          <properties class="SystemManager" method="main">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
@@ -427,7 +388,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="63" lean-forward="false" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="63" />
-          <folding />
+          <folding>
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -471,7 +435,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -487,7 +454,6 @@
         <state relative-caret-position="1088">
           <caret line="82" column="5" lean-forward="false" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#907#908#0" expanded="true" />
             <element signature="e#977#978#0" expanded="true" />
           </folding>
@@ -541,7 +507,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -557,7 +526,6 @@
         <state relative-caret-position="1088">
           <caret line="82" column="5" lean-forward="false" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#907#908#0" expanded="true" />
             <element signature="e#977#978#0" expanded="true" />
           </folding>
@@ -582,7 +550,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -591,7 +562,6 @@
         <state relative-caret-position="1088">
           <caret line="82" column="5" lean-forward="false" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#907#908#0" expanded="true" />
             <element signature="e#977#978#0" expanded="true" />
           </folding>
@@ -623,7 +593,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -632,7 +605,6 @@
         <state relative-caret-position="1088">
           <caret line="82" column="5" lean-forward="false" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#907#908#0" expanded="true" />
             <element signature="e#977#978#0" expanded="true" />
           </folding>
@@ -664,7 +636,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -734,46 +709,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Week.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/systemRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Date.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#705#706#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Employee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#907#908#0" expanded="true" />
-            <element signature="e#977#978#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SystemManagerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
@@ -789,18 +725,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scheduler.java">
+    <entry file="file://$PROJECT_DIR$/Admin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="773">
+          <caret line="34" column="48" lean-forward="true" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+          <folding>
+            <element signature="e#1792#1793#0" expanded="true" />
+            <element signature="e#1852#1853#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AssignedDates.java">
+    <entry file="file://$PROJECT_DIR$/Date.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="105">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#705#706#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Manager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -819,22 +769,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Manager.java">
+    <entry file="file://$PROJECT_DIR$/Employee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+        <state relative-caret-position="42">
+          <caret line="2" column="34" lean-forward="true" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+          <folding>
+            <element signature="e#907#908#0" expanded="true" />
+            <element signature="e#977#978#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="903">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AssignedDates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Admin.java">
+    <entry file="file://$PROJECT_DIR$/SystemManagerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="773">
-          <caret line="34" column="48" lean-forward="true" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
-          <folding>
-            <element signature="e#1792#1793#0" expanded="true" />
-            <element signature="e#1852#1853#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
