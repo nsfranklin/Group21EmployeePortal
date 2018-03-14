@@ -15,7 +15,7 @@ public class SystemManager {
         dataManager = new DataManager();
         schedulerInstance = Scheduler.getInstance();
         currentSchedule = dataManager.getSchedule(this.getTime());
-        requestList = dataManager.getRequestList();
+        requestList = dataManager.getRequestsList();
         ArrayList<String> employeeFileNames = dataManager.getEmployeeList();
         for(int i = 0 ; i < employeeFileNames.size() ; i++) {
             employeeList.add(dataManager.getEmployee(employeeFileNames.get(i)));
@@ -53,7 +53,7 @@ public class SystemManager {
 		return null;
 	}
 
-	public static SystemManager getInstance() {
+	public static SystemManager getInstance() throws IOException{
 		if(instance == null){
 			instance = new SystemManager();
 		}

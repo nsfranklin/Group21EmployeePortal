@@ -55,14 +55,13 @@ public class DataManager {
                 temp = splitData[i].split(",");
 	        if(temp.length == 4) {
                 requestList.add(new systemRequest(Integer.parseInt(temp[0]),
-                        Integer.parseInt(temp[1]),Integer.parseInt(temp[2]),
-                        Integer.parseInt(temp[3])));
+                        Integer.parseInt(temp[1]),Integer.parseInt(temp[2])));
             }
             else if(temp.length == 8){
 	            requestList.add(new timeOff(Integer.parseInt(temp[0]),
-                        Integer.parseInt(temp[1]),Integer.parseInt(temp[2]),
-                        temp[3],Integer.parseInt(temp[4]),Integer.parseInt(temp[5]),
-                        temp[6],temp[7]));
+                        Integer.parseInt(temp[1]), temp[2],
+						Integer.parseInt(temp[3]),Integer.parseInt(temp[4]),
+                        temp[5],temp[6]));
             }
 
 

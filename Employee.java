@@ -1,4 +1,7 @@
+import java.io.IOException;
 import java.time.LocalTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Employee {
 
@@ -31,23 +34,27 @@ public class Employee {
         setPayrollDetails(new PayrollDetails(accountNo,sortCode));
 	}
 
-	public void requestTimeOff(String type, int start, int end, String Description) {
-        int dateMade = ;
-        int timeMade = getTime();
-        int requestID = ;
+	public void requestTimeOff(String type, int start, int end, String Description) throws IOException {
+        int dateMade = this.getCurrentDate();
+        int timeMade = this.getCurrentTime();
         String timeOffType = type;
         int startDate = start;
         int endDate = end;
         String description = Description;
         String userName = this.getUserName();
-	    timeOff temp = new timeOff(dateMade,timeMade,requestID,timeOffType,startDate,endDate,description,userName);
-	    SystemManager.addRequest(temp);
+	    timeOff temp = new timeOff(dateMade,timeMade,timeOffType,startDate,endDate,description,userName);
+	    SystemManager.getInstance().addRequest(temp);
 	}
 
-    public int getTime(){
+    public int getCurrentTime(){
         String[] temp = LocalTime.now().toString().split(":");
-        int local = Integer.parseInt(temp[0])*60 + Integer.parseInt(temp[1]);
+        int local = Integer.parseInt(temp[0])*60 + Integer.parseInt(temp[1]); // converts HH:MM form to MM
         return local;
+    }
+
+    public int getCurrentDate(){
+        int date = Integer.parseInt(new SimpleDateFormat("ddMMyy").format(new Date()));
+        return date;
     }
 
 	public String getUserName() {
