@@ -6,7 +6,7 @@ public class DataManager {
 
 	DataManager(){}
 
-	public Employee getEmployee(String employeeID) throws IOException{
+	public Employee getEmployee(String employeeID) {
 	    String data = fetchData(employeeID + ".txt");
 	    String[] splitData = data.split(",");
 	    PayrollDetails payroll = new PayrollDetails(Integer.parseInt(splitData[2]),Integer.parseInt(splitData[3]));
@@ -19,7 +19,7 @@ public class DataManager {
 		throw new UnsupportedOperationException();
 	}
 
-	public Week getSchedule(int date)  throws IOException {//Date format DDMMYY // , split starts and length and ,, split days
+	public Week getSchedule(int date) {//Date format DDMMYY // , split starts and length and ,, split days
 		String data = fetchData(date + ".txt");
         String[] splitData = data.split(",,");
         String[][] furtherSplitData = new String[7][];
@@ -46,7 +46,7 @@ public class DataManager {
         return temp;
     }
 
-    public ArrayList<Requests> getRequestsList() throws IOException{
+    public ArrayList<Requests> getRequestsList() {
 	    String data = fetchData("requestList.txt");
 	    String[] splitData = data.split(":");
 	    String[] temp;
@@ -69,7 +69,7 @@ public class DataManager {
         return requestList;
     }
 
-    public ArrayList<String> getEmployeeList() throws IOException{
+    public ArrayList<String> getEmployeeList(){
 	    String data = fetchData("employeeList.txt");
 	    String[] splitData = data.split(",");
 	    ArrayList<String> temp = new ArrayList<>();
@@ -126,7 +126,7 @@ public class DataManager {
         //redundant in prototype
 	}
 
-	public String fetchData(String filename) throws IOException //file will be written as a single line comma seperated
+	public String fetchData(String filename)  //file will be written as a single line comma seperated
 	{
 		try
 		{
@@ -135,16 +135,19 @@ public class DataManager {
             inputStream.close();
             return data;
 		}
-		catch (FileNotFoundException e)
+		catch (IOException e)
 		{
 			return null; // null returned when no file is present or empty
 		}
 	}
 
-	public void writeData(String filename, String data) throws IOException
+	public void writeData(String filename, String data)
     {
-        PrintWriter outputStream = new PrintWriter(new FileWriter(filename));
-        outputStream.println(data);
-        outputStream.close();
+        try {
+            PrintWriter outputStream = new PrintWriter(new FileWriter(filename));
+            outputStream.println(data);
+            outputStream.close();
+        }
+        catch (IOException e) { }
     }
 }

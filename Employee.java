@@ -9,7 +9,7 @@ public class Employee {
 	private String userPassword;
 	private PayrollDetails payrollDetails;
 	private Boolean passwordChangeRequired;
-	private Week employeeAvailability;
+	protected Week employeeAvailability;
 
 	Employee(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability)
 	{

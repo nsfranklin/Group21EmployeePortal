@@ -11,7 +11,7 @@ public class Scheduler {
 	public Week createProvisionalSchedule(Date[][] prov, Week scheduleRules, ArrayList<Employee> ActiveUsers) {
 		ArrayList<Employee> timetabledEmployees = ActiveUsers;
 	    Week tempWeek = null;
-	    for(int x = ActiveUsers.size() ; i > 0 ; x++)
+	    for(int x = ActiveUsers.size() ; x > 0 ; x++)
 		{
             tempWeek = ActiveUsers.get(x).getEmployeeAvalibility();
             if((tempWeek = null) || (tempWeek.getWeek.size !=7))  //preventing errors and crashes
@@ -56,7 +56,7 @@ public class Scheduler {
 	 * 
 	 * @param deadline
 	 */
-	public void createSystemRequest(Time deadline) {
+	public void createSystemRequest(int deadline) {
 		// TODO - implement Scheduler.createSystemRequest
 		throw new UnsupportedOperationException();
 	}

@@ -1,39 +1,48 @@
+import java.util.Random;
+
 public class Admin extends Manager {
 
-	/**
-	 * 
-	 * @param user
-	 */
-	public String resetEmployeePassword(User user) {
-		// TODO - implement Admin.resetEmployeePassword
-		throw new UnsupportedOperationException();
+
+	public String resetEmployeePassword(Employee user) {
+		user.setPasswordChangeRequired(false);
+		String tempPassword = tempPassword();
+		user.setUserPassword(tempPassword);
+		return tempPassword;
 	}
 
-	/**
-	 * 
-	 * @param employee
-	 */
-	public Boolean markEmployeeAsManager(Employee employee) {
-		// TODO - implement Admin.markEmployeeAsManager
-		throw new UnsupportedOperationException();
+	public String tempPassword(){
+        Random r = new Random();
+        int temp = 0;
+        while(temp < 10000000) { //all temp passwords are to be 8 digit string of numbers
+            temp = r.nextInt(99999999);
+        }
+        return Integer.toString(temp);
+    }
+
+
+	public Boolean markEmployeeAsManager(Employee employee) { //will work on employee and parTimeEmployee
+		String userName = employee.getUserName();
+		String userPassword = employee.getUserPassword();
+		PayrollDetails PayrollDetails = employee.getPayrollDetails();
+		Boolean passwordChangedRequired = employee.getPasswordChangeRequired();
+		Week employeeAvailability = employee.getEmployeeAvalibility();
+	    SystemManager.getInstance().removeEmployee(userName);
+	    SystemManager.getInstance().addEmployee(new Manager(userName, userPassword, PayrollDetails, passwordChangedRequired, employeeAvailability));
 	}
 
-	/**
-	 * 
-	 * @param manager
-	 */
+
 	public Boolean unmarkEmployeeAsManager(Manager manager) {
-		// TODO - implement Admin.unmarkEmployeeAsManager
-		throw new UnsupportedOperationException();
+        String userName = manager.getUserName();
+        String userPassword = manager.getUserPassword();
+        PayrollDetails PayrollDetails = manager.getPayrollDetails();
+        Boolean passwordChangedRequired = manager.getPasswordChangeRequired();
+        Week employeeAvailability = manager.getEmployeeAvalibility();
+        SystemManager.getInstance().removeEmployee(userName);
+        SystemManager.getInstance().addEmployee(new Employee(userName, userPassword, PayrollDetails, passwordChangedRequired, employeeAvailability));
 	}
 
-	/**
-	 * 
-	 * @param rules
-	 */
-	public Boolean setScheduleRules(Week rules) {
-		// TODO - implement Admin.setScheduleRules
-		throw new UnsupportedOperationException();
-	}
 
+	public void setScheduleRules(Week rules) {
+		SystemManager.getInstance().setCurrentSchedule(rules);
+	}
 }

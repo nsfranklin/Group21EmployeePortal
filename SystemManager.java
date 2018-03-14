@@ -11,7 +11,7 @@ public class SystemManager {
 	private Week currentSchedule;
 	private static SystemManager instance;
 
-	private SystemManager() throws IOException {
+	private SystemManager() {
         dataManager = new DataManager();
         schedulerInstance = Scheduler.getInstance();
         currentSchedule = dataManager.getSchedule(this.getTime());
@@ -53,11 +53,24 @@ public class SystemManager {
 		return null;
 	}
 
-	public static SystemManager getInstance() throws IOException{
+	public static SystemManager getInstance(){
 		if(instance == null){
 			instance = new SystemManager();
 		}
 		return instance;
+	}
+
+	public void removeEmployee(String userName){
+		ArrayList<Employee> a = this.getEmployeeList();
+		for(int i = 0 ; i < a.size() ; i++){
+			if(a.get(i).getUserName().equals(userName)){
+				this.employeeList.remove(i);
+			}
+		}
+	}
+
+	public void addEmployee(Employee employee){
+		this.employeeList.add(employee);
 	}
 
 	public ArrayList<Employee> getEmployeeList() {
@@ -100,4 +113,9 @@ public class SystemManager {
 		this.currentSchedule = currentSchedule;
 	}
 
+	public static void main(String[] arg){
+	    SystemManager.getInstance();
+    }
 }
+
+
