@@ -1,3 +1,5 @@
+import java.time.LocalTime;
+
 public class Employee {
 
 	private String userName;
@@ -31,7 +33,7 @@ public class Employee {
 
 	public void requestTimeOff(String type, int start, int end, String Description) {
         int dateMade = ;
-        int timeMade = ;
+        int timeMade = getTime();
         int requestID = ;
         String timeOffType = type;
         int startDate = start;
@@ -41,6 +43,12 @@ public class Employee {
 	    timeOff temp = new timeOff(dateMade,timeMade,requestID,timeOffType,startDate,endDate,description,userName);
 	    SystemManager.addRequest(temp);
 	}
+
+    public int getTime(){
+        String[] temp = LocalTime.now().toString().split(":");
+        int local = Integer.parseInt(temp[0])*60 + Integer.parseInt(temp[1]);
+        return local;
+    }
 
 	public String getUserName() {
 		return this.userName;
