@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.*;
 import java.time.*;
 
@@ -113,8 +112,24 @@ public class SystemManager {
 		this.currentSchedule = currentSchedule;
 	}
 
+	public static void initialiseEmployeeList(){
+		SystemManager.getInstance();
+		ArrayList<String> employeeList = SystemManager.getInstance().dataManager.getEmployeeList();
+		ArrayList<Employee> temp = new ArrayList<>();
+		for(int i = 0 ; i < employeeList.size() ; i++) {
+			temp.add(SystemManager.getInstance().dataManager.getEmployee(employeeList.get(i)));
+		}
+		SystemManager.getInstance().setEmployeeList(temp);
+	}
+
+	public static void initialiseRequestList(){
+		SystemManager.getInstance().setRequestList(SystemManager.getInstance().dataManager.getRequestsList());
+	}
+
 	public static void main(String[] arg){
-	    SystemManager.getInstance();
+		initialiseEmployeeList();
+		initialiseRequestList();
+
     }
 }
 
