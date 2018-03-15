@@ -42,4 +42,8 @@ public class Week {
 		this.days[dayOfWeekIndex] = d;
     }
 
+    public Date getDate(int dayIndex){
+        return this.days[dayIndex];
+    }
+
 }

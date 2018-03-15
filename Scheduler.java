@@ -22,7 +22,9 @@ public class Scheduler {
 	public Week addFullTimeEmployees(ArrayList<Employee> a) {
 		for(int i = 0 ; i < a.size() ; i++){
 			if(!(a.get(i) instanceof  PartTimeEmployee)){
-
+				for(int j = 0 ; j < 7 ; j++){
+					
+				}
 			}
 		}
 	}

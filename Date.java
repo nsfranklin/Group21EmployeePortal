@@ -22,7 +22,7 @@ public class Date {
         }
     }
 
-    public Date (){
+    public Date(){
         times = new ArrayList<>();
     }
 
@@ -33,4 +33,9 @@ public class Date {
             temp[1] = length;
             times.add(temp);
     }
+
+    public ArrayList<int[]> getTimes(){
+        return this.times;
+    }
+
 }
