@@ -2,6 +2,10 @@ import java.util.Random;
 
 public class Admin extends Manager {
 
+	public Admin(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability){
+		super(userName, userPassword, p , passwordChangeRequired, employeeAvailability);
+	}
+
 
 	public String resetEmployeePassword(Employee user) {
 		user.setPasswordChangeRequired(false);

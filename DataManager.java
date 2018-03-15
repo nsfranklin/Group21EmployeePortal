@@ -10,8 +10,16 @@ public class DataManager {
 	    String data = fetchData(employeeID + ".txt");
 	    String[] splitData = data.split(",");
 	    PayrollDetails payroll = new PayrollDetails(Integer.parseInt(splitData[2]),Integer.parseInt(splitData[3]));
-	    Week availability = new Week(Integer.parseInt(splitData[6]),Integer.parseInt(splitData[7]),Integer.parseInt(splitData[8]),Integer.parseInt(splitData[9]),Integer.parseInt(splitData[10]),Integer.parseInt(splitData[11]),Integer.parseInt(splitData[12]),Integer.parseInt(splitData[13]),Integer.parseInt(splitData[14]),Integer.parseInt(splitData[15]),Integer.parseInt(splitData[16]),Integer.parseInt(splitData[17]),Integer.parseInt(splitData[18]),Integer.parseInt(splitData[19]));
-        return new Employee(splitData[0],splitData[1],payroll,Boolean.parseBoolean(splitData[4]),availability);
+	    Week availability = new Week(Integer.parseInt(splitData[5]),Integer.parseInt(splitData[6]),Integer.parseInt(splitData[7]),Integer.parseInt(splitData[8]),Integer.parseInt(splitData[9]),Integer.parseInt(splitData[10]),Integer.parseInt(splitData[11]),Integer.parseInt(splitData[12]),Integer.parseInt(splitData[13]),Integer.parseInt(splitData[14]),Integer.parseInt(splitData[15]),Integer.parseInt(splitData[16]),Integer.parseInt(splitData[17]),Integer.parseInt(splitData[18]));
+        if(splitData[19].equals("employee")) {
+			return new Employee(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
+		}else if(splitData[19].equals("parttimeemployee")){
+			return new PartTimeEmployee(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
+		}else if(splitData[19].equals("manager")){
+			return new Manager(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
+		}else if(splitData[19].equals("admin")){
+			return new Admin(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
+		}
 	}
 
 	public Boolean addSchedule(Week s) {

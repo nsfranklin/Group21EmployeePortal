@@ -16,12 +16,13 @@ public class Scheduler {
 	public Week createProvisionalSchedule(Date[][] prov, Week scheduleRules, ArrayList<Employee> activeUsers) {
 		ArrayList<Employee> timetabledEmployees = activeUsers;
 	    Week tempWeek = addFullTimeEmployees(activeUsers);
-
+		tempWeek = addPartTimeEmployees(activeUsers,tempWeek,scheduleRules);
 
 	    return tempWeek;
 	}
 
-	public Week addPartTimeEmployees(ArrayList<Employee> a, Week temp){
+	public Week addPartTimeEmployees(ArrayList<Employee> a, Week temp, Week scheduleRules){
+
 
 
 	    return temp;
@@ -33,6 +34,7 @@ public class Scheduler {
 			if(!(a.get(i) instanceof  PartTimeEmployee)){
 				for(int j = 0 ; j < 7 ; j++){
 					temp.getDate(i).addTimes(a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[0] , a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[1]);
+
 				} //this adds the availability of the employee directly to a Week. As full time employees are expected to work all there hours.
 			}
 		}

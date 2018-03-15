@@ -1,7 +1,5 @@
 public class EmployeeController {
 
-	Employee employee;
-
 	public void update() {
 		// TODO - implement EmployeeController.update
 		throw new UnsupportedOperationException();
@@ -12,10 +10,6 @@ public class EmployeeController {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param userName
-	 */
 	public void setUserName(String userName) {
 		// TODO - implement EmployeeController.setUserName
 		throw new UnsupportedOperationException();
@@ -26,10 +20,6 @@ public class EmployeeController {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param userPassword
-	 */
 	public void setUserPassword(String userPassword) {
 		// TODO - implement EmployeeController.setUserPassword
 		throw new UnsupportedOperationException();
@@ -40,10 +30,6 @@ public class EmployeeController {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param payrollDetails
-	 */
 	public void setPayrollDetails(PayrollDetails payrollDetails) {
 		// TODO - implement EmployeeController.setPayrollDetails
 		throw new UnsupportedOperationException();
@@ -54,10 +40,6 @@ public class EmployeeController {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param passwordChangeRequired
-	 */
 	public void setPasswordChangeRequired(Boolean passwordChangeRequired) {
 		// TODO - implement EmployeeController.setPasswordChangeRequired
 		throw new UnsupportedOperationException();
@@ -68,13 +50,8 @@ public class EmployeeController {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param employeeAvalibility
-	 */
 	public void setEmployeeAvalibility(Week employeeAvalibility) {
 		// TODO - implement EmployeeController.setEmployeeAvalibility
 		throw new UnsupportedOperationException();
 	}
-
 }
