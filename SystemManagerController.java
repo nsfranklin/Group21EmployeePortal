@@ -7,19 +7,19 @@ public class SystemManagerController {
 		throw new UnsupportedOperationException();
 	}
 
-	public ArrayList<Employee> getEmployeeList() {
+	//public ArrayList<Employee> getEmployeeList() {
 		// TODO - implement SystemManagerController.getEmployeeList
-		throw new UnsupportedOperationException();
-	}
+	//	throw new UnsupportedOperationException();
+	//}
 
 	/**
 	 * 
 	 * @param employeeList
 	 */
-	public void setEmployeeList(ArrayList<Employee> employeeList) {
-		// TODO - implement SystemManagerController.setEmployeeList
-		throw new UnsupportedOperationException();
-	}
+	//public void setEmployeeList(ArrayList<Employee> employeeList) {
+	//	// TODO - implement SystemManagerController.setEmployeeList
+	//	throw new UnsupportedOperationException();
+	//}
 
 	public Scheduler getScheduler() {
 		// TODO - implement SystemManagerController.getScheduler
@@ -35,33 +35,26 @@ public class SystemManagerController {
 		throw new UnsupportedOperationException();
 	}
 
-	public ArrayList<Requests> getRequestList() {
+	//public ArrayList<Requests> getRequestList() {
 		// TODO - implement SystemManagerController.getRequestList
-		throw new UnsupportedOperationException();
-	}
+	//	throw new UnsupportedOperationException();
+	//}
 
-	/**
-	 * 
-	 * @param requestList
-	 */
-	public void setRequestList(ArrayList<Requests> requestList) {
+	//public void setRequestList(ArrayList<Requests> requestList) {
 		// TODO - implement SystemManagerController.setRequestList
-		throw new UnsupportedOperationException();
-	}
+	//	throw new UnsupportedOperationException();
+	//}
 
-	public DatebaseController getDatebaseManager() {
+	//public DatebaseController getDatebaseManager() {
 		// TODO - implement SystemManagerController.getDatebaseManager
-		throw new UnsupportedOperationException();
-	}
+	//	throw new UnsupportedOperationException();
+	//}
 
-	/**
-	 * 
-	 * @param datebaseManager
-	 */
-	public void setDatebaseManager(DatebaseController datebaseManager) {
+
+	//public void setDatebaseManager(DatebaseController datebaseManager) {
 		// TODO - implement SystemManagerController.setDatebaseManager
-		throw new UnsupportedOperationException();
-	}
+	//	throw new UnsupportedOperationException();
+	//}
 
 	public Week getCurrentSchedule() {
 		// TODO - implement SystemManagerController.getCurrentSchedule
@@ -76,5 +69,4 @@ public class SystemManagerController {
 		// TODO - implement SystemManagerController.setCurrentSchedule
 		throw new UnsupportedOperationException();
 	}
-
 }

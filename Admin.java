@@ -14,17 +14,7 @@ public class Admin extends Manager {
 		return tempPassword;
 	}
 
-	public String tempPassword(){
-        Random r = new Random();
-        int temp = 0;
-        while(temp < 10000000) { //all temp passwords are to be 8 digit string of numbers
-            temp = r.nextInt(99999999);
-        }
-        return Integer.toString(temp);
-    }
-
-
-	public Boolean markEmployeeAsManager(Employee employee) { //will work on employee and parTimeEmployee
+	public void markEmployeeAsManager(Employee employee) { //will work on employee and parTimeEmployee
 		String userName = employee.getUserName();
 		String userPassword = employee.getUserPassword();
 		PayrollDetails PayrollDetails = employee.getPayrollDetails();
@@ -35,7 +25,7 @@ public class Admin extends Manager {
 	}
 
 
-	public Boolean unmarkEmployeeAsManager(Manager manager) {
+	public void unmarkEmployeeAsManager(Manager manager) {
         String userName = manager.getUserName();
         String userPassword = manager.getUserPassword();
         PayrollDetails PayrollDetails = manager.getPayrollDetails();

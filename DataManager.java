@@ -20,6 +20,7 @@ public class DataManager {
 		}else if(splitData[19].equals("admin")){
 			return new Admin(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
 		}
+		return null;
 	}
 
 	public Boolean addSchedule(Week s) {
@@ -45,6 +46,24 @@ public class DataManager {
         return temp;
 	} //calling parseScheduleStringArray for every start time and length. (Prototype!)
 
+	public Week getScheduleWithAssignedUsers(int date){
+        String data = fetchData(date + ".txt");
+        String[] splitData = data.split(",,");
+        String[][] furtherSplitData = new String[7][];
+        for(int i = 0 ; i < 7 ; i++)                //preparing the data for the week constructor
+        {
+            furtherSplitData[i] = splitData[i].split(",");
+        }
+        Week temp = new Week(parseScheduleStringArray(furtherSplitData[0],0), parseScheduleStringArray(furtherSplitData[0], 1),
+                parseScheduleStringArray(furtherSplitData[1],0), parseScheduleStringArray(furtherSplitData[1], 1),
+                parseScheduleStringArray(furtherSplitData[2],0), parseScheduleStringArray(furtherSplitData[2], 1),
+                parseScheduleStringArray(furtherSplitData[3],0), parseScheduleStringArray(furtherSplitData[3], 1),
+                parseScheduleStringArray(furtherSplitData[4],0), parseScheduleStringArray(furtherSplitData[4], 1),
+                parseScheduleStringArray(furtherSplitData[5],0), parseScheduleStringArray(furtherSplitData[5], 1),
+                parseScheduleStringArray(furtherSplitData[6],0), parseScheduleStringArray(furtherSplitData[6], 1));
+        return temp;
+	}
+
 	private int[] parseScheduleStringArray(String[] a, int i){ //helper method return int[] for week constructor, i indicates start loop.
 	    int[] temp = new int[a.length/2];
         for( int j = i ; j < a.length ; j = j + 2)
@@ -54,8 +73,8 @@ public class DataManager {
         return temp;
     }
 
-    public ArrayList<Requests> getRequestsList() {
-	    String data = fetchData("requestList.txt");
+    public ArrayList<Requests> getRequestsList(String filename) {
+	    String data = fetchData(filename + ".txt");
 	    String[] splitData = data.split(":");
 	    String[] temp;
 	    ArrayList<Requests> requestList = new ArrayList<>();

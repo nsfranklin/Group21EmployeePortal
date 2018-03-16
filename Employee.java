@@ -11,7 +11,7 @@ public class Employee {
 	private Boolean passwordChangeRequired;
 	protected Week employeeAvailability;
 
-	Employee(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability)
+	public Employee(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability)
 	{
 		this.userName = userName;
 		this.userPassword = userPassword;

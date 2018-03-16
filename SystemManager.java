@@ -6,6 +6,7 @@ public class SystemManager {
 	private ArrayList<Employee> employeeList;
 	private Scheduler schedulerInstance;
 	private ArrayList<Requests> requestList;
+	private ArrayList<Requests> approvedRequestList;
 	private DataManager dataManager;
 	private Week currentSchedule;
 	private static SystemManager instance;
@@ -14,7 +15,8 @@ public class SystemManager {
         dataManager = new DataManager();
         schedulerInstance = Scheduler.getInstance();
         currentSchedule = dataManager.getSchedule(this.getTime());
-        requestList = dataManager.getRequestsList();
+        requestList = dataManager.getRequestsList("requests");
+        approvedRequestList = dataManager.getRequestsList("approvedRequests");
         ArrayList<String> employeeFileNames = dataManager.getEmployeeList();
         for(int i = 0 ; i < employeeFileNames.size() ; i++) {
             employeeList.add(dataManager.getEmployee(employeeFileNames.get(i)));
@@ -68,9 +70,23 @@ public class SystemManager {
 		}
 	}
 
+	public void removeRequest(Requests a){
+		for(int i = 0 ; i < this.requestList.size() ; i++){
+			if(this.requestList.get(i).equals(a)){
+				this.requestList.remove(i);
+				return;
+			}
+		}
+	}
+
+	public void addApprovedRequest(Requests a){
+		this.approvedRequestList.add(a);
+	}
+
 	public void addEmployee(Employee employee){
 		this.employeeList.add(employee);
 	}
+
 
 	public ArrayList<Employee> getEmployeeList() {
 		return this.employeeList;
@@ -90,6 +106,14 @@ public class SystemManager {
 
 	public ArrayList<Requests> getRequestList() {
 		return this.requestList;
+	}
+
+	public void setApprovedRequestList(ArrayList<Requests> requestList) {
+		this.approvedRequestList = requestList;
+	}
+
+	public ArrayList<Requests> getApprovedRequestList() {
+		return this.approvedRequestList;
 	}
 
 	public void setRequestList(ArrayList<Requests> requestList) {
@@ -112,25 +136,6 @@ public class SystemManager {
 		this.currentSchedule = currentSchedule;
 	}
 
-	public static void initialiseEmployeeList(){
-		SystemManager.getInstance();
-		ArrayList<String> employeeList = SystemManager.getInstance().dataManager.getEmployeeList();
-		ArrayList<Employee> temp = new ArrayList<>();
-		for(int i = 0 ; i < employeeList.size() ; i++) {
-			temp.add(SystemManager.getInstance().dataManager.getEmployee(employeeList.get(i)));
-		}
-		SystemManager.getInstance().setEmployeeList(temp);
-	}
-
-	public static void initialiseRequestList(){
-		SystemManager.getInstance().setRequestList(SystemManager.getInstance().dataManager.getRequestsList());
-	}
-
-	public static void main(String[] arg){
-		initialiseEmployeeList();
-		initialiseRequestList();
-
-    }
 }
 
 

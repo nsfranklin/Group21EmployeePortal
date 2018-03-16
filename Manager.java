@@ -1,54 +1,62 @@
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Manager extends Employee {
 
-	/**
-	 * 
-	 * @param name
-	 */
-	public String addEmployee(String name) {
-		// TODO - implement Manager.addEmployee
-		throw new UnsupportedOperationException();
+
+	public Manager(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability){
+		super(userName, userPassword, p , passwordChangeRequired, employeeAvailability);
 	}
 
-	/**
-	 * 
-	 * @param employee
-	 * @param availability
-	 */
+	public String addPartTimeEmployee(String userName, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability) {
+		String userPassword = tempPassword();
+		SystemManager.getInstance().addEmployee(new PartTimeEmployee(userName, userPassword, p, passwordChangeRequired, employeeAvailability));
+		return userPassword;
+	}
+
+	public String addEmployee(String userName, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability) {
+		String userPassword = tempPassword();
+		SystemManager.getInstance().addEmployee(new Employee(userName, userPassword, p, passwordChangeRequired, employeeAvailability));
+		return userPassword;
+	}
+
 	public Boolean setAvailability(Employee employee, Week availability) {
 		// TODO - implement Manager.setAvailability
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param nonPartTimeEmployee
-	 */
-	public Boolean changeEmployeeToPartTimeEmployee(Employee nonPartTimeEmployee) {
-		// TODO - implement Manager.changeEmployeeToPartTimeEmployee
-		throw new UnsupportedOperationException();
+	public String tempPassword(){
+		Random r = new Random();
+		int temp = 0;
+		while(temp < 10000000) { //all temp passwords are to be 8 digit string of numbers
+			temp = r.nextInt(99999999);
+		}
+		return Integer.toString(temp);
 	}
 
-	/**
-	 * 
-	 * @param PartTimeEmployee
-	 */
-	public Boolean changePartTimeEmployeeToEmployee(partTime PartTimeEmployee) {
-		// TODO - implement Manager.changePartTimeEmployeeToEmployee
-		throw new UnsupportedOperationException();
+	public void changeEmployeeToPartTimeEmployee(Employee nonPartTimeEmployee) {
+		String userName = nonPartTimeEmployee.getUserName();
+		String userPassword = nonPartTimeEmployee.getUserPassword();
+		PayrollDetails PayrollDetails = nonPartTimeEmployee.getPayrollDetails();
+		Boolean passwordChangedRequired = nonPartTimeEmployee.getPasswordChangeRequired();
+		Week employeeAvailability = nonPartTimeEmployee.getEmployeeAvalibility();
+		SystemManager.getInstance().removeEmployee(userName);
+		SystemManager.getInstance().addEmployee(new PartTimeEmployee(userName, userPassword, PayrollDetails, passwordChangedRequired, employeeAvailability));
 	}
 
-	public ArrayList<Requests> fetchRequestList() {
-		// TODO - implement Manager.fetchRequestList
-		throw new UnsupportedOperationException();
+	public void changePartTimeEmployeeToEmployee(PartTimeEmployee PartTimeEmployee) {
+		String userName = PartTimeEmployee.getUserName();
+		String userPassword = PartTimeEmployee.getUserPassword();
+		PayrollDetails PayrollDetails = PartTimeEmployee.getPayrollDetails();
+		Boolean passwordChangedRequired = PartTimeEmployee.getPasswordChangeRequired();
+		Week employeeAvailability = PartTimeEmployee.getEmployeeAvalibility();
+		SystemManager.getInstance().removeEmployee(userName);
+		SystemManager.getInstance().addEmployee(new Employee(userName, userPassword, PayrollDetails, passwordChangedRequired, employeeAvailability));
 	}
 
-	/**
-	 * 
-	 * @param a
-	 */
-	public Boolean approveRequest(Request a) {
-		// TODO - implement Manager.approveRequest
-		throw new UnsupportedOperationException();
+	public void approveRequest(Requests a) {
+		SystemManager.getInstance().removeRequest(a);
+		SystemManager.getInstance().addApprovedRequest(a);
 	}
 
 }
