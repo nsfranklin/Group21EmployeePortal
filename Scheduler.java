@@ -4,17 +4,16 @@ public class Scheduler {
 
 	private Week scheduleRules;
 	private Week unapprovedSchedule;
-	private static Scheduler instance;
 
-	private Scheduler() {
-		this.scheduleRules = null;
-		this.unapprovedSchedule = null;
+	public Scheduler() {
+		this.scheduleRules = new Week();
+		this.unapprovedSchedule = new Week();
 	}
 
 	public Week createProvisionalSchedule(ArrayList<Requests> approvedRequests, Week scheduleRules, ArrayList<Employee> activeUsers) {
 		ArrayList<Employee> timetabledEmployees = activeUsers;
-	    Week tempWeek = addFullTimeEmployees(activeUsers);
-		tempWeek = addPartTimeEmployees(activeUsers,tempWeek,scheduleRules);
+	    Week tempWeek = addFullTimeEmployees(approvedRequests, activeUsers);
+		tempWeek = addPartTimeEmployees(approvedRequests,activeUsers,tempWeek,scheduleRules);
 
 	    return tempWeek;
 	}
@@ -24,7 +23,7 @@ public class Scheduler {
 		for(int i = 0 ; i < a.size() ; i++){
 			if(!(a.get(i) instanceof  PartTimeEmployee)){
 				for(int j = 0 ; j < 7 ; j++){
-					if() {
+					if(requestCheck(approvedRequests, a.get(i).getUserName())) {
 						temp.getDate(i).addTimes(a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[0], a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[1]);
 					}
 				} //this adds the availability of the employee directly to a Week. As full time employees are expected to work all there hours.
@@ -38,7 +37,7 @@ public class Scheduler {
 		for(int i = 0 ; i < a.size() ; i++){
 			if(!(a.get(i) instanceof  PartTimeEmployee)){
 				for(int j = 0 ; j < 7 ; j++){
-					if() {
+					if(requestCheck(approvedRequests, a.get(i).getUserName())) {
 						temp.getDate(i).addTimes(a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[0], a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[1]);
 					}
 				} //this adds the availability of the employee directly to a Week. As full time employees are expected to work all there hours.
@@ -48,7 +47,7 @@ public class Scheduler {
 	}
 
 	public Boolean requestCheck(ArrayList<Requests> approvedRequests, String userName){ //checks if a employee has sceduled timeOff
-
+		return true;
 	}
 
 	public Week getScheduleRules() {
@@ -73,12 +72,4 @@ public class Scheduler {
 		// TODO - implement Scheduler.createSystemRequest
 		throw new UnsupportedOperationException();
 	}
-
-	public static Scheduler getInstance() {
-		if(instance == null) {
-			instance = new Scheduler();
-		}
-		return instance;
-	}
-
 }

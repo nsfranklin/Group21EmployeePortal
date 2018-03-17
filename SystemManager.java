@@ -11,16 +11,26 @@ public class SystemManager {
 	private Week currentSchedule;
 	private static SystemManager instance;
 
+
 	private SystemManager() {
         dataManager = new DataManager();
-        schedulerInstance = Scheduler.getInstance();
-        currentSchedule = dataManager.getSchedule(this.getTime());
-        requestList = dataManager.getRequestsList("requests");
-        approvedRequestList = dataManager.getRequestsList("approvedRequests");
-        ArrayList<String> employeeFileNames = dataManager.getEmployeeList();
-        for(int i = 0 ; i < employeeFileNames.size() ; i++) {
-            employeeList.add(dataManager.getEmployee(employeeFileNames.get(i)));
-        }
+        schedulerInstance = new Scheduler();
+        requestList = new ArrayList<>();
+        approvedRequestList = new ArrayList<>();
+        employeeList = new ArrayList<>();
+        currentSchedule = new Week();
+	}
+
+	public void initializer(){
+
+	    currentSchedule = SystemManager.getInstance().getDataManager().getSchedule(SystemManager.getInstance().getFirstDayOfWeek());
+		requestList = SystemManager.getInstance().getDataManager().getRequestsList("requests");
+		approvedRequestList = SystemManager.getInstance().getDataManager().getRequestsList("approvedRequests");
+		ArrayList<String> employeeFileNames = SystemManager.getInstance().getDataManager().getEmployeeList();
+		for(int i = 0 ; i < employeeFileNames.size() ; i++) {
+			employeeList.add(SystemManager.getInstance().getDataManager().getEmployee(employeeFileNames.get(i)));
+		}
+		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getSchedule("schedulerRules"));
 	}
 
 	public Boolean login(String userName, String Password) {
@@ -33,6 +43,10 @@ public class SystemManager {
 			return false;
 		}
 	}
+
+	public String getFirstDayOfWeek(){
+	    return "010101";
+    }
 
 	public int getTime(){
         String[] temp = LocalTime.now().toString().split(":");

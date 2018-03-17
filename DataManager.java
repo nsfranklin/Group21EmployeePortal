@@ -28,9 +28,11 @@ public class DataManager {
 		throw new UnsupportedOperationException();
 	}
 
-	public Week getSchedule(int date) {//Date format DDMMYY // , split starts and length and ,, split days
+	public Week getSchedule(String date) {//Date format DDMMYY // , split starts and length and ,, split days
+		System.out.println("test");
 		String data = fetchData(date + ".txt");
-        String[] splitData = data.split(",,");
+		System.out.println(data);
+		String[] splitData = data.split(",,");
         String[][] furtherSplitData = new String[7][];
         for(int i = 0 ; i < 7 ; i++)                //preparing the data for the week constructor
         {
@@ -155,16 +157,24 @@ public class DataManager {
 
 	public String fetchData(String filename)  //file will be written as a single line comma seperated
 	{
-		try
-		{
-			BufferedReader inputStream = new BufferedReader(new FileReader(filename));
-            String data = inputStream.readLine();
-            inputStream.close();
-            return data;
-		}
-		catch (IOException e)
-		{
-			return null; // null returned when no file is present or empty
+
+		try {
+			try {
+				File file = new File(filename);
+				System.out.println(file.canRead());
+				System.out.println(file.exists());
+				BufferedReader inputStream = new BufferedReader(new FileReader(file));
+				System.out.println("file found");
+				String data = inputStream.readLine();
+				inputStream.close();
+				return data;
+			} catch (FileNotFoundException e) {
+				System.out.println(filename);
+				return null; // null returned when no file is present or empty
+			}
+		} catch(IOException f) {
+			System.out.println("IOException");
+			return null;
 		}
 	}
 
