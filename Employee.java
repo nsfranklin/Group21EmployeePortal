@@ -20,13 +20,12 @@ public class Employee {
 		this.employeeAvailability = employeeAvailability;
 	}
 
-	public Boolean clockIn() {
-
+	public void clockIn() {
+		SystemManager.getInstance().addClockedHours(new ClockedHours(this.getUserName(), this.getCurrentTime()));
 	}
 
-	public Boolean clockOut() {
-		// TODO - implement Employee.clockOut
-		throw new UnsupportedOperationException();
+	public void clockOut() {
+
 	}
 
 	public void changePayroll(int accountNo, int sortCode) {

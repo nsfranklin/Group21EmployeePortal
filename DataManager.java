@@ -45,7 +45,7 @@ public class DataManager {
                 parseScheduleStringArray(furtherSplitData[5],0), parseScheduleStringArray(furtherSplitData[5], 1),
                 parseScheduleStringArray(furtherSplitData[6],0), parseScheduleStringArray(furtherSplitData[6], 1));
         return temp;
-	} //calling parseScheduleStringArray for every start time and length. (Prototype!)
+	} //calling parseScheduleStringArray for every start time and length.
 
 	private int[] parseScheduleStringArray(String[] a, int i){ //helper method return int[] for week constructor, i indicates start loop.
 		int[] temp = new int[a.length/2];
@@ -58,6 +58,7 @@ public class DataManager {
 	}
 
 	public Week getScheduleWithAssignedUsers(String date){
+	    System.out.println(date);
         String data = fetchData(date + ".txt");
         String[] splitData = data.split(",,,");
         String[][] furtherSplitData = new String[7][];

@@ -1,5 +1,10 @@
+import sun.java2d.pipe.SpanShapeRenderer;
+import sun.util.resources.cldr.aa.CalendarData_aa_DJ;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.time.*;
+import java.util.Calendar;
 
 public class SystemManager {
 
@@ -24,7 +29,6 @@ public class SystemManager {
 	}
 
 	public void initializer(){
-
 	    currentSchedule = SystemManager.getInstance().getDataManager().getScheduleWithAssignedUsers(SystemManager.getInstance().getFirstDayOfWeek());
 		requestList = SystemManager.getInstance().getDataManager().getRequestsList("requests");
 		approvedRequestList = SystemManager.getInstance().getDataManager().getRequestsList("approvedRequests");
@@ -33,7 +37,7 @@ public class SystemManager {
 			employeeList.add(SystemManager.getInstance().getDataManager().getEmployee(employeeFileNames.get(i)));
 		}
 		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getSchedule("scheduleRules"));
-		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getScheduleWithAssignedUsers());
+		SystemManager.getInstance().getScheduler().createProvisionalSchedule();
 	}
 
 	public Boolean login(String userName, String Password) {
@@ -48,7 +52,17 @@ public class SystemManager {
 	}
 
 	public String getFirstDayOfWeek(){
-	    return "currentSchedule";
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat format = new SimpleDateFormat("ddMMyy");
+		int date = c.get(Calendar.DAY_OF_WEEK);
+		if(date == 1){
+			c.add(c.DATE , -6);
+		}
+		else{
+			c.add(c.DATE, -(date -1 ));
+		}
+		System.out.println(c.getFirstDayOfWeek());
+	    return format.format(c.getTime());
     }
 
 	public int getTime(){
@@ -94,6 +108,10 @@ public class SystemManager {
 				return;
 			}
 		}
+	}
+
+	public void addClockedHours(ClockedHours c){
+		this.clockedHoursList.add(c);
 	}
 
 	public void addApprovedRequest(Requests a){
