@@ -10,6 +10,7 @@ public class SystemManager {
 	private DataManager dataManager;
 	private Week currentSchedule;
 	private static SystemManager instance;
+	private ArrayList<ClockedHours> clockedHoursList;
 
 
 	private SystemManager() {
@@ -19,18 +20,20 @@ public class SystemManager {
         approvedRequestList = new ArrayList<>();
         employeeList = new ArrayList<>();
         currentSchedule = new Week();
+        clockedHoursList = new ArrayList<>();
 	}
 
 	public void initializer(){
 
-	    currentSchedule = SystemManager.getInstance().getDataManager().getSchedule(SystemManager.getInstance().getFirstDayOfWeek());
+	    currentSchedule = SystemManager.getInstance().getDataManager().getScheduleWithAssignedUsers(SystemManager.getInstance().getFirstDayOfWeek());
 		requestList = SystemManager.getInstance().getDataManager().getRequestsList("requests");
 		approvedRequestList = SystemManager.getInstance().getDataManager().getRequestsList("approvedRequests");
 		ArrayList<String> employeeFileNames = SystemManager.getInstance().getDataManager().getEmployeeList();
 		for(int i = 0 ; i < employeeFileNames.size() ; i++) {
 			employeeList.add(SystemManager.getInstance().getDataManager().getEmployee(employeeFileNames.get(i)));
 		}
-		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getSchedule("schedulerRules"));
+		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getSchedule("scheduleRules"));
+		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getScheduleWithAssignedUsers());
 	}
 
 	public Boolean login(String userName, String Password) {
@@ -45,7 +48,7 @@ public class SystemManager {
 	}
 
 	public String getFirstDayOfWeek(){
-	    return "010101";
+	    return "currentSchedule";
     }
 
 	public int getTime(){

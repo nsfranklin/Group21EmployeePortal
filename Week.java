@@ -1,3 +1,6 @@
+import java.util.Arrays;
+
+
 public class Week {
 
 	private Date[] days; //array because week are 7 days always
@@ -37,7 +40,28 @@ public class Week {
         this.days[6] = new Date(startSun, lengthSun);
     }
 
-	public void addDay(int dayOfWeekIndex, Date d)
+    public Week(String[] startMon, String[] lengthMon, String[] userNameMon,
+                String[] startTue, String[] lengthTue, String[] userNameTue,
+                String[] startWed, String[] lengthWed, String[] userNameWed,
+                String[] startThu, String[] lengthThu, String[] userNameThu,
+                String[] startFri, String[] lengthFri, String[] userNameFri,
+                String[] startSat, String[] lengthSat, String[] userNameSat,
+                String[] startSun, String[] lengthSun, String[] userNameSun) {
+
+        days = new Date[7];
+        for(int i = 0 ; i < 7 ; i++)
+            days[i] = new Date();
+        this.days[0] = new AssignedDates(startMon, lengthMon, userNameMon);
+        this.days[1] = new AssignedDates(startTue, lengthTue, userNameTue);
+        this.days[2] = new AssignedDates(startWed, lengthWed, userNameWed);
+        this.days[3] = new AssignedDates(startThu, lengthThu, userNameThu);
+        this.days[4] = new AssignedDates(startFri, lengthFri, userNameFri);
+        this.days[5] = new AssignedDates(startSat, lengthSat, userNameSat);
+        this.days[6] = new AssignedDates(startSun, lengthSun, userNameSun);
+    }
+
+
+    public void addDay(int dayOfWeekIndex, Date d)
     {
 		this.days[dayOfWeekIndex] = d;
     }

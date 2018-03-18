@@ -21,8 +21,7 @@ public class Employee {
 	}
 
 	public Boolean clockIn() {
-		// TODO - implement Employee.clockIn
-		return true;
+
 	}
 
 	public Boolean clockOut() {

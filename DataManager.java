@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DataManager {
 
@@ -29,9 +30,7 @@ public class DataManager {
 	}
 
 	public Week getSchedule(String date) {//Date format DDMMYY // , split starts and length and ,, split days
-		System.out.println("test");
 		String data = fetchData(date + ".txt");
-		System.out.println(data);
 		String[] splitData = data.split(",,");
         String[][] furtherSplitData = new String[7][];
         for(int i = 0 ; i < 7 ; i++)                //preparing the data for the week constructor
@@ -48,54 +47,93 @@ public class DataManager {
         return temp;
 	} //calling parseScheduleStringArray for every start time and length. (Prototype!)
 
-	public Week getScheduleWithAssignedUsers(int date){
+	private int[] parseScheduleStringArray(String[] a, int i){ //helper method return int[] for week constructor, i indicates start loop.
+		int[] temp = new int[a.length/2];
+		for( int j = i ; j < a.length ; j = j + 2)
+		{
+			temp[j/2] = Integer.parseInt(a[i]);
+		}
+
+		return temp;
+	}
+
+	public Week getScheduleWithAssignedUsers(String date){
         String data = fetchData(date + ".txt");
-        String[] splitData = data.split(",,");
+        String[] splitData = data.split(",,,");
         String[][] furtherSplitData = new String[7][];
         for(int i = 0 ; i < 7 ; i++)                //preparing the data for the week constructor
         {
-            furtherSplitData[i] = splitData[i].split(",");
+            furtherSplitData[i] = splitData[i].split(",,");
         }
-        Week temp = new Week(parseScheduleStringArray(furtherSplitData[0],0), parseScheduleStringArray(furtherSplitData[0], 1),
-                parseScheduleStringArray(furtherSplitData[1],0), parseScheduleStringArray(furtherSplitData[1], 1),
-                parseScheduleStringArray(furtherSplitData[2],0), parseScheduleStringArray(furtherSplitData[2], 1),
-                parseScheduleStringArray(furtherSplitData[3],0), parseScheduleStringArray(furtherSplitData[3], 1),
-                parseScheduleStringArray(furtherSplitData[4],0), parseScheduleStringArray(furtherSplitData[4], 1),
-                parseScheduleStringArray(furtherSplitData[5],0), parseScheduleStringArray(furtherSplitData[5], 1),
-                parseScheduleStringArray(furtherSplitData[6],0), parseScheduleStringArray(furtherSplitData[6], 1));
+        String[][] monday = arrayListToMatrix(parseAssignedUserStringArray(furtherSplitData[0]));
+		String[][] tuesday = arrayListToMatrix(parseAssignedUserStringArray(furtherSplitData[1]));
+		String[][] wednesday = arrayListToMatrix(parseAssignedUserStringArray(furtherSplitData[2]));
+		String[][] thursday = arrayListToMatrix(parseAssignedUserStringArray(furtherSplitData[3]));
+		String[][] friday = arrayListToMatrix(parseAssignedUserStringArray(furtherSplitData[4]));
+		String[][] saturday = arrayListToMatrix(parseAssignedUserStringArray(furtherSplitData[5]));
+		String[][] sunday = arrayListToMatrix(parseAssignedUserStringArray(furtherSplitData[6]));
+
+		Week temp = new Week(monday[0],monday[1],monday[2],
+							tuesday[0],tuesday[1],tuesday[2],
+							wednesday[0],wednesday[1],wednesday[2],
+							thursday[0],thursday[1],thursday[2],
+							friday[0],friday[1],friday[2],
+							saturday[0],saturday[1],saturday[2],
+							sunday[0],sunday[1],sunday[2]);
         return temp;
 	}
 
-	private int[] parseScheduleStringArray(String[] a, int i){ //helper method return int[] for week constructor, i indicates start loop.
-	    int[] temp = new int[a.length/2];
-        for( int j = i ; j < a.length ; j = j + 2)
-        {
-            temp[i/2] = Integer.parseInt(a[i]);
-        }
-        return temp;
-    }
+	private ArrayList<String[]> parseAssignedUserStringArray(String[] a){
+		ArrayList<String[]> result = new ArrayList<>();
+		String[] temp;
+		String[] tempStart = new String[a.length];
+		String[] tempLength = new String[a.length];
+		String[] tempUserName = new String[a.length];
+		for(int i = 1 ; i < a.length*3 + 1 ; i=i+3) {
+			temp = a[i/3].split(",");
+			tempStart[i/3] = temp[0];
+			tempLength[i/3] = temp[1];
+			tempUserName[i/3] = temp[2];
+			}
+			result.add(tempStart);
+			result.add(tempLength);
+			result.add(tempUserName);
+		return result;
+	}
+
+	public String[][] arrayListToMatrix(ArrayList<String[]> a) {
+		String [][] temp = new String[a.size()][3];
+		for(int i = 0 ; i < a.size() ; i++){
+			temp[i] = a.get(i);
+		}
+		return temp;
+	}
 
     public ArrayList<Requests> getRequestsList(String filename) {
-	    String data = fetchData(filename + ".txt");
-	    String[] splitData = data.split(":");
-	    String[] temp;
-	    ArrayList<Requests> requestList = new ArrayList<>();
-	    for(int i = 0 ; i < splitData.length ; i++){
-                temp = splitData[i].split(",");
-	        if(temp.length == 4) {
-                requestList.add(new systemRequest(Integer.parseInt(temp[0]),
-                        Integer.parseInt(temp[1]),Integer.parseInt(temp[2])));
-            }
-            else if(temp.length == 8){
-	            requestList.add(new timeOff(Integer.parseInt(temp[0]),
-                        Integer.parseInt(temp[1]), temp[2],
-						Integer.parseInt(temp[3]),Integer.parseInt(temp[4]),
-                        temp[5],temp[6]));
-            }
+		if(new File(filename + ".txt").exists()) {
+			String data = fetchData(filename + ".txt");
+			String[] splitData = data.split(":");
+			String[] temp;
+			ArrayList<Requests> requestList = new ArrayList<>();
+			for (int i = 0; i < splitData.length; i++) {
+				temp = splitData[i].split(",");
+				if (temp.length == 4) {
+					requestList.add(new systemRequest(Integer.parseInt(temp[0]),
+							Integer.parseInt(temp[1]), Integer.parseInt(temp[2])));
+				} else if (temp.length == 8) {
+					requestList.add(new timeOff(Integer.parseInt(temp[0]),
+							Integer.parseInt(temp[1]), temp[2],
+							Integer.parseInt(temp[3]), Integer.parseInt(temp[4]),
+							temp[5], temp[6]));
+				}
 
 
-        }
-        return requestList;
+			}
+			return requestList;
+		}
+		else {
+			return new ArrayList<Requests>();
+		}
     }
 
     public ArrayList<String> getEmployeeList(){
@@ -161,19 +199,15 @@ public class DataManager {
 		try {
 			try {
 				File file = new File(filename);
-				System.out.println(file.canRead());
-				System.out.println(file.exists());
 				BufferedReader inputStream = new BufferedReader(new FileReader(file));
-				System.out.println("file found");
 				String data = inputStream.readLine();
 				inputStream.close();
 				return data;
 			} catch (FileNotFoundException e) {
-				System.out.println(filename);
+
 				return null; // null returned when no file is present or empty
 			}
 		} catch(IOException f) {
-			System.out.println("IOException");
 			return null;
 		}
 	}
