@@ -1,0 +1,16 @@
+#title{
+
+    -fx-font-weight: bold;
+    -fx-font-family: Georgia, Times, "Times New Roman", serif;
+    -fx-font-size: 35px;
+}
+
+.root{
+    /*-fx-background-color: #4f88ae;*/
+    -fx-background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqRZXG2JutVc704JkPo71Wzo2qrbQeLRspBZVynkhRdgMhk7fl");
+}
+
+
+.label{
+    -fx-font-weight: bold;
+}

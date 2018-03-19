@@ -1,0 +1,23 @@
+.root{
+    -fx-background-color: black;
+}
+
+.label{
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15pt;
+}
+
+.menu-bar{
+    -fx-background-color:black;
+}
+
+.menu-button {
+    -fx-background-color:blue;
+    -fx-font-size: 10pt;
+}
+
+.menu-button .label {
+    /*-fx-background-color:pink;*/
+    -fx-text-fill: black;
+    -fx-font-size: 10pt;
+}

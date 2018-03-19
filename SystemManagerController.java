@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class SystemManagerController {
 
 	private SystemManager model;
-	private * view;
+	private  view;
 
 	public SystemManagerController(SystemManager sM, * view){
 		this.sM = sM;
