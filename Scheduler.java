@@ -10,7 +10,7 @@ public class Scheduler {
 		this.unapprovedSchedule = new Week();
 	}
 
-	public Week createProvisionalSchedule(ArrayList<Requests> approvedRequests, Week scheduleRules, ArrayList<Employee> activeUsers) {
+	public Week createProvisionalSchedule(ArrayList<Requests> approvedRequests, ArrayList<Employee> activeUsers) {
 		ArrayList<Employee> timetabledEmployees = activeUsers;
 	    Week tempWeek = addFullTimeEmployees(approvedRequests, activeUsers);
 		tempWeek = addPartTimeEmployees(approvedRequests,activeUsers,tempWeek,scheduleRules);

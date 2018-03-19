@@ -37,7 +37,7 @@ public class SystemManager {
 			employeeList.add(SystemManager.getInstance().getDataManager().getEmployee(employeeFileNames.get(i)));
 		}
 		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getSchedule("scheduleRules"));
-		SystemManager.getInstance().getScheduler().createProvisionalSchedule();
+		SystemManager.getInstance().getScheduler().createProvisionalSchedule(approvedRequestList, employeeList);
 	}
 
 	public Boolean login(String userName, String Password) {
@@ -61,7 +61,6 @@ public class SystemManager {
 		else{
 			c.add(c.DATE, -(date -1 ));
 		}
-		System.out.println(c.getFirstDayOfWeek());
 	    return format.format(c.getTime());
     }
 
