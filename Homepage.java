@@ -15,10 +15,18 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.Scene;
 import javafx.geometry.*;
+import java.util.ArrayList;
 
 import java.io.IOException;
 
 public class Homepage{
+
+    private ArrayList<Employee> employeList;
+    private ArrayList<Requests> requestList;
+    private ArrayList<Requests> approvedRequestList;
+    private Week currentSchedule;
+    private ArrayList<Week> futureSchedules;
+    //private ArrayList<finalHoursWorked> hoursWorkedLastMonth;
 
     static Stage home;
 

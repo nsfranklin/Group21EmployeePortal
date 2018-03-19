@@ -151,25 +151,25 @@ public class ManageUsers {
         title.setStyle("-fx-font-size: 25pt;" + "-fx-font-family: Georgia, Times, \"Times New Roman\", serif;");
         pane.getChildren().add(title);
 
-        TableView<Employee> table = new TableView<>();
+        TableView<EmployeeView> table = new TableView<>();
 
 
-        TableColumn<Employee, String> firstNameColumn = new TableColumn<>("First Name");
+        TableColumn<EmployeeView, String> firstNameColumn = new TableColumn<>("First Name");
         firstNameColumn.setMinWidth(125);
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 
 
-        TableColumn<Employee, String> lastNameColumn = new TableColumn<>("Last Name");
+        TableColumn<EmployeeView, String> lastNameColumn = new TableColumn<>("Last Name");
         lastNameColumn.setMinWidth(125);
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
 
-        TableColumn<Employee, String> userNameColumn = new TableColumn<>("Username");
+        TableColumn<EmployeeView, String> userNameColumn = new TableColumn<>("Username");
         userNameColumn.setMinWidth(125);
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("UserName"));
 
 
-        TableColumn<Employee, String> staffIdColumn = new TableColumn<>("Staff ID");
+        TableColumn<EmployeeView, String> staffIdColumn = new TableColumn<>("Staff ID");
         staffIdColumn.setMinWidth(125);
         staffIdColumn.setCellValueFactory(new PropertyValueFactory<>("staffID"));
 
@@ -184,7 +184,7 @@ public class ManageUsers {
         delete.setMinWidth(30); delete.setMinHeight(70); //delete.setStyle();
         delete.setOnAction(event -> {
             try {
-                Employee emp = table.getSelectionModel().getSelectedItem();
+                EmployeeView emp = table.getSelectionModel().getSelectedItem();
                 boolean del = ConfirmBox.yesOrNo("Delete User?", "Are you sure you want to delete\n" + emp.getFirstName() + " " + emp.getLastName() + "?");
                 if (!del) return;
                 else updateTable(table);
@@ -200,25 +200,25 @@ public class ManageUsers {
         stg.show();
     }
 
-    private static ObservableList<Employee> addUsers (){
-        ObservableList<Employee> users = FXCollections.observableArrayList();
+    private static ObservableList<EmployeeView> addUsers (){
+        ObservableList<EmployeeView> users = FXCollections.observableArrayList();
         //Sample data
-        users.add(new Employee("q", "q", "q", "q", "q", "q", "q", "q",
+        users.add(new EmployeeView("q", "q", "q", "q", "q", "q", "q", "q",
                     "q", "q", "q", "q"));
-        users.add(new Employee("w", "w", "w", "w", "w", "w", "w", "w",
+        users.add(new EmployeeView("w", "w", "w", "w", "w", "w", "w", "w",
                 "w", "w", "w", "w"));
-        users.add(new Employee("e", "e", "e", "e", "e", "e", "e", "e",
+        users.add(new EmployeeView("e", "e", "e", "e", "e", "e", "e", "e",
                 "e", "e", "e", "e"));
 
         // Method needs to get all Employee records from file
         return users;
     }
 
-    public static void updateTable(TableView<Employee> table) throws IOException{
-        ObservableList<Employee> productSelected, allProducts;
+    public static void updateTable(TableView<EmployeeView> table) throws IOException{
+        ObservableList<EmployeeView> productSelected, allProducts;
         allProducts = table.getItems();
         productSelected = table.getSelectionModel().getSelectedItems();
-        Employee emp = table.getSelectionModel().getSelectedItem();
+        EmployeeView emp = table.getSelectionModel().getSelectedItem();
         productSelected.forEach(allProducts::remove);
         try {
             removeUserFromFile(emp);
@@ -226,7 +226,7 @@ public class ManageUsers {
         catch (Exception e) {}
     }
 
-    public static void removeUserFromFile(Employee emp){
+    public static void removeUserFromFile(EmployeeView emp){
 
         // Method to delete a user from a file, or 'deregister'.
     }
