@@ -1,72 +1,55 @@
+import java.time.Clock;
+import java.util.ArrayList;
+
 public class SystemManagerController {
 
-	SystemManager sm;
+	private SystemManager model;
+	private * view;
+
+	public SystemManagerController(SystemManager sM, * view){
+		this.sM = sM;
+		this.view = view;
+	}
 
 	public void update() {
-		// TODO - implement SystemManagerController.update
-		throw new UnsupportedOperationException();
+		view.updateDetails(getEmployeeList(), getRequestList(), getApprovedRequestList(), getCurrentSchedule(), getClockedHoursList() );
 	}
 
-	//public ArrayList<Employee> getEmployeeList() {
-		// TODO - implement SystemManagerController.getEmployeeList
-	//	throw new UnsupportedOperationException();
-	//}
-
-	/**
-	 * 
-	 * @param employeeList
-	 */
-	//public void setEmployeeList(ArrayList<Employee> employeeList) {
-	//	// TODO - implement SystemManagerController.setEmployeeList
-	//	throw new UnsupportedOperationException();
-	//}
-
-	public Scheduler getScheduler() {
-		// TODO - implement SystemManagerController.getScheduler
-		throw new UnsupportedOperationException();
+	public ArrayList<Employee> getEmployeeList() {
+		return model.getEmployeeList();
 	}
 
-	/**
-	 * 
-	 * @param scheduler
-	 */
-	public void setScheduler(Scheduler scheduler) {
-		// TODO - implement SystemManagerController.setScheduler
-		throw new UnsupportedOperationException();
+	public void setEmployeeList(ArrayList<Employee> employeeList) {
+		model.setEmployeeList(employeeList);
 	}
 
-	//public ArrayList<Requests> getRequestList() {
-		// TODO - implement SystemManagerController.getRequestList
-	//	throw new UnsupportedOperationException();
-	//}
+	public ArrayList<Requests> getRequestList() {
+		return model.getRequestList();
+	}
 
-	//public void setRequestList(ArrayList<Requests> requestList) {
-		// TODO - implement SystemManagerController.setRequestList
-	//	throw new UnsupportedOperationException();
-	//}
+	public void setRequestList(ArrayList<Requests> requestList) {
+		model.setRequestList(requestList);
+	}
 
-	//public DatebaseController getDatebaseManager() {
-		// TODO - implement SystemManagerController.getDatebaseManager
-	//	throw new UnsupportedOperationException();
-	//}
+	public ArrayList<Requests> getApprovedRequestList() {
+		return model.getApprovedRequestList();
+	}
 
-
-	//public void setDatebaseManager(DatebaseController datebaseManager) {
-		// TODO - implement SystemManagerController.setDatebaseManager
-	//	throw new UnsupportedOperationException();
-	//}
+	public void setAppovedRequestList(ArrayList<Requests> requestList) {
+		model.setApprovedRequestList(requestList);
+	}
 
 	public Week getCurrentSchedule() {
-		// TODO - implement SystemManagerController.getCurrentSchedule
-		throw new UnsupportedOperationException();
+		return model.getCurrentSchedule();
 	}
 
-	/**
-	 * 
-	 * @param currentSchedule
-	 */
 	public void setCurrentSchedule(Week currentSchedule) {
-		// TODO - implement SystemManagerController.setCurrentSchedule
-		throw new UnsupportedOperationException();
+		model.setCurrentSchedule(currentSchedule);
 	}
+
+	public ArrayList<ClockedHours> getClockedHoursList(){
+		return model.getClockedHoursList();
+	}
+
+	public void setClockedHoursList(ArrayList<ClockedHours> a) {model.setClockedHoursList(a);}
 }

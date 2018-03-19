@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class DataManager {
 
 
@@ -58,6 +59,7 @@ public class DataManager {
 	}
 
 	public Week getScheduleWithAssignedUsers(String date){
+		System.out.println(date);
         String data = fetchData(date + ".txt");
         String[] splitData = data.split(",,,");
         String[][] furtherSplitData = new String[7][];
@@ -112,7 +114,9 @@ public class DataManager {
     public ArrayList<Requests> getRequestsList(String filename) {
 		if(new File(filename + ".txt").exists()) {
 			String data = fetchData(filename + ".txt");
-			String[] splitData = data.split(":");
+			System.out.println(data);
+			String[] splitData = data.split(",");
+			System.out.println(Arrays.toString(splitData));
 			String[] temp;
 			ArrayList<Requests> requestList = new ArrayList<>();
 			for (int i = 0; i < splitData.length; i++) {
@@ -131,7 +135,7 @@ public class DataManager {
 			}
 			return requestList;
 		}
-		else {
+		else{
 			return new ArrayList<Requests>();
 		}
     }
@@ -195,7 +199,6 @@ public class DataManager {
 
 	public String fetchData(String filename)  //file will be written as a single line comma seperated
 	{
-
 		try {
 			try {
 				File file = new File(filename);

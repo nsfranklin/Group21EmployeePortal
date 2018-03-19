@@ -1,6 +1,3 @@
-import sun.java2d.pipe.SpanShapeRenderer;
-import sun.util.resources.cldr.aa.CalendarData_aa_DJ;
-
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.time.*;
@@ -37,7 +34,7 @@ public class SystemManager {
 			employeeList.add(SystemManager.getInstance().getDataManager().getEmployee(employeeFileNames.get(i)));
 		}
 		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getSchedule("scheduleRules"));
-		SystemManager.getInstance().getScheduler().createProvisionalSchedule(approvedRequestList, employeeList);
+		//SystemManager.getInstance().getScheduler().createProvisionalSchedule(approvedRequestList, employeeList);
 	}
 
 	public Boolean login(String userName, String Password) {
@@ -54,13 +51,15 @@ public class SystemManager {
 	public String getFirstDayOfWeek(){
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat("ddMMyy");
-		int date = c.get(Calendar.DAY_OF_WEEK);
+		int date = c.get(c.DAY_OF_WEEK);
+		System.out.println(date);
 		if(date == 1){
 			c.add(c.DATE , -6);
 		}
 		else{
-			c.add(c.DATE, -(date -1 ));
+			c.add(c.DAY_OF_MONTH, -(date -2 ));
 		}
+		System.out.println(format.format(c.getTime()));
 	    return format.format(c.getTime());
     }
 
@@ -170,6 +169,13 @@ public class SystemManager {
 		this.currentSchedule = currentSchedule;
 	}
 
+	public ArrayList<ClockedHours> getClockedHoursList(){
+		return this.clockedHoursList;
+	}
+
+	public void setClockedHoursList(ArrayList<ClockedHours> a){
+		this.clockedHoursList = a;
+	}
 }
 
 
