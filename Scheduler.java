@@ -18,8 +18,8 @@ public class Scheduler {
 	    return tempWeek;
 	}
 
-	public Week addPartTimeEmployeesFirstPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week temp, Week scheduleRules,Date date){
-		temp = new Week();
+	public Week addPartTimeEmployeesFirstPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week wipSchedule, Week scheduleRules,Date date){
+		Week temp = new Week();
 		for(int i = 0 ; i < a.size() ; i++){
 			if(!(a.get(i) instanceof  PartTimeEmployee)){
 				for(int j = 0 ; j < 7 ; j++){
@@ -32,12 +32,14 @@ public class Scheduler {
 		return temp;
 	}
 
-	public Week addPartTimeEmployeesSecondPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week temp, Week scheduleRules,Date date){
-
+	public Week addPartTimeEmployeesSecondPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week wipSchedule, Week scheduleRules,Date date){
+		Week temp = new Week();
+		return temp;
 	}
 
-	public Week addPartTimeEmployeesThirdPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week temp, Week scheduleRules,Date date){
-		
+	public Week addPartTimeEmployeesThirdPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week wipSchedule, Week scheduleRules,Date date){
+		Week temp = new Week();
+		return temp;
 	}
 
 

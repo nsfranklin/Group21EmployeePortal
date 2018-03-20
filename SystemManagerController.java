@@ -12,7 +12,7 @@ public class SystemManagerController {
 	}
 
 	public void update() {
-		//view.updateDetails(getEmployeeList(), getRequestList(), getApprovedRequestList(), getCurrentSchedule(), getClockedHoursList(), new ArrayList<Week> );
+		//view.updateDetails(getEmployeeList(), getRequestList(), getApprovedRequestList(), getCurrentSchedule(), getClockedHoursList(), new ArrayList<Week>);
 	}
 
 	public ArrayList<Employee> getEmployeeList() {
