@@ -89,7 +89,9 @@ public class Homepage{
         Menu admMenu = new Menu("Time Off");
         //if (!emp.getIsAllowedAdminFunctions()) admMenu.setDisable(true);
         MenuItem f6 = new MenuItem("Request Time Off");
+        f6.setOnAction(event -> { try { hp.viewRequestTimeOff(); } catch (Exception e){} });
         MenuItem f7 = new MenuItem("View Time Off Approval");
+        f7.setOnAction(event -> { try { hp.viewTimeOffApproval(); } catch (Exception e){} });
         MenuItem f77 = new MenuItem("View Time Off Approval");
         admMenu.getItems().addAll(f6, f7, f77);
 
@@ -146,6 +148,24 @@ public class Homepage{
         home.show();
     }
 
+
+    public void viewRequestTimeOff () throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RequestTimeOffGui.fxml"));
+        Parent rooot = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rooot));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
+    public void viewTimeOffApproval () throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewTimeOffApproval.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
 
     public void viewPayroll () throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewPayroll.fxml"));

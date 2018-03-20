@@ -16,7 +16,6 @@ public class Start extends Application{
     Stage window;
 
     public static void main(String[] args){
-        System.out.println("start");
         SystemManager.getInstance();
         SystemManager.getInstance().initializer();
         View.getInstance();

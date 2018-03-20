@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class View {
 
+    private String currentUserName;
     private ArrayList<Employee> employeeList;
     private ArrayList<Requests> requestList;
     private ArrayList<Requests> approvedRequestList;
@@ -13,6 +14,7 @@ public class View {
     private static View instance;
 
     private View(){
+        this.currentUserName = "";
         this.employeeList = new ArrayList<>();
         this.requestList = new ArrayList<>();
         this.approvedRequestList = new ArrayList<>();
@@ -39,6 +41,14 @@ public class View {
         this.futureSchedules = e;
         this.hoursWorkedLastMonth = f;
 
+    }
+
+    public String getCurrentUserName(){
+        return this.currentUserName;
+    }
+
+    public void setCurrentUserName(String username){
+        this.currentUserName = username;
     }
 
     public ArrayList<Employee> getEmployeeList() {
@@ -103,5 +113,9 @@ public class View {
 
     public SystemManagerController getSMC(){
         return this.SMC;
+    }
+
+    public void addRequest(Requests r){
+        this.requestList.add(r);
     }
 }

@@ -23,9 +23,9 @@ public class Scheduler {
 		for(int i = 0 ; i < a.size() ; i++){
 			if(!(a.get(i) instanceof  PartTimeEmployee)){
 				for(int j = 0 ; j < 7 ; j++){
-					if(requestCheck(approvedRequests, a.get(i).getUserName(), date)) {
-						temp.getDate(i).addTimes(a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[0], a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[1]);
-					}
+					//if(requestCheck(approvedRequests, a.get(i).getUserName(), date) && availibilityOverlap(scheduleRules, ) >= 3) {
+					//	temp.getDate(i).addTimes(a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[0], a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[1]);
+					//}
 				} //this adds the availability of the employee directly to a Week. As full time employees are expected to work all there hours.
 			}
 		}
@@ -33,12 +33,12 @@ public class Scheduler {
 	}
 
 	public Week addPartTimeEmployeesSecondPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week wipSchedule, Week scheduleRules,Date date){
-		Week temp = new Week();
+		Week temp = wipSchedule;
 		return temp;
 	}
 
 	public Week addPartTimeEmployeesThirdPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week wipSchedule, Week scheduleRules,Date date){
-		Week temp = new Week();
+		Week temp = wipSchedule;
 		return temp;
 	}
 
