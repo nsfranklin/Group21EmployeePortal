@@ -70,7 +70,7 @@ public class Login{
     }
 
     public static void checkLoginDetails(String username, String password){
-        if (username.equals("a")) {
+        if (checkUserPassword(username).equals(password) && !(("").equals(password))) {
             window.close();
             Homepage.displayHomepage();
             /*Homepage.displayHomepage(username, password, lines[2], lines[3], lines[4], lines[5], lines[6], lines[7],
@@ -83,5 +83,13 @@ public class Login{
         }
     }
 
+    public static String checkUserPassword(String username){
+        for(int i = 0 ; i < View.getInstance().getEmployeeList().size() ; i++){
+            if(View.getInstance().getEmployeeList().get(i).getUserName().equals(username)){
+                return View.getInstance().getEmployeeList().get(i).getUserPassword();
+            }
+        }
+        return "";
+    }
 
 }

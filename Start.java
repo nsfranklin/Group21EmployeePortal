@@ -12,9 +12,16 @@ import java.sql.*;
 import java.time.Duration;
 
 public class Start extends Application{
+
     Stage window;
 
     public static void main(String[] args){
+        System.out.println("start");
+        SystemManager.getInstance();
+        SystemManager.getInstance().initializer();
+        View.getInstance();
+        View.getInstance().setSMC(new SystemManagerController(SystemManager.getInstance(), View.getInstance()));
+        View.getInstance().getSMC().update();
         launch(args);
     }
 

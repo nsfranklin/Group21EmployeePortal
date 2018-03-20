@@ -4,15 +4,17 @@ import java.util.ArrayList;
 public class SystemManagerController {
 
 	private SystemManager model;
-	private Homepage view;
+	private View view;
 
-	public SystemManagerController(SystemManager sM, Homepage view){
+	public SystemManagerController(SystemManager sM, View view){
 		this.model = sM;
 		this.view = view;
 	}
 
 	public void update() {
-		//view.updateDetails(getEmployeeList(), getRequestList(), getApprovedRequestList(), getCurrentSchedule(), getClockedHoursList(), new ArrayList<Week>);
+		view.updateDetails(this.getEmployeeList(), this.getRequestList(),
+				this.getApprovedRequestList(), this.getCurrentSchedule(),
+				this.getClockedHoursList(),  new ArrayList<Week>(), new ArrayList<FinalHoursWorked>());
 	}
 
 	public ArrayList<Employee> getEmployeeList() {
@@ -52,4 +54,5 @@ public class SystemManagerController {
 	}
 
 	public void setClockedHoursList(ArrayList<ClockedHours> a) {model.setClockedHoursList(a);}
+
 }

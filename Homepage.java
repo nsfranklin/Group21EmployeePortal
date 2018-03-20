@@ -21,13 +21,6 @@ import java.io.IOException;
 
 public class Homepage{
 
-    private ArrayList<Employee> employeList;
-    private ArrayList<Requests> requestList;
-    private ArrayList<Requests> approvedRequestList;
-    private Week currentSchedule;
-    private ArrayList<Week> futureSchedules;
-    //private ArrayList<finalHoursWorked> hoursWorkedLastMonth;
-
     static Stage home;
 
     public static void displayHomepage(/*String username, String password, String type, String staffID, String firstName, String lastName, String dob,
@@ -153,6 +146,7 @@ public class Homepage{
         home.show();
     }
 
+
     public void viewPayroll () throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewPayroll.fxml"));
         Parent root = (Parent) fxmlLoader.load();
@@ -169,5 +163,4 @@ public class Homepage{
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
-
 }
