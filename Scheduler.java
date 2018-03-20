@@ -32,6 +32,15 @@ public class Scheduler {
 		return temp;
 	}
 
+	public Week addPartTimeEmployeesSecondPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week temp, Week scheduleRules,Date date){
+
+	}
+
+	public Week addPartTimeEmployeesThirdPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week temp, Week scheduleRules,Date date){
+		
+	}
+
+
 	public Week addFullTimeEmployees(ArrayList<Requests> approvedRequests, ArrayList<Employee> a,Date date) {
 		Week temp = new Week();
 		for(int i = 0 ; i < a.size() ; i++){
@@ -49,9 +58,12 @@ public class Scheduler {
 	public Boolean requestCheck(ArrayList<Requests> approvedRequests, String userName, Date date){ //checks if a employee has sceduled timeOff
 		for(int i = 0 ; i < approvedRequests.size() ; i++){
 			if(!(approvedRequests.get(i) instanceof systemRequest)){
-				//if( (timeOff) approvedRequests.get(i).getUserName().equals(userName)){
-
-				//}
+				timeOff temp = (timeOff) approvedRequests.get(i);
+				if(temp.equals(userName)){
+					if( (date.equals(temp.getStartDate())) || (date.after(temp.getStartDate()) && date.before(temp.getEndDate())) || (date.equals(temp.getEndDate()))){
+						return false;
+					}
+				}
 			}
 		}
 		return true;
