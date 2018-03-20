@@ -1,15 +1,15 @@
 public class PayrollDetails {
 
-	private int accountNumber;
-	private int sortCode;
+	private String accountNumber;
+	private String sortCode;
 
-	PayrollDetails(int accountNumber, int sortCode)
+	PayrollDetails(String accountNumber, String sortCode)
 	{
 		this.accountNumber = accountNumber;
 		this.sortCode = sortCode;
 	}
 
-	public int getAccountNumber() {
+	public String getAccountNumber() {
 		return this.accountNumber;
 	}
 
@@ -17,11 +17,11 @@ public class PayrollDetails {
 	 * 
 	 * @param accountNumber
 	 */
-	public void setAccountNumber(int accountNumber) {
+	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 
-	public int getSortCode() {
+	public String getSortCode() {
 		return this.sortCode;
 	}
 
@@ -29,7 +29,7 @@ public class PayrollDetails {
 	 * 
 	 * @param sortCode
 	 */
-	public void setSortCode(int sortCode) {
+	public void setSortCode(String sortCode) {
 		this.sortCode = sortCode;
 	}
 

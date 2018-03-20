@@ -25,7 +25,7 @@ public class SystemManager {
         clockedHoursList = new ArrayList<>();
 	}
 
-	public void initializer(){
+	public void initializer() {
 	    currentSchedule = SystemManager.getInstance().getDataManager().getScheduleWithAssignedUsers(SystemManager.getInstance().getFirstDayOfWeek());
 		requestList = SystemManager.getInstance().getDataManager().getRequestsList("requests");
 		approvedRequestList = SystemManager.getInstance().getDataManager().getRequestsList("approvedRequests");
@@ -52,14 +52,12 @@ public class SystemManager {
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat("ddMMyy");
 		int date = c.get(c.DAY_OF_WEEK);
-		System.out.println(date);
 		if(date == 1){
 			c.add(c.DATE , -6);
 		}
 		else{
 			c.add(c.DAY_OF_MONTH, -(date -2 ));
 		}
-		System.out.println(format.format(c.getTime()));
 	    return format.format(c.getTime());
     }
 

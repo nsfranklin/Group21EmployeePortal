@@ -1,4 +1,6 @@
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,7 +13,7 @@ public class DataManager {
 	public Employee getEmployee(String employeeID) {
 	    String data = fetchData(employeeID + ".txt");
 	    String[] splitData = data.split(",");
-	    PayrollDetails payroll = new PayrollDetails(Integer.parseInt(splitData[2]),Integer.parseInt(splitData[3]));
+	    PayrollDetails payroll = new PayrollDetails((splitData[2]),(splitData[3]));
 	    Week availability = new Week(Integer.parseInt(splitData[5]),Integer.parseInt(splitData[6]),Integer.parseInt(splitData[7]),Integer.parseInt(splitData[8]),Integer.parseInt(splitData[9]),Integer.parseInt(splitData[10]),Integer.parseInt(splitData[11]),Integer.parseInt(splitData[12]),Integer.parseInt(splitData[13]),Integer.parseInt(splitData[14]),Integer.parseInt(splitData[15]),Integer.parseInt(splitData[16]),Integer.parseInt(splitData[17]),Integer.parseInt(splitData[18]));
         if(splitData[19].equals("employee")) {
 			return new Employee(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
@@ -59,7 +61,6 @@ public class DataManager {
 	}
 
 	public Week getScheduleWithAssignedUsers(String date){
-		System.out.println(date);
         String data = fetchData(date + ".txt");
         String[] splitData = data.split(",,,");
         String[][] furtherSplitData = new String[7][];
@@ -111,27 +112,31 @@ public class DataManager {
 		return temp;
 	}
 
-    public ArrayList<Requests> getRequestsList(String filename) {
+    public ArrayList<Requests> getRequestsList(String filename)
+	{
 		if(new File(filename + ".txt").exists()) {
 			String data = fetchData(filename + ".txt");
-			System.out.println(data);
-			String[] splitData = data.split(",");
-			System.out.println(Arrays.toString(splitData));
+			String[] splitData = data.split(":");
 			String[] temp;
 			ArrayList<Requests> requestList = new ArrayList<>();
-			for (int i = 0; i < splitData.length; i++) {
-				temp = splitData[i].split(",");
-				if (temp.length == 4) {
-					requestList.add(new systemRequest(Integer.parseInt(temp[0]),
-							Integer.parseInt(temp[1]), Integer.parseInt(temp[2])));
-				} else if (temp.length == 8) {
-					requestList.add(new timeOff(Integer.parseInt(temp[0]),
-							Integer.parseInt(temp[1]), temp[2],
-							Integer.parseInt(temp[3]), Integer.parseInt(temp[4]),
-							temp[5], temp[6]));
+			for(int j = 0 ; j < splitData.length ; j++){
+				temp = splitData[j].split(",");
+				if (temp.length == 3)
+				{
+					try {
+						requestList.add(new systemRequest(new SimpleDateFormat("ddMMyy").parse(temp[0]),
+								Integer.parseInt(temp[1]), new SimpleDateFormat("ddMMyy").parse(temp[2])));
+					} catch(ParseException e){ }
 				}
-
-
+				else if (temp.length == 7)
+				{
+					try {
+						requestList.add(new timeOff(new SimpleDateFormat("ddMMyy").parse(temp[0]),
+								Integer.parseInt(temp[1]), temp[2],
+								new SimpleDateFormat("ddMMyy").parse(temp[3]), new SimpleDateFormat("ddMMyy").parse(temp[4]),
+								temp[5], temp[6]));
+					} catch (ParseException f){}
+				}
 			}
 			return requestList;
 		}

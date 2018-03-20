@@ -1,10 +1,10 @@
 import java.util.*;
 
-public class Date {
+public class DateImp {
 
 	private ArrayList<int[]> times;
 
-    public Date(int startTime, int length){ //the constructor used for importing data
+    public DateImp(int startTime, int length){ //the constructor used for importing data
         times = new ArrayList<>();
         int[] temp = new int[2];
         temp[0] = startTime;
@@ -12,7 +12,7 @@ public class Date {
         times.add(temp);
     }
 
-    public Date(int[] startTime, int[] length){ //the constructor used for importing data for multiple entries per date
+    public DateImp(int[] startTime, int[] length){ //the constructor used for importing data for multiple entries per date
         times = new ArrayList<>();
         int[] temp = new int[2];
         for(int i  =  1 ; i < startTime.length*2 ; i = i + 2) {
@@ -22,7 +22,7 @@ public class Date {
         }
     }
 
-    public Date(String[] startTime, String[] length){ //the constructor used for importing data for multiple entries per date
+    public DateImp(String[] startTime, String[] length){ //the constructor used for importing data for multiple entries per date
         times = new ArrayList<>();
         int[] temp = new int[2];
         for(int i  =  2 ; i < startTime.length*2 ; i = i + 2) {
@@ -32,7 +32,7 @@ public class Date {
         }
     }
 
-    public Date(){
+    public DateImp(){
         times = new ArrayList<>();
     }
 

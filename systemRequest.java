@@ -1,9 +1,11 @@
+import java.util.Date;
+
 public class systemRequest extends Requests {
 
-	private int deadline;
+	private Date deadline;
 
-	public systemRequest(int dateMade, int timeMade, int deadline){
+	public systemRequest(Date dateMade, int timeMade, Date deadline){
 		super(dateMade,timeMade);
-		deadline = deadline;
+		this.deadline = deadline;
 	}
 }

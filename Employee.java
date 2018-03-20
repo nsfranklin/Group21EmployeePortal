@@ -28,16 +28,16 @@ public class Employee {
 
 	}
 
-	public void changePayroll(int accountNo, int sortCode) {
+	public void changePayroll(String accountNo, String sortCode) {
         setPayrollDetails(new PayrollDetails(accountNo,sortCode));
 	}
 
-	public void requestTimeOff(String type, int start, int end, String Description) throws IOException {
-        int dateMade = this.getCurrentDate();
+	public void requestTimeOff(String type, Date start, Date end, String Description) throws IOException {
+        Date dateMade = this.getCurrentDate();
         int timeMade = this.getCurrentTime();
         String timeOffType = type;
-        int startDate = start;
-        int endDate = end;
+        Date startDate = start;
+        Date endDate = end;
         String description = Description;
         String userName = this.getUserName();
 	    timeOff temp = new timeOff(dateMade,timeMade,timeOffType,startDate,endDate,description,userName);
@@ -50,8 +50,8 @@ public class Employee {
         return local;
     }
 
-    public int getCurrentDate(){
-        int date = Integer.parseInt(new SimpleDateFormat("ddMMyy").format(new Date()));
+    public Date getCurrentDate(){
+        Date date = new Date();
         return date;
     }
 

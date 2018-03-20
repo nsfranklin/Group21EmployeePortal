@@ -10,20 +10,20 @@ public class Scheduler {
 		this.unapprovedSchedule = new Week();
 	}
 
-	public Week createProvisionalSchedule(ArrayList<Requests> approvedRequests, ArrayList<Employee> activeUsers) {
+	public Week createProvisionalSchedule(ArrayList<Requests> approvedRequests, ArrayList<Employee> activeUsers, Date date) {
 		ArrayList<Employee> timetabledEmployees = activeUsers;
-	    Week tempWeek = addFullTimeEmployees(approvedRequests, activeUsers);
-		tempWeek = addPartTimeEmployees(approvedRequests,activeUsers,tempWeek,scheduleRules);
+	    Week tempWeek = addFullTimeEmployees(approvedRequests, activeUsers, date);
+		tempWeek = addPartTimeEmployeesFirstPass(approvedRequests,activeUsers,tempWeek,scheduleRules,date);
 
 	    return tempWeek;
 	}
 
-	public Week addPartTimeEmployees(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week temp, Week scheduleRules){
+	public Week addPartTimeEmployeesFirstPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week temp, Week scheduleRules,Date date){
 		temp = new Week();
 		for(int i = 0 ; i < a.size() ; i++){
 			if(!(a.get(i) instanceof  PartTimeEmployee)){
 				for(int j = 0 ; j < 7 ; j++){
-					if(requestCheck(approvedRequests, a.get(i).getUserName())) {
+					if(requestCheck(approvedRequests, a.get(i).getUserName(), date)) {
 						temp.getDate(i).addTimes(a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[0], a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[1]);
 					}
 				} //this adds the availability of the employee directly to a Week. As full time employees are expected to work all there hours.
@@ -32,12 +32,12 @@ public class Scheduler {
 		return temp;
 	}
 
-	public Week addFullTimeEmployees(ArrayList<Requests> approvedRequests, ArrayList<Employee> a) {
+	public Week addFullTimeEmployees(ArrayList<Requests> approvedRequests, ArrayList<Employee> a,Date date) {
 		Week temp = new Week();
 		for(int i = 0 ; i < a.size() ; i++){
 			if(!(a.get(i) instanceof  PartTimeEmployee)){
 				for(int j = 0 ; j < 7 ; j++){
-					if(requestCheck(approvedRequests, a.get(i).getUserName())) {
+					if(requestCheck(approvedRequests, a.get(i).getUserName(), date)) {
 						temp.getDate(i).addTimes(a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[0], a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[1]);
 					}
 				} //this adds the availability of the employee directly to a Week. As full time employees are expected to work all there hours.
@@ -46,7 +46,14 @@ public class Scheduler {
 		return temp;
 	}
 
-	public Boolean requestCheck(ArrayList<Requests> approvedRequests, String userName){ //checks if a employee has sceduled timeOff
+	public Boolean requestCheck(ArrayList<Requests> approvedRequests, String userName, Date date){ //checks if a employee has sceduled timeOff
+		for(int i = 0 ; i < approvedRequests.size() ; i++){
+			if(!(approvedRequests.get(i) instanceof systemRequest)){
+				//if( (timeOff) approvedRequests.get(i).getUserName().equals(userName)){
+
+				//}
+			}
+		}
 		return true;
 	}
 

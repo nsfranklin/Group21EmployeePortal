@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class AssignedDates extends Date {
+public class AssignedDates extends DateImp {
 
 	private ArrayList<String> userAssigned;
 
