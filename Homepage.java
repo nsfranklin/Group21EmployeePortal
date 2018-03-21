@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.Scene;
 import javafx.geometry.*;
 
+import java.io.File;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -125,10 +126,13 @@ public class Homepage{
 
         //if (!emp.getIsAllowedManagerFunctions()) bf.setDisable(true);
         //if (!emp.getIsAllowedAdminFunctions()) bg.setDisable(true);
-
+        Image image;
         hbox.setLayoutX(100); hbox.setLayoutY(0);
-
-        Image image = new Image("file:mukhz.jpg");
+        if(userProfilePicture(loggedInUser)){
+            image = new Image("file:"+loggedInUser.getUserName()+".png");
+        } else {
+            image = new Image("file:mukhz.jpg");
+        }
         ImageView iv = new ImageView();
         iv.setFitWidth(200);
         iv.setFitHeight(200);
@@ -163,6 +167,10 @@ public class Homepage{
         home.setMinHeight(500);
         home.setMinWidth(800);
         home.show();
+    }
+
+    public static Boolean userProfilePicture(Employee loggedInUser){
+        return new File(loggedInUser.getUserName()+".png").exists();
     }
 
     public static void logOutEvent(){
