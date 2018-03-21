@@ -1,3 +1,4 @@
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class View {
@@ -117,5 +118,11 @@ public class View {
 
     public void addRequest(Requests r){
         this.requestList.add(r);
+    }
+
+    public int getTime(){
+        String[] temp = LocalTime.now().toString().split(":");
+        int local = Integer.parseInt(temp[0])*60 + Integer.parseInt(temp[1]);
+        return local;
     }
 }

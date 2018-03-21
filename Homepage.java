@@ -15,6 +15,8 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.Scene;
 import javafx.geometry.*;
+
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import java.io.IOException;
@@ -58,6 +60,7 @@ public class Homepage{
 
         Menu payrollMenu = new Menu("Clock");
         MenuItem cico = new MenuItem("Clock In / Clock Out");
+        cico.setOnAction(event -> hp.clockedHandler());
         payrollMenu.getItems().add(cico);
 
         Menu empStuffMenu = new Menu("Payroll");
@@ -92,7 +95,8 @@ public class Homepage{
         f6.setOnAction(event -> { try { hp.viewRequestTimeOff(); } catch (Exception e){} });
         MenuItem f7 = new MenuItem("View Time Off Approval");
         f7.setOnAction(event -> { try { hp.viewTimeOffApproval(); } catch (Exception e){} });
-        MenuItem f77 = new MenuItem("View Time Off Approval");
+        MenuItem f77 = new MenuItem("Manage Time Off Requests");
+        f77.setOnAction(event -> ManageTimeOffRequests.manageRequests());
         admMenu.getItems().addAll(f6, f7, f77);
 
 
@@ -148,6 +152,25 @@ public class Homepage{
         home.show();
     }
 
+    public void clockedHandler(){
+        int temp = findClockUser(View.getInstance().getCurrentUserName());
+        if(temp > -1){
+            View.getInstance().getClockedHoursList().add(new ClockedHours(View.getInstance().getCurrentUserName(), View.getInstance().getTime()));
+            View.getInstance().getSMC().setClockedHoursList(View.getInstance().getClockedHoursList());
+            View.getInstance().getSMC().update();
+        }else{
+            View.getInstance().getClockedHoursList().get(temp).clockOut();
+        }
+    }
+
+    public int findClockUser(String username){
+        ArrayList<ClockedHours> temp = View.getInstance().getClockedHoursList();
+        for(int i = 0 ; i < View.getInstance().getClockedHoursList().size() ; i++){
+            temp.get(i).getUserName().equals(username);
+            return i;
+        }
+        return -1;
+    }
 
     public void viewRequestTimeOff () throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RequestTimeOffGui.fxml"));

@@ -64,7 +64,6 @@ public class RequestTimeOffGuiController implements Initializable {
             View.getInstance().getSMC().setRequestList(View.getInstance().getRequestList());
             View.getInstance().getSMC().update();
             System.out.println("submitted");
-            close();
         }
         //close the window;
     }
