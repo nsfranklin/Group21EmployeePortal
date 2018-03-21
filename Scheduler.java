@@ -19,26 +19,29 @@ public class Scheduler {
 	}
 
 	public Week addPartTimeEmployeesFirstPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week wipSchedule, Week scheduleRules,Date date){
-		Week temp = new Week();
+		Week temp = wipSchedule;
 		for(int i = 0 ; i < a.size() ; i++){
 			if(!(a.get(i) instanceof  PartTimeEmployee)){
 				for(int j = 0 ; j < 7 ; j++){
-					//if(requestCheck(approvedRequests, a.get(i).getUserName(), date) && availibilityOverlap(scheduleRules, ) >= 3) {
-					//	temp.getDate(i).addTimes(a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[0], a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[1]);
-					//}
+					if((requestCheck(approvedRequests, a.get(i).getUserName(), date))){
+						int index = unassignedIndex(temp, scheduleRules); //returns -1 if no index are completely empty
+						if(index > -1) {
+							if(availabilityOverlapFirstPass(scheduleRules, a.get(i), i, index)) {
+								int startOffset = startTimeOffset(scheduleRules, a.get(i), i, index);
+								int length = lengthAvailable(scheduleRules, a.get(i), i, index);
+								temp.getDate(i).addTimes(a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[0], a.get(i).getEmployeeAvalibility().getDate(j).getTimes().get(0)[1]);
+							}
+						}
+					}
 				} //this adds the availability of the employee directly to a Week. As full time employees are expected to work all there hours.
 			}
 		}
 		return temp;
 	}
 
-	public Week addPartTimeEmployeesSecondPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week wipSchedule, Week scheduleRules,Date date){
+	public Week addPartTimeEmployeesSecondPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week wipSchedule, Week scheduleRules,Date date){ // as to cover small gaps in schedule
 		Week temp = wipSchedule;
-		return temp;
-	}
 
-	public Week addPartTimeEmployeesThirdPass(ArrayList<Requests> approvedRequests, ArrayList<Employee> a, Week wipSchedule, Week scheduleRules,Date date){
-		Week temp = wipSchedule;
 		return temp;
 	}
 
@@ -55,6 +58,26 @@ public class Scheduler {
 			}
 		}
 		return temp;
+	}
+
+	public int unassignedIndex(Week wipSchedule, Week scheduleRules){
+
+		return -1;
+	}
+
+	public int lengthAvailable(Week rules, Employee e, int DayOfWeek, int arrayListIndex){
+
+		return 0;
+	}
+
+	public int startTimeOffset(Week rules, Employee e, int DayOfWeek, int arrayListIndex){
+
+		return 0;
+	}
+
+	public Boolean availabilityOverlapFirstPass(Week rules, Employee e, int DayOfWeek, int arrayListIndex){
+
+		return true;
 	}
 
 	public Boolean requestCheck(ArrayList<Requests> approvedRequests, String userName, Date date){ //checks if a employee has sceduled timeOff

@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javax.swing.text.DateFormatter;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -39,30 +40,43 @@ public class RequestTimeOffGuiController implements Initializable {
 
 
     }
-    public void submit (){
+    public void submit () {
+        Date currentDate = new Date();
+        String typee = "";
+        String userName = View.getInstance().getCurrentUserName();
         String startDatee = startDate.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         String endDatee = endDate.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        try {
-            String typee = "";
-            if (holiday.isSelected()) {
-                typee = holiday.getText();
-            }
-            else if (sickness.isSelected()){
-                typee = sickness.getText();
-            }
-            else{
-                typee = other.getText();
-            }
-
-            Date currentDate = new Date();//SimpleDateFormat("dd/MM/yyyy").parse(date.getText());
-            SimpleDateFormat format = new SimpleDateFormat("ddMMyy");
-            String userName = View.getInstance().getCurrentUserName();
+            try {
+                if (holiday.isSelected()) {
+                    typee = holiday.getText();
+                } else if (sickness.isSelected()) {
+                    typee = sickness.getText();
+                } else {
+                    typee = other.getText();
+                }
+                currentDate = new Date(); //SimpleDateFormat("dd/MM/yyyy").parse(date.getText());
+                SimpleDateFormat format = new SimpleDateFormat("ddMMyy");
+            } catch (Exception e) {}
+        if(!parseEntry(currentDate, startDate.getValue(), endDate.getValue()));
+        {
             Requests newRequest = new timeOff(currentDate, getTime(), typee, java.sql.Date.valueOf(startDate.getValue()), java.sql.Date.valueOf(endDate.getValue()), this.description.getText(), userName);
             View.getInstance().addRequest(newRequest);
             View.getInstance().getSMC().setRequestList(View.getInstance().getRequestList());
             View.getInstance().getSMC().update();
         }
-        catch (Exception e) {}
+        //close the window;
+    }
+
+    public Boolean parseEntry(Date currentDate,LocalDate startDate,LocalDate endDate){
+        if(currentDate.after(java.sql.Date.valueOf(startDate))){
+            System.out.println("Start Date is before currentDate");
+            return false;
+        }
+        if(java.sql.Date.valueOf(startDate).after(java.sql.Date.valueOf(endDate))){
+            System.out.println("Start Date is after endDate");
+            return false;
+        }
+        return true;
     }
 
     public void close (){
