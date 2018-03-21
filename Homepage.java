@@ -127,7 +127,7 @@ public class Homepage{
         ivt.setLayoutX(300);
         ivt.setLayoutY(50);
 
-        Label lfname = new Label("Sample Name"/*emp.getFirstName() + " " + emp.getLastName() */);
+        Label lfname = new Label( View.getInstance().getCurrentUserName());
         Label ldob = new Label("01/01/98"/*emp.getDob()*/);
         Label laddress = new Label("1 Sample Road"/*emp.getAddress()*/);
         Label lcountry = new Label("England"/*emp.getCountry()*/);

@@ -3,6 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 
 public class DataManager {
@@ -30,6 +31,33 @@ public class DataManager {
 	public Boolean addSchedule(Week s) {
 		// TODO - implement DataManager.addSchedule
 		throw new UnsupportedOperationException();
+	}
+
+	public ArrayList<String> getMonthsClockedHours(int month, int year){ //months 1-12
+		ArrayList<String> temp = new ArrayList<>();
+		String FileName = "";
+		for(int i = 1 ; i < 32 ; i++){//hours stored in the form
+			if(i < 10){
+				if(month < 10) {
+					FileName = "0"+i+","+"0"+month+","+year+",hour.txt";
+				}
+				else{
+					FileName = "0"+i+","+month+","+year+",hour.txt";
+				}
+			}
+			else{
+				if(month < 10) {
+					FileName = i+","+"0"+month+","+year+",hour.txt";
+				}
+				else{
+					FileName = i+","+month+","+year+",hour.txt";
+				}
+			}
+			if(new File(FileName).exists()) {
+				temp.add(fetchData(FileName));
+			}
+		}
+		return temp;											//dd,mm,yyyy,hours
 	}
 
 	public Week getSchedule(String date) {//Date format DDMMYY // , split starts and length and ,, split days

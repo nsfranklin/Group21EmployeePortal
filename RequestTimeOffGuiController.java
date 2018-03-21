@@ -57,12 +57,14 @@ public class RequestTimeOffGuiController implements Initializable {
                 currentDate = new Date(); //SimpleDateFormat("dd/MM/yyyy").parse(date.getText());
                 SimpleDateFormat format = new SimpleDateFormat("ddMMyy");
             } catch (Exception e) {}
-        if(!parseEntry(currentDate, startDate.getValue(), endDate.getValue()));
+        if(parseEntry(currentDate, startDate.getValue(), endDate.getValue()))
         {
             Requests newRequest = new timeOff(currentDate, getTime(), typee, java.sql.Date.valueOf(startDate.getValue()), java.sql.Date.valueOf(endDate.getValue()), this.description.getText(), userName);
             View.getInstance().addRequest(newRequest);
             View.getInstance().getSMC().setRequestList(View.getInstance().getRequestList());
             View.getInstance().getSMC().update();
+            System.out.println("submitted");
+            close();
         }
         //close the window;
     }

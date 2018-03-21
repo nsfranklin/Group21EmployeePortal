@@ -71,6 +71,7 @@ public class Login{
 
     public static void checkLoginDetails(String username, String password){
         if (checkUserPassword(username).equals(password) && !(("").equals(password))) {
+            View.getInstance().setCurrentUserName(username);
             window.close();
             Homepage.displayHomepage();
             /*Homepage.displayHomepage(username, password, lines[2], lines[3], lines[4], lines[5], lines[6], lines[7],
