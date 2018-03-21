@@ -125,4 +125,13 @@ public class View {
         int local = Integer.parseInt(temp[0])*60 + Integer.parseInt(temp[1]);
         return local;
     }
+
+    public Employee findEmployee(){
+        for(int i = 0 ; i < this.getEmployeeList().size() ; i++){
+            if(this.getEmployeeList().get(i).getUserName().equals(this.getCurrentUserName())){
+                return this.getEmployeeList().get(i);
+            }
+        }
+        return null;
+    }
 }

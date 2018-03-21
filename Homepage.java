@@ -28,21 +28,8 @@ public class Homepage{
     public static void displayHomepage(/*String username, String password, String type, String staffID, String firstName, String lastName, String dob,
                                        String email, String phoneNumber, String address, String country, String city, String postCode*/){
         Homepage hp = new Homepage();
+        Employee loggedInUser = View.getInstance().findEmployee();
 
-        //Employee emp;
-        /*
-        if (type.equals("Employee") ) {
-            emp = new Employee(username, password, staffID, firstName, lastName, dob, email, phoneNumber, address, country, city, postCode);
-        }
-        else if (type.equals("Manager")){
-            emp = new Manager(username, password, staffID, firstName, lastName, dob, email, phoneNumber, address, country, city, postCode);
-        }
-        else if (type.equals("Admin")){
-            emp = new Admin(username, password, staffID, firstName, lastName, dob, email, phoneNumber, address, country, city, postCode);
-        }
-        else{
-            emp = new PartTimeEmployee(username, password, staffID, firstName, lastName, dob, email, phoneNumber, address, country, city, postCode);
-        }*/
 
         home = new Stage();
 
@@ -67,16 +54,33 @@ public class Homepage{
         MenuItem f2 = new MenuItem("View Payroll");
         f2.setOnAction(event -> { try { hp.viewPayroll(); } catch (Exception e){} });
         MenuItem f3 = new MenuItem("Change Payroll Details");
-        f3.setOnAction(event -> { try { hp.viewChangePayrollDetails(); } catch (Exception e){} });
-        MenuItem f11 = new MenuItem("Time Off");
+        if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin") || (loggedInUser.getEmployeeType().equals("PartTimeEmployee"))))){
+            f3.setDisable(true);
+        }
+        f3.setOnAction(event -> {
+                try {
+                    hp.viewChangePayrollDetails();
+                } catch (Exception e) {
+                }
+            });
+                    MenuItem f11 = new MenuItem("Time Off");
 
         empStuffMenu.getItems().addAll(f2, f3);
 
+
         Menu accountsMenu = new Menu("Manage User Accounts");
+        if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin")))){
+            accountsMenu.setDisable(true);
+        }
         MenuItem createNewUser = new MenuItem("Create a New User");
-        //if (!emp.getIsAllowedAdminFunctions() && !emp.getIsAllowedManagerFunctions()) createNewUser.setDisable(true);
+        if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin")))){
+            createNewUser.setDisable(true);
+        }
         createNewUser.setOnAction(event -> ManageUsers.displayCreateUserWindow());
         MenuItem deleteUser = new MenuItem("Delete a User");
+        if (!(loggedInUser.getEmployeeType().equals("Admin"))){
+            deleteUser.setDisable(true);
+        }
         deleteUser.setOnAction(event -> {
             try { ManageUsers.displayDeleteUserWindow(); } catch (IOException e){} });
         accountsMenu.getItems().addAll(createNewUser, new SeparatorMenuItem(), deleteUser);
@@ -85,8 +89,14 @@ public class Homepage{
         //if (!emp.getIsAllowedManagerFunctions()) manMenu.setDisable(true);
         MenuItem f4 = new MenuItem("View Timetable");
         MenuItem f5 = new MenuItem("Set Scheduling Rules");
-        MenuItem f10 = new MenuItem("Manage Incomplete Timetable")
-;
+        if (!(loggedInUser.getEmployeeType().equals("Admin"))){
+            f5.setDisable(true);
+        }
+        MenuItem f10 = new MenuItem("Manage Incomplete Timetable");
+        if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin")))){
+            f10.setDisable(true);
+        }
+
         manMenu.getItems().addAll(f4, f5, f10);
 
         Menu admMenu = new Menu("Time Off");
@@ -96,6 +106,9 @@ public class Homepage{
         MenuItem f7 = new MenuItem("View Time Off Approval");
         f7.setOnAction(event -> { try { hp.viewTimeOffApproval(); } catch (Exception e){} });
         MenuItem f77 = new MenuItem("Manage Time Off Requests");
+        if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin")))){
+            f77.setDisable(true);
+        }
         f77.setOnAction(event -> ManageTimeOffRequests.manageRequests());
         admMenu.getItems().addAll(f6, f7, f77);
 
@@ -103,7 +116,7 @@ public class Homepage{
         Menu options = new Menu("Options");
         MenuItem f8 = new MenuItem("Settings");
         MenuItem f9 = new MenuItem("Log Out");
-        f9.setOnAction(event -> System.exit(0));
+        f9.setOnAction(event -> logOutEvent());
         options.getItems().addAll(f8, f9);
 
         bar.getMenus().addAll(payrollMenu, empStuffMenu, accountsMenu, manMenu, admMenu, options);
@@ -135,7 +148,7 @@ public class Homepage{
         Label ldob = new Label("01/01/98"/*emp.getDob()*/);
         Label laddress = new Label("1 Sample Road"/*emp.getAddress()*/);
         Label lcountry = new Label("England"/*emp.getCountry()*/);
-        Label lemail = new Label("sampleEmail@hotmail.com"/*emp.getEmail()*/);
+        Label lemail = new Label(View.getInstance().getCurrentUserName() + "@prototype.com");
         VBox vboxx = new VBox();
         vboxx.setId("UserInfo");
         vboxx.getChildren().addAll(lfname, ldob, laddress, lcountry, lemail);
@@ -150,6 +163,11 @@ public class Homepage{
         home.setMinHeight(500);
         home.setMinWidth(800);
         home.show();
+    }
+
+    public static void logOutEvent(){
+        home.close();
+        Login.start();
     }
 
     public void clockedHandler(){

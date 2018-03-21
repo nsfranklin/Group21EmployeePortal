@@ -4,8 +4,12 @@ import java.util.Random;
 public class Manager extends Employee {
 
 
+	public Manager(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability, String type){
+		super(userName, userPassword, p , passwordChangeRequired, employeeAvailability, type);
+	}
+
 	public Manager(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability){
-		super(userName, userPassword, p , passwordChangeRequired, employeeAvailability);
+		super(userName, userPassword, p , passwordChangeRequired, employeeAvailability, "Manager");
 	}
 
 	public String addPartTimeEmployee(String userName, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability) {

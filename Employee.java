@@ -10,6 +10,19 @@ public class Employee {
 	private PayrollDetails payrollDetails;
 	private Boolean passwordChangeRequired;
 	protected Week employeeAvailability;
+	private String employeeType;
+
+	public Employee(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability, String type)
+	{
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.payrollDetails = p;
+		this.passwordChangeRequired = passwordChangeRequired;
+		this.employeeAvailability = employeeAvailability;
+		this.employeeType = type;
+	}
+
+
 
 	public Employee(String userName, String userPassword, PayrollDetails p, Boolean passwordChangeRequired, Week employeeAvailability)
 	{
@@ -18,6 +31,7 @@ public class Employee {
 		this.payrollDetails = p;
 		this.passwordChangeRequired = passwordChangeRequired;
 		this.employeeAvailability = employeeAvailability;
+		this.employeeType = "Employee";
 	}
 
 	public void clockIn() {
@@ -54,6 +68,14 @@ public class Employee {
         Date date = new Date();
         return date;
     }
+
+	public String getEmployeeType() {
+		return this.employeeType;
+	}
+
+	public void setEmployeeType(String employeeType) {
+		this.employeeType = employeeType;
+	}
 
 	public String getUserName() {
 		return this.userName;

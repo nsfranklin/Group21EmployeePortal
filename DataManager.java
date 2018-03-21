@@ -17,13 +17,13 @@ public class DataManager {
 	    PayrollDetails payroll = new PayrollDetails((splitData[2]),(splitData[3]));
 	    Week availability = new Week(Integer.parseInt(splitData[5]),Integer.parseInt(splitData[6]),Integer.parseInt(splitData[7]),Integer.parseInt(splitData[8]),Integer.parseInt(splitData[9]),Integer.parseInt(splitData[10]),Integer.parseInt(splitData[11]),Integer.parseInt(splitData[12]),Integer.parseInt(splitData[13]),Integer.parseInt(splitData[14]),Integer.parseInt(splitData[15]),Integer.parseInt(splitData[16]),Integer.parseInt(splitData[17]),Integer.parseInt(splitData[18]));
         if(splitData[19].equals("employee")) {
-			return new Employee(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
+			return new Employee(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability, "Employee");
 		}else if(splitData[19].equals("parttimeemployee")){
-			return new PartTimeEmployee(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
+			return new PartTimeEmployee(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability, "PartTimeEmployee");
 		}else if(splitData[19].equals("manager")){
-			return new Manager(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
+			return new Manager(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability, "Manager");
 		}else if(splitData[19].equals("admin")){
-			return new Admin(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability);
+			return new Admin(splitData[0], splitData[1], payroll, Boolean.parseBoolean(splitData[4]), availability, "Admin");
 		}
 		return null;
 	}

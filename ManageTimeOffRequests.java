@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ManageTimeOffRequests {
@@ -64,15 +65,11 @@ public class ManageTimeOffRequests {
 
     private static ObservableList<Requests> addRequests (){
         ObservableList<Requests> requests = FXCollections.observableArrayList();
-        //Sample data
-        requests.add(new timeOff(new Date(), 100, "holiday", new Date(), new Date(), "Bangladesh", "a"));
-        requests.add(new timeOff(new Date(), 200, "sickness", new Date(), new Date(), "Cold", "b"));
-        requests.add(new timeOff(new Date(), 300, "other", new Date(), new Date(), "dont know", "a"));
-        requests.add(new timeOff(new Date(), 200, "sickness", new Date(), new Date(), "Cold", "b"));
-        requests.add(new timeOff(new Date(), 300, "other", new Date(), new Date(), "dont know", "a"));
+        for(int i = 0 ; i < View.getInstance().getRequestList().size() ; i++)
+        {
+            requests.add(View.getInstance().getRequestList().get(i));
+        }
         return requests;
-
-        // Method needs to get all Employee records from file with required instance variables
     }
 
     public static void updateTable(TableView<Requests> table) throws IOException {
