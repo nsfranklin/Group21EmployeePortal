@@ -123,6 +123,14 @@ public class SystemManager {
 	    return this.employeeList;
 	}
 
+	public ArrayList<String> getUsernameList(){
+		ArrayList<String> a = new ArrayList<>();
+		for(int i = 0 ; i < this.getEmployeeList().size() ; i++){
+			a.add(this.getEmployeeList().get(i).getUserName());
+		}
+		return a;
+	}
+
 	public void setEmployeeList(ArrayList<Employee> employeeList) {
 		this.employeeList = employeeList;
 	}

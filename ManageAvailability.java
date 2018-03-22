@@ -19,20 +19,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class ManageUsers {
+public class ManageAvailability {
 
-    public static void displayCreateUserWindow() {
+    public static void displayChangeUserAvailabilityWindow(Employee loggedInUser) {
         Stage stg = new Stage();
         GridPane gridd = new GridPane();
         gridd.setPadding(new Insets(10, 10, 10, 10));
         gridd.setVgap(8);
         gridd.setHgap(10);
 
-        Label lab = new Label("Add a new User to the Employee Portal");
-        lab.setId("CreateNewEmployeeTitle");
+        Label lab = new Label("Editing Availability");
+        lab.setId("Editing User Availability");
         GridPane.setConstraints(lab,1, 0);
 
-        Label choiceLab = new Label("Choose role of user ");
+        Label choiceLab = new Label("Choose User");
         GridPane.setConstraints(choiceLab, 0, 2);
 
         ChoiceBox<String> choices = new ChoiceBox<>();
@@ -191,7 +191,7 @@ public class ManageUsers {
     public static void createUser(String username, String password, ChoiceBox<String> choices, String staffID, String firstName, String lastName,
                                   String dob, String email, String phoneNumber, String address, String country, String city, String postCode){
 
-       // Method to add new user's info to text file
+        // Method to add new user's info to text file
     }
 
     public static boolean inputParse(ArrayList<String> a){
@@ -203,7 +203,7 @@ public class ManageUsers {
                 return false;
             }
             if(!((24 - Integer.parseInt(a.get(i+1)) - Integer.parseInt(a.get(i))) > 0 )){
-                    return false;
+                return false;
             }
         }
         return true;
@@ -293,7 +293,7 @@ public class ManageUsers {
         ObservableList<EmployeeView> users = FXCollections.observableArrayList();
         //Sample data
         users.add(new EmployeeView("q", "q", "q", "q", "q", "q", "q", "q",
-                    "q", "q", "q", "q"));
+                "q", "q", "q", "q"));
         users.add(new EmployeeView("w", "w", "w", "w", "w", "w", "w", "w",
                 "w", "w", "w", "w"));
         users.add(new EmployeeView("e", "e", "e", "e", "e", "e", "e", "e",

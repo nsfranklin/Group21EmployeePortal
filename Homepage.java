@@ -78,6 +78,13 @@ public class Homepage{
             createNewUser.setDisable(true);
         }
         createNewUser.setOnAction(event -> ManageUsers.displayCreateUserWindow());
+
+        MenuItem updateUserAvailability = new Menu("Change User Availability");
+        if ((loggedInUser.getEmployeeType().equals("PartTimeEmployee"))){
+            accountsMenu.setDisable(true);
+        }
+        //updateUserAvailability.setOnAction(event -> );
+
         MenuItem deleteUser = new MenuItem("Delete a User");
         if (!(loggedInUser.getEmployeeType().equals("Admin"))){
             deleteUser.setDisable(true);
@@ -89,6 +96,7 @@ public class Homepage{
         Menu manMenu = new Menu("Timetable");
         //if (!emp.getIsAllowedManagerFunctions()) manMenu.setDisable(true);
         MenuItem f4 = new MenuItem("View Timetable");
+        f4.setOnAction(event -> { try {hp.viewTimetable(); } catch (Exception e){} });
         MenuItem f5 = new MenuItem("Set Scheduling Rules");
         if (!(loggedInUser.getEmployeeType().equals("Admin"))){
             f5.setDisable(true);
@@ -97,6 +105,7 @@ public class Homepage{
         if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin")))){
             f10.setDisable(true);
         }
+        f10.setOnAction(event -> { try {hp.viewAlterTimetable();} catch (Exception e){}});
 
         manMenu.getItems().addAll(f4, f5, f10);
 
@@ -173,9 +182,27 @@ public class Homepage{
         return new File(loggedInUser.getUserName()+".png").exists();
     }
 
+    public void viewTimetable () throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewTimetable.fxml"));
+        Parent r = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(r));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
     public static void logOutEvent(){
         home.close();
         Login.start();
+    }
+
+    public void viewAlterTimetable () throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewAlterTimetable.fxml"));
+        Parent p = (Parent) loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(p));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
     public void clockedHandler(){
