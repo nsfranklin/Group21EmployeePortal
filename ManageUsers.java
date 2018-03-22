@@ -188,12 +188,6 @@ public class ManageUsers {
 
     }
 
-    public static void createUser(String username, String password, ChoiceBox<String> choices, String staffID, String firstName, String lastName,
-                                  String dob, String email, String phoneNumber, String address, String country, String city, String postCode){
-
-       // Method to add new user's info to text file
-    }
-
     public static boolean inputParse(ArrayList<String> a){
         for(int i = 0 ; i < a.size() ; i = i + 2){
             try {
@@ -212,22 +206,11 @@ public class ManageUsers {
     public static ArrayList<String> arrayListAggregator(String m1, String m2, String t1, String t2, String w1, String w2, String tt1,
                                                         String tt2, String f1, String f2, String s1, String s2, String ss1, String ss2 ){
         ArrayList<String> a = new ArrayList<>();
-        a.add(m1);
-        a.add(m2);
-        a.add(t1);
-        a.add(t2);
-        a.add(w1);
-        a.add(w2);
-        a.add(tt1);
-        a.add(tt2);
-        a.add(f1);
-        a.add(f2);
-        a.add(s1);
-        a.add(s2);
-        a.add(ss1);
-        a.add(ss2);
+        a.add(m1); a.add(m2); a.add(t1); a.add(t2);
+        a.add(w1); a.add(w2); a.add(tt1); a.add(tt2);
+        a.add(f1); a.add(f2); a.add(s1); a.add(s2);
+        a.add(ss1); a.add(ss2);
         return a;
-
     }
 
     public static void displayDeleteUserWindow () throws IOException{
@@ -237,34 +220,16 @@ public class ManageUsers {
 
         Label title = new Label("Delete a User");
         title.setLayoutX(150); title.setLayoutY(0);
-        title.setStyle("-fx-font-size: 25pt;" + "-fx-font-family: Georgia, Times, \"Times New Roman\", serif;");
         pane.getChildren().add(title);
 
         TableView<EmployeeView> table = new TableView<>();
-
-
-        TableColumn<EmployeeView, String> firstNameColumn = new TableColumn<>("First Name");
-        firstNameColumn.setMinWidth(125);
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-
-
-        TableColumn<EmployeeView, String> lastNameColumn = new TableColumn<>("Last Name");
-        lastNameColumn.setMinWidth(125);
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-
 
         TableColumn<EmployeeView, String> userNameColumn = new TableColumn<>("Username");
         userNameColumn.setMinWidth(125);
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("UserName"));
 
-
-        TableColumn<EmployeeView, String> staffIdColumn = new TableColumn<>("Staff ID");
-        staffIdColumn.setMinWidth(125);
-        staffIdColumn.setCellValueFactory(new PropertyValueFactory<>("staffID"));
-
-
         table.setItems(addUsers());
-        table.getColumns().addAll(firstNameColumn, lastNameColumn, userNameColumn, staffIdColumn);
+        table.getColumns().addAll(userNameColumn);
 
         table.setLayoutX(10); table.setLayoutY(50);
         pane.getChildren().add(table);
