@@ -56,55 +56,61 @@ public class ManageUsers {
         PasswordField password2 = new PasswordField();
         GridPane.setConstraints(password2, 1, 5);
 
-        Label staffIDLab = new Label("Enter user's Staff ID");
+        Label staffIDLab = new Label("Account Number:");
         GridPane.setConstraints(staffIDLab, 0, 6);
         TextField staffID = new TextField();
         GridPane.setConstraints(staffID, 1, 6);
 
-        Label firstnameLab = new Label("Enter user's First Name");
+        Label firstnameLab = new Label("Sort Code");
         GridPane.setConstraints(firstnameLab, 0, 7);
         TextField firstName = new TextField();
         GridPane.setConstraints(firstName, 1, 7);
 
-        Label lastnameLab = new Label("Enter user's Last Name");
+        Label lastnameLab = new Label("Monday Start");
         GridPane.setConstraints(lastnameLab, 0, 8);
         TextField lastName = new TextField();
         GridPane.setConstraints(lastName, 1, 8);
 
-        Label dobLab = new Label("Enter user's Date Of Birth");
+        Label dobLab = new Label("Tuesday Start");
         GridPane.setConstraints(dobLab, 0, 9);
         TextField dob = new TextField();
         GridPane.setConstraints(dob, 1, 9);
 
-        Label emailLab = new Label("Enter user's Email Address");
+        Label emailLab = new Label("Wednesday Start");
         GridPane.setConstraints(emailLab, 0, 10);
         TextField email = new TextField();
         GridPane.setConstraints(email, 1, 10);
 
-        Label phoneNumberLab = new Label("Enter user's Phone Number");
+        Label phoneNumberLab = new Label("Thursday Start");
         GridPane.setConstraints(phoneNumberLab, 0, 11);
         TextField phoneNumber = new TextField();
         GridPane.setConstraints(phoneNumber, 1, 11);
 
-        Label addressLab = new Label("Enter user's Home Address");
+        Label addressLab = new Label("Friday Start");
         GridPane.setConstraints(addressLab, 0, 12);
         TextField address = new TextField();
         GridPane.setConstraints(address, 1, 12);
+        Label friLengthLab = new Label("Duration");
+        GridPane.setConstraints(friLengthLab, 2, 14);
 
-        Label countryLab = new Label("Enter user's Country");
+        Label countryLab = new Label("Saturday Start");
         GridPane.setConstraints(countryLab, 0, 13);
         TextField country = new TextField();
         GridPane.setConstraints(country, 1, 13);
+        Label satLengthLab = new Label("Duration");
+        GridPane.setConstraints(sunLengthLab, 2, 13);
 
-        Label cityLab = new Label("Enter user's City");
+        Label cityLab = new Label("Sunday Start");
         GridPane.setConstraints(cityLab, 0, 14);
         TextField city = new TextField();
         GridPane.setConstraints(city, 1, 14);
+        Label sunLengthLab = new Label("Duration");
+        GridPane.setConstraints(sunLengthLab, 2, 14);
 
-        Label postCodeLab = new Label("Enter user's Post Code");
-        GridPane.setConstraints(postCodeLab, 0, 15);
-        TextField postCode = new TextField();
-        GridPane.setConstraints(postCode, 1, 15);
+        //Label postCodeLab = new Label("Enter user's Post Code");
+        //GridPane.setConstraints(postCodeLab, 0, 15);
+        //TextField postCode = new TextField();
+        //GridPane.setConstraints(postCode, 1, 15);
 
         Button addUser = new Button("Add User");
         addUser.setMinHeight(50);
@@ -114,7 +120,7 @@ public class ManageUsers {
                 ConfirmBox.display("Passwords do not match!", "Error! \nEnsure the passwords are the same");
             else {
                 createUser(username.getText(), password.getText(), choices, staffID.getText(), firstName.getText(), lastName.getText(), dob.getText(),
-                        email.getText(), phoneNumber.getText(), address.getText(), country.getText(), city.getText(), postCode.getText());
+                        email.getText(), phoneNumber.getText(), address.getText(), country.getText(), city.getText(), "");
                 ConfirmBox.display("Added a new User", "Successfully added " + username.getText() + " as a User!");
                 stg.close();
             }
@@ -125,7 +131,7 @@ public class ManageUsers {
 
         gridd.getChildren().addAll(choiceLab, lab, choices, usernameLab, username, passwordLab, password, password2Lab, password2, staffIDLab, staffID,
                 firstnameLab, firstName, lastnameLab, lastName, dobLab, dob, emailLab, email, phoneNumberLab, phoneNumber, addressLab, address,
-                countryLab, country, cityLab, city, postCodeLab, postCode, addUser);
+                countryLab, country, cityLab, city,sunLengthLab, addUser); //postCodeLab, postCode,
 
         Scene scene = new Scene(gridd, 600, 600);
         scene.getStylesheets().add("ManageUsersCreateUsers.css");

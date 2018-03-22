@@ -55,4 +55,8 @@ public class SystemManagerController {
 
 	public void setClockedHoursList(ArrayList<ClockedHours> a) {model.setClockedHoursList(a);}
 
+	public Employee findEmployee(String username){
+		return model.findEmployee(username);
+	}
+
 }

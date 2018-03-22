@@ -179,21 +179,31 @@ public class Homepage{
     }
 
     public void clockedHandler(){
-        int temp = findClockUser(View.getInstance().getCurrentUserName());
-        if(temp > -1){
-            View.getInstance().getClockedHoursList().add(new ClockedHours(View.getInstance().getCurrentUserName(), View.getInstance().getTime()));
-            View.getInstance().getSMC().setClockedHoursList(View.getInstance().getClockedHoursList());
+        String currentUser = View.getInstance().getCurrentUserName();
+        int temp = findClockUser(currentUser);
+        if(temp == -1){
+            System.out.println("clocked in handler");
+            View.getInstance().getSMC().findEmployee(currentUser).clockIn();
             View.getInstance().getSMC().update();
         }else{
-            View.getInstance().getClockedHoursList().get(temp).clockOut();
+            System.out.println("Clocked out handler");
+            View.getInstance().getSMC().findEmployee(currentUser).clockOut();
+            View.getInstance().getSMC().update();
         }
     }
 
     public int findClockUser(String username){
         ArrayList<ClockedHours> temp = View.getInstance().getClockedHoursList();
+        System.out.println(temp);
+        if(!temp.isEmpty()) {
+            System.out.println(temp.get(0).getUserName());
+        }
         for(int i = 0 ; i < View.getInstance().getClockedHoursList().size() ; i++){
-            temp.get(i).getUserName().equals(username);
-            return i;
+            System.out.println(i);
+            if(temp.get(i).getUserName().equals(username)) {
+
+                return i;
+            }
         }
         return -1;
     }
