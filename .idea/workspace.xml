@@ -7,27 +7,8 @@
     <list default="true" id="b67caed8-f4e5-465b-b26f-ffd5a6e99e79" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/190318.txt" afterPath="$PROJECT_DIR$/190318.txt" />
-      <change beforePath="$PROJECT_DIR$/DataManager.java" afterPath="$PROJECT_DIR$/DataManager.java" />
-      <change beforePath="$PROJECT_DIR$/DateImp.java" afterPath="$PROJECT_DIR$/DateImp.java" />
-      <change beforePath="$PROJECT_DIR$/Homepage.java" afterPath="$PROJECT_DIR$/Homepage.java" />
-      <change beforePath="$PROJECT_DIR$/ManageUsers.java" afterPath="$PROJECT_DIR$/ManageUsers.java" />
-      <change beforePath="$PROJECT_DIR$/SystemManager.java" afterPath="$PROJECT_DIR$/SystemManager.java" />
-      <change beforePath="$PROJECT_DIR$/SystemManagerController.java" afterPath="$PROJECT_DIR$/SystemManagerController.java" />
-      <change beforePath="$PROJECT_DIR$/View.java" afterPath="$PROJECT_DIR$/View.java" />
-      <change beforePath="$PROJECT_DIR$/ViewChangeUserAccountTypeController.java" afterPath="$PROJECT_DIR$/ViewChangeUserAccountTypeController.java" />
-      <change beforePath="$PROJECT_DIR$/ViewTimetable.fxml" afterPath="$PROJECT_DIR$/ViewTimetable.fxml" />
-      <change beforePath="$PROJECT_DIR$/ViewTimetableController.java" afterPath="$PROJECT_DIR$/ViewTimetableController.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/190318.txt" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/190318.txt" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/DataManager.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/DataManager.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/DateImp.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/DateImp.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Homepage.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Homepage.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ManageUsers.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ManageUsers.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/SystemManager.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/SystemManager.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/SystemManagerController.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/SystemManagerController.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/View.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/View.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewChangeUserAccountTypeController.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewChangeUserAccountTypeController.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewTimetable.fxml" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewTimetable.fxml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewTimetableController.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -105,8 +86,8 @@
       <file leaf-file-name="DataManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="147" column="44" lean-forward="true" selection-start-line="147" selection-start-column="44" selection-end-line="147" selection-end-column="44" />
+            <state relative-caret-position="411">
+              <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -157,7 +138,7 @@
         <entry file="file://$PROJECT_DIR$/190318.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="445" lean-forward="false" selection-start-line="0" selection-start-column="445" selection-end-line="0" selection-end-column="445" />
+              <caret line="0" column="448" lean-forward="false" selection-start-line="0" selection-start-column="448" selection-end-line="0" selection-end-column="448" />
               <folding />
             </state>
           </provider>
@@ -243,8 +224,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
-    <option name="width" value="1936" />
+    <option name="x" value="-8" />
+    <option name="width" value="2218" />
     <option name="height" value="2118" />
   </component>
   <component name="ProjectView">
@@ -447,7 +428,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="0" width="1936" height="2118" extended-state="0" />
+    <frame x="-8" y="0" width="2218" height="2118" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -883,14 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="147" column="44" lean-forward="true" selection-start-line="147" selection-start-column="44" selection-end-line="147" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ViewAlterTimetableController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-159">
@@ -915,10 +888,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DataManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/190318.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="445" lean-forward="false" selection-start-line="0" selection-start-column="445" selection-end-line="0" selection-end-column="445" />
+          <caret line="0" column="448" lean-forward="false" selection-start-line="0" selection-start-column="448" selection-end-line="0" selection-end-column="448" />
           <folding />
         </state>
       </provider>
