@@ -91,7 +91,11 @@ public class Homepage{
         }
         deleteUser.setOnAction(event -> {
             try { ManageUsers.displayDeleteUserWindow(); } catch (IOException e){} });
-        accountsMenu.getItems().addAll(createNewUser, new SeparatorMenuItem(), deleteUser);
+        MenuItem changeUserType = new MenuItem("Change A User's Account Type");
+        changeUserType.setOnAction(event -> {try{ hp.viewChangeUserAccountType();} catch(Exception e){}});
+
+
+        accountsMenu.getItems().addAll(createNewUser, new SeparatorMenuItem(), deleteUser, changeUserType);
 
         Menu manMenu = new Menu("Timetable");
         //if (!emp.getIsAllowedManagerFunctions()) manMenu.setDisable(true);
@@ -219,6 +223,15 @@ public class Homepage{
         }
     }
 
+    public void viewChangeUserAccountType () throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewChangeUserAccountType.fxml"));
+        Parent p = (Parent) loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(p));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
     public int findClockUser(String username){
         ArrayList<ClockedHours> temp = View.getInstance().getClockedHoursList();
         System.out.println(temp);
@@ -234,6 +247,8 @@ public class Homepage{
         }
         return -1;
     }
+
+
 
     public void viewRequestTimeOff () throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RequestTimeOffGui.fxml"));

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="255.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewChangeUserAccountTypeController">
+   <children>
+      <Text layoutX="113.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change A User's Account Type">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="55.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change a Part-Time Employee to Full-Time Employee and vice versa" wrappingWidth="372.13671875">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="56.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change an Employee to a Manager and vice versa" wrappingWidth="372.13671875">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="currentTypeMenu" layoutX="56.0" layoutY="135.0" onMouseEntered="#choiceBoxChosen" onMouseExited="#choiceBoxChosen" prefWidth="150.0" />
+      <Text layoutX="56.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee to change:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="newTypeMenu" layoutX="300.0" layoutY="134.0" prefWidth="150.0" />
+      <Label fx:id="CurrentTypeLabel" layoutX="127.0" layoutY="172.0" prefHeight="17.0" prefWidth="81.0" text="Manager" />
+      <Text layoutX="56.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User's Type:" />
+      <Button fx:id="update" layoutX="368.0" layoutY="193.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="81.0" text="Update">
+         <effect>
+            <SepiaTone />
+         </effect>
+      </Button>
+      <Text fx:id="newTypeMenuLabel" layoutX="301.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type to change User to:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

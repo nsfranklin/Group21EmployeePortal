@@ -134,4 +134,21 @@ public class View {
         }
         return null;
     }
+
+    public Employee findEmployee(String username){
+        for(int i = 0 ; i < this.getEmployeeList().size() ; i++){
+            if(this.getEmployeeList().get(i).getUserName().equals(username)){
+                return this.getEmployeeList().get(i);
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<String> getUsernameList(){
+        ArrayList<String> a = new ArrayList<>();
+        for(int i = 0 ; i < this.getEmployeeList().size() ; i++){
+            a.add(this.getEmployeeList().get(i).getUserName());
+        }
+        return a;
+    }
 }
