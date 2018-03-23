@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.Scene;
 
+
 import java.io.*;
 import java.lang.reflect.Array;
 import java.nio.file.Files;
@@ -40,6 +41,15 @@ public class ManageUsers {
         choices.setValue("Employee");
         GridPane.setConstraints(choices,1, 2 );
 
+        ArrayList<String> userList = new ArrayList<>();
+
+        if(!View.getInstance().findEmployee(View.getInstance().getCurrentUserName()).getEmployeeType().equals("PartTimeEmployee")) {
+            userList = View.getInstance().getUsernameList();
+        }
+        else{
+            userList.add(View.getInstance().getCurrentUserName());
+        }
+        ObservableList<String> userSelect = FXCollections.observableArrayList(userList);
 
         Label usernameLab = new Label("Enter user's Username");
         GridPane.setConstraints(usernameLab, 0, 3);
@@ -188,6 +198,143 @@ public class ManageUsers {
 
     }
 
+    public static void displayEditAvailabilityWindow() {
+        Stage stg = new Stage();
+        stg.setTitle("Edit Availability");
+        GridPane gridd = new GridPane();
+        gridd.setPadding(new Insets(10, 10, 10, 10));
+        gridd.setVgap(8);
+        gridd.setHgap(10);
+
+        Label choiceLab = new Label("Select User");
+        GridPane.setConstraints(choiceLab, 0, 1);
+
+        ChoiceBox<String> choices = new ChoiceBox<>();
+
+        ArrayList<String> employeeList = View.getInstance().getUsernameList();
+
+        for(int i = 0 ; i < employeeList.size() ; i++) {
+            choices.getItems().add(employeeList.get(i));
+        }
+
+        if((View.getInstance().findEmployee(View.getInstance().getCurrentUserName()).getEmployeeType().equals("Employee") || View.getInstance().findEmployee(View.getInstance().getCurrentUserName()).getEmployeeType().equals("PartTimeEmployee")))
+        {
+            choices.setValue(View.getInstance().getCurrentUserName());
+            choices.setDisable(true);
+        }
+        else{
+        }
+        GridPane.setConstraints(choices,1, 1);
+
+        Label formatLab = new Label("Start Format:");
+        GridPane.setConstraints(formatLab, 0 , 2);
+        Label formatExam = new Label("9 = \"9am\" and 17 = \"5pm\"");
+        GridPane.setConstraints(formatExam, 1 , 2);
+        Label durLab = new Label("Duration Format:");
+        GridPane.setConstraints(durLab, 2 , 2);
+        Label durExam = new Label("8 = \"for 8 hours\"");
+        GridPane.setConstraints(durExam, 3 , 2);
+
+        Label monStartLab = new Label("Monday Start");
+        GridPane.setConstraints(monStartLab, 0, 3);
+        TextField monStart = new TextField();
+        GridPane.setConstraints(monStart, 1, 3);
+        Label monLengthLab = new Label("Duration");
+        GridPane.setConstraints(monLengthLab, 2, 3);
+        TextField monLength = new TextField();
+        GridPane.setConstraints(monLength, 3, 3);
+
+        Label tueStartLab = new Label("Tuesday Start");
+        GridPane.setConstraints(tueStartLab, 0, 4);
+        TextField tueStart = new TextField();
+        GridPane.setConstraints(tueStart, 1, 4);
+        Label tueLengthLab = new Label("Duration");
+        GridPane.setConstraints(tueLengthLab, 2, 4);
+        TextField tueLength = new TextField();
+        GridPane.setConstraints(tueLength, 3, 4);
+
+        Label wedStartLab = new Label("Wednesday Start");
+        GridPane.setConstraints(wedStartLab, 0, 5);
+        TextField wedStart = new TextField();
+        GridPane.setConstraints(wedStart, 1, 5);
+        Label wedLengthLab = new Label("Duration");
+        GridPane.setConstraints(wedLengthLab, 2, 5);
+        TextField wedLength = new TextField();
+        GridPane.setConstraints(wedLength, 3, 5);
+
+        Label thuStartLab = new Label("Thursday Start");
+        GridPane.setConstraints(thuStartLab, 0, 6);
+        TextField thuStart = new TextField();
+        GridPane.setConstraints(thuStart, 1, 6);
+        Label thuLengthLab = new Label("Duration");
+        GridPane.setConstraints(thuLengthLab, 2, 6);
+        TextField thuLength = new TextField();
+        GridPane.setConstraints(thuLength, 3, 6);
+
+        Label friStartLab = new Label("Friday Start");
+        GridPane.setConstraints(friStartLab, 0, 7);
+        TextField friStart = new TextField();
+        GridPane.setConstraints(friStart, 1, 7);
+        Label friLengthLab = new Label("Duration");
+        GridPane.setConstraints(friLengthLab, 2, 7);
+        TextField friLength = new TextField();
+        GridPane.setConstraints(friLength, 3, 7);
+
+        Label satStartLab = new Label("Saturday Start");
+        GridPane.setConstraints(satStartLab, 0, 8);
+        TextField satStart = new TextField();
+        GridPane.setConstraints(satStart, 1, 8);
+        Label satLengthLab = new Label("Duration");
+        GridPane.setConstraints(satLengthLab, 2, 8);
+        TextField satLength = new TextField();
+        GridPane.setConstraints(satLength, 3, 8);
+
+        Label sunStartLab = new Label("Sunday Start");
+        GridPane.setConstraints(sunStartLab, 0, 9);
+        TextField sunStart = new TextField();
+        GridPane.setConstraints(sunStart, 1, 9);
+        Label sunLengthLab = new Label("Duration");
+        GridPane.setConstraints(sunLengthLab, 2, 9);
+        TextField sunLength = new TextField();
+        GridPane.setConstraints(sunLength, 3, 9);
+
+
+
+        Button addUser = new Button("Update Availability");
+        addUser.setMinHeight(50);
+        addUser.setMinWidth(100);
+        addUser.setOnAction(event -> {
+
+            if(!inputParse(arrayListAggregator(monStart.getText(),monLength.getText(),tueStart.getText(), tueLength.getText(),wedStart.getText(),wedLength.getText(),thuStart.getText(),thuLength.getText(),friStart.getText(),friLength.getText(),satStart.getText(),satLength.getText(),sunStart.getText(),sunLength.getText())))
+            {
+                ConfirmBox.display("Availiblity formated Incorrectly", "Error! \nEnsure Availability is set as per the example");
+            }
+            else{
+                Week week = new Week(monStart.getText(),monLength.getText(),tueStart.getText(), tueLength.getText(),wedStart.getText(),wedLength.getText(),thuStart.getText(),thuLength.getText(),friStart.getText(),friLength.getText(),satStart.getText(),satLength.getText(),sunStart.getText(),sunLength.getText());
+                View.getInstance().getSMC().findEmployee(choices.getValue()).setEmployeeAvalibility(week);
+                View.getInstance().getSMC().update();
+                ConfirmBox.display("Added a new User", "Successfully updated " + View.getInstance().getCurrentUserName() + " availability!");
+                stg.close();
+            }
+        });
+        GridPane.setConstraints(addUser, 0, 10);
+        Label errorText = new Label("");
+        GridPane.setConstraints(errorText,1, 10);
+
+
+
+        gridd.getChildren().addAll(choiceLab, choices,formatLab,formatExam,durLab, durExam, monStartLab,  monStart,monLengthLab,monLength, tueStartLab,
+                tueStart,tueLengthLab,tueLength, wedStartLab, wedStart,wedLengthLab,wedLength, thuStartLab, thuStart,thuLengthLab,thuLength,
+                friStartLab, friStart,friLengthLab,friLength, satStartLab, satStart,satLengthLab,satLength, sunStartLab, sunStart, sunLengthLab,sunLength, addUser , errorText); //postCodeLab, postCode,
+
+        Scene scene = new Scene(gridd, 600, 600);
+        scene.getStylesheets().add("ManageUsersCreateUsers.css");
+        stg.setScene(scene);
+        stg.setMinWidth(900);
+        stg.show();
+
+    }
+
     public static boolean inputParse(ArrayList<String> a){
         for(int i = 0 ; i < a.size() ; i = i + 2){
             try {
@@ -222,27 +369,27 @@ public class ManageUsers {
         title.setLayoutX(150); title.setLayoutY(0);
         pane.getChildren().add(title);
 
-        TableView<EmployeeView> table = new TableView<>();
+        TableView<String> table = new TableView<>();
 
-        TableColumn<EmployeeView, String> userNameColumn = new TableColumn<>("Username");
+        TableColumn<String, String> userNameColumn = new TableColumn<>("Username");
         userNameColumn.setMinWidth(125);
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("UserName"));
 
         table.setItems(addUsers());
         table.getColumns().addAll(userNameColumn);
-
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setLayoutX(10); table.setLayoutY(50);
         pane.getChildren().add(table);
 
         Button delete = new Button("Delete Selected User");
         delete.setMinWidth(30); delete.setMinHeight(70); //delete.setStyle();
         delete.setOnAction(event -> {
-            try {
-                EmployeeView emp = table.getSelectionModel().getSelectedItem();
-                boolean del = ConfirmBox.yesOrNo("Delete User?", "Are you sure you want to delete\n" + emp.getFirstName() + " " + emp.getLastName() + "?");
-                if (!del) return;
-                else updateTable(table);
-            }catch (IOException e){}
+            //try {
+                String user = table.getSelectionModel().getSelectedItem();
+                //boolean del = ConfirmBox.yesOrNo("Delete User?", "Are you sure you want to delete\n" + emp.getFirstName() + " " + emp.getLastName() + "?");
+                //if (!del) return;
+                //else updateTable(table);
+            //}catch (IOException e){}
         });
 
         delete.setLayoutX(550); delete.setLayoutY(50);
@@ -254,33 +401,32 @@ public class ManageUsers {
         stg.show();
     }
 
-    private static ObservableList<EmployeeView> addUsers (){
-        ObservableList<EmployeeView> users = FXCollections.observableArrayList();
-        //Sample data
-        users.add(new EmployeeView("q", "q", "q", "q", "q", "q", "q", "q",
-                    "q", "q", "q", "q"));
-        users.add(new EmployeeView("w", "w", "w", "w", "w", "w", "w", "w",
-                "w", "w", "w", "w"));
-        users.add(new EmployeeView("e", "e", "e", "e", "e", "e", "e", "e",
-                "e", "e", "e", "e"));
+    private static ObservableList<String> addUsers (){
+        ObservableList<String> users = FXCollections.observableArrayList();
+        ArrayList<Employee> a =  View.getInstance().getEmployeeList();
+        for(int i = 0 ; i < a.size() ; i++){
+            if (!(a.get(i).getUserName().equals("Admin"))) {
+                System.out.println(a.get(i).getUserName());
+                users.add(a.get(i).getUserName());
+            }
+        }
 
-        // Method needs to get all Employee records from file
         return users;
     }
 
-    public static void updateTable(TableView<EmployeeView> table) throws IOException{
-        ObservableList<EmployeeView> productSelected, allProducts;
+    public static void updateTable(TableView<String> table) throws IOException{
+        ObservableList<String> productSelected, allProducts;
         allProducts = table.getItems();
         productSelected = table.getSelectionModel().getSelectedItems();
-        EmployeeView emp = table.getSelectionModel().getSelectedItem();
+        String user = table.getSelectionModel().getSelectedItem();
         productSelected.forEach(allProducts::remove);
         try {
-            removeUserFromFile(emp);
+            removeUserFromFile(user);
         }
         catch (Exception e) {}
     }
 
-    public static void removeUserFromFile(EmployeeView emp){
+    public static void removeUserFromFile(String user){
 
         // Method to delete a user from a file, or 'deregister'.
     }

@@ -12,6 +12,7 @@ public class SystemManagerController {
 	}
 
 	public void update() {
+		System.out.println(this.getCurrentSchedule().getDate(0).getTimes().size());
 		view.updateDetails(this.getEmployeeList(), this.getRequestList(),
 				this.getApprovedRequestList(), this.getCurrentSchedule(),
 				this.getClockedHoursList(),  new ArrayList<Week>(), new ArrayList<FinalHoursWorked>());

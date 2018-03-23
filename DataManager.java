@@ -90,8 +90,17 @@ public class DataManager {
 
 	public Week getScheduleWithAssignedUsers(String date){
         String data = fetchData(date + ".txt");
+        System.out.println(data);
         String[] splitData = data.split(",,,");
-        String[][] furtherSplitData = new String[7][];
+        System.out.println(splitData[0]);
+		System.out.println(splitData[1]);
+		System.out.println(splitData[2]);
+		System.out.println(splitData[3]);
+		System.out.println(splitData[4]);
+		System.out.println(splitData[5]);
+		System.out.println(splitData[6]);
+
+		String[][] furtherSplitData = new String[7][];
         for(int i = 0 ; i < 7 ; i++)                //preparing the data for the week constructor
         {
             furtherSplitData[i] = splitData[i].split(",,");
@@ -111,6 +120,7 @@ public class DataManager {
 							friday[0],friday[1],friday[2],
 							saturday[0],saturday[1],saturday[2],
 							sunday[0],sunday[1],sunday[2]);
+		System.out.println(temp.getDate(1).getTimes().size() + " just afte construction");
         return temp;
 	}
 
@@ -135,6 +145,11 @@ public class DataManager {
 	public String[][] arrayListToMatrix(ArrayList<String[]> a) {
 		String [][] temp = new String[a.size()][3];
 		for(int i = 0 ; i < a.size() ; i++){
+			System.out.println(a.get(i)[0]);
+			System.out.println(a.get(i)[1]);
+			System.out.println(a.get(i)[2]);
+			System.out.println("----------");
+
 			temp[i] = a.get(i);
 		}
 		return temp;

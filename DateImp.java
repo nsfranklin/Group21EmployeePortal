@@ -15,11 +15,13 @@ public class DateImp {
     public DateImp(int[] startTime, int[] length){ //the constructor used for importing data for multiple entries per date
         times = new ArrayList<>();
         int[] temp = new int[2];
-        for(int i  =  1 ; i < startTime.length*2 ; i = i + 2) {
-            temp[0] = startTime[(i-1)/2];
-            temp[1] = length[i/2];
+        for(int i  =  0 ; i < startTime.length ; i++) {
+            temp[0] = startTime[i];
+            temp[1] = length[i];
             times.add(temp);
         }
+        System.out.println(times.size());
+        System.out.println("__--__");
     }
 
     public DateImp(String[] startTime, String[] length){ //the constructor used for importing data for multiple entries per date

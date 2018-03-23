@@ -70,20 +70,15 @@ public class Homepage{
 
 
         Menu accountsMenu = new Menu("Manage User Accounts");
-        if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin")))){
+        if ((loggedInUser.getEmployeeType().equals("Employee"))){
             accountsMenu.setDisable(true);
         }
+
         MenuItem createNewUser = new MenuItem("Create a New User");
         if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin")))){
             createNewUser.setDisable(true);
         }
         createNewUser.setOnAction(event -> ManageUsers.displayCreateUserWindow());
-
-        MenuItem updateUserAvailability = new Menu("Change User Availability");
-        if ((loggedInUser.getEmployeeType().equals("PartTimeEmployee"))){
-            accountsMenu.setDisable(true);
-        }
-        //updateUserAvailability.setOnAction(event -> );
 
         MenuItem deleteUser = new MenuItem("Delete a User");
         if (!(loggedInUser.getEmployeeType().equals("Admin"))){
@@ -92,10 +87,18 @@ public class Homepage{
         deleteUser.setOnAction(event -> {
             try { ManageUsers.displayDeleteUserWindow(); } catch (IOException e){} });
         MenuItem changeUserType = new MenuItem("Change A User's Account Type");
+        if(!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin")))){
+            changeUserType.setDisable(true);
+        }
         changeUserType.setOnAction(event -> {try{ hp.viewChangeUserAccountType();} catch(Exception e){}});
 
+        MenuItem updateUserAvailability = new Menu("Change User Availability");
+        if ((loggedInUser.getEmployeeType().equals("Employee"))){
+            updateUserAvailability.setDisable(true);
+        }
+        updateUserAvailability.setOnAction(event -> ManageUsers.displayEditAvailabilityWindow());
 
-        accountsMenu.getItems().addAll(createNewUser, new SeparatorMenuItem(), deleteUser, changeUserType);
+        accountsMenu.getItems().addAll(createNewUser, new SeparatorMenuItem(), deleteUser, changeUserType, updateUserAvailability);
 
         Menu manMenu = new Menu("Timetable");
         //if (!emp.getIsAllowedManagerFunctions()) manMenu.setDisable(true);

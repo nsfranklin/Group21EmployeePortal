@@ -22,11 +22,21 @@ public class ViewChangeUserAccountTypeController implements Initializable {
         newTypeMenuLabel.setText("");
         CurrentTypeLabel.setText("");
         ArrayList<String> users = new ArrayList<>();
-        users = View.getInstance().getUsernameList();
-        for (int i=0; i<users.size(); i++) currentTypeMenu.getItems().add(users.get(i));
+        if(View.getInstance().getCurrentUserName().equals("admin")) {
+            users = View.getInstance().getUsernameList("admin");
+        }else{
+            users = View.getInstance().getUsernameList("Admin", "Manager");
+        }
+            for (int i=0; i<users.size(); i++) currentTypeMenu.getItems().add(users.get(i));
         ArrayList<String> types = new ArrayList<>();
-        types.add("Part-Time Employee"); types.add("Full-Time Employee"); types.add("Manager");
+        types.add("Part-Time Employee"); types.add("Full-Time Employee");
+        if(View.getInstance().getCurrentUserName().equals("admin")){
+            types.add("Manager");
+        }
         for (int j=0; j<types.size(); j++) newTypeMenu.getItems().add(types.get(j));
+        //this.update = new Button();
+        update.setOnAction(event -> updateType());
+
 
     }
 
@@ -44,25 +54,51 @@ public class ViewChangeUserAccountTypeController implements Initializable {
 
         if (View.getInstance().findEmployee(username).getEmployeeType().equals("Employee")){
             if(newType.equals("Part-Time Employee")){
-
+               Manager m = (Manager) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
+               Employee e = View.getInstance().getSMC().findEmployee(username);
+               m.changeEmployeeToPartTimeEmployee(e);
+               View.getInstance().getSMC().update();
             }else if(newType.equals("Full-Time Employee")){
 
             }else if(newType.equals("Manager")){
-
+                Admin a = (Admin) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
+                Employee e = View.getInstance().getSMC().findEmployee(username);
+                a.markEmployeeAsManager(e);
+                View.getInstance().getSMC().update();
             }
         }else if(View.getInstance().findEmployee(username).getEmployeeType().equals("PartTimeEmployee")){
             if(newType.equals("Part-Time Employee")){
 
             }else if(newType.equals("Full-Time Employee")){
+                Admin a = (Admin) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
+                PartTimeEmployee p = (PartTimeEmployee) View.getInstance().getSMC().findEmployee(username);
+                a.changePartTimeEmployeeToEmployee(p);
+                View.getInstance().getSMC().update();
 
             }else if(newType.equals("Manager")){
+                Admin a = (Admin) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
+                PartTimeEmployee p = (PartTimeEmployee) View.getInstance().getSMC().findEmployee(username);
+                a.changePartTimeEmployeeToEmployee(p);
+                View.getInstance().getSMC().update();
+                Employee e = View.getInstance().getSMC().findEmployee(username);
+                a.markEmployeeAsManager(e);
+                View.getInstance().getSMC().update();
 
             }
         }else if(View.getInstance().findEmployee(username).getEmployeeType().equals("Manager")){
             if(newType.equals("Part-Time Employee")){
-
+                Admin a = (Admin) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
+                Manager m = (Manager) View.getInstance().getSMC().findEmployee(username);
+                a.unmarkEmployeeAsManager(m);
+                View.getInstance().getSMC().update();
+                Employee e = View.getInstance().getSMC().findEmployee(username);
+                a.changeEmployeeToPartTimeEmployee(e);
+                View.getInstance().getSMC().update();
             }else if(newType.equals("Full-Time Employee")){
-
+                Admin a = (Admin) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
+                Employee e = View.getInstance().getSMC().findEmployee(username);
+                a.changeEmployeeToPartTimeEmployee(e);
+                View.getInstance().getSMC().update();
             }else if(newType.equals("Manager")){
 
             }

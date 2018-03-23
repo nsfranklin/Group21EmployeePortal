@@ -151,4 +151,24 @@ public class View {
         }
         return a;
     }
+
+    public ArrayList<String> getUsernameList(String bar){
+        ArrayList<String> a = new ArrayList<>();
+        for(int i = 0 ; i < this.getEmployeeList().size() ; i++){
+            if(!(this.getEmployeeList().get(i).getUserName().equals(bar))) {
+                a.add(this.getEmployeeList().get(i).getUserName());
+            }
+        }
+        return a;
+    }
+
+    public ArrayList<String> getUsernameList(String bar, String bar2){
+        ArrayList<String> a = new ArrayList<>();
+        for(int i = 0 ; i < this.getEmployeeList().size() ; i++){
+            if(!((this.getEmployeeList().get(i).getEmployeeType().equals(bar) || (this.getEmployeeList().get(i).getEmployeeType().equals(bar2))))) {
+                a.add(this.getEmployeeList().get(i).getUserName());
+            }
+        }
+        return a;
+    }
 }

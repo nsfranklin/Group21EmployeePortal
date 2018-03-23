@@ -34,6 +34,7 @@ public class SystemManager {
 			employeeList.add(SystemManager.getInstance().getDataManager().getEmployee(employeeFileNames.get(i)));
 		}
 		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getSchedule("scheduleRules"));
+		System.out.println(this.getCurrentSchedule().getDate(0).getTimes().size() + "herer");
 		//SystemManager.getInstance().getScheduler().createProvisionalSchedule(approvedRequestList, employeeList);
 	}
 
