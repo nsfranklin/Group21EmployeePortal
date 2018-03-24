@@ -51,7 +51,9 @@ public class ManageTimeOffRequests {
             try {
                 boolean del = ConfirmBox.yesOrNo("Delete Request?", "Are you sure you want to delete this request?");
                 if (!del) return;
-                else updateTable(table);
+                else
+
+                    updateTable(table);
             }catch (IOException e){}
         });
 
@@ -78,10 +80,12 @@ public class ManageTimeOffRequests {
         productSelected = table.getSelectionModel().getSelectedItems();
         //Employee emp = table.getSelectionModel().getSelectedItem();
         productSelected.forEach(allProducts::remove);
-        moveFromRequestsListToApprovedRequestsList();
+        moveFromRequestsListToApprovedRequestsList((table.getSelectionModel().getSelectedItem()));
     }
 
-    public static void moveFromRequestsListToApprovedRequestsList(){
+    public static void moveFromRequestsListToApprovedRequestsList(Requests productSelected){
+        Manager manager = (Manager) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
+        manager.approveRequest(productSelected);
         // Method should delete the Request object from the Requests List, AND THEN ADD the same one to Approved Requests List!!
     }
 }

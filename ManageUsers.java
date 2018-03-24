@@ -362,56 +362,47 @@ public class ManageUsers {
 
     public static void displayDeleteUserWindow () throws IOException{
         Stage stg = new Stage();
-        Pane pane = new Pane();
+        GridPane gridd = new GridPane();
+        gridd.setPadding(new Insets(10, 10, 10, 10));
+        gridd.setVgap(8);
+        gridd.setHgap(10);
 
+        Label lab = new Label("Delete User");
+        GridPane.setConstraints(lab,1, 0);
 
-        Label title = new Label("Delete a User");
-        title.setLayoutX(150); title.setLayoutY(0);
-        pane.getChildren().add(title);
+        Label choiceLab = new Label("Select user ");
+        GridPane.setConstraints(choiceLab, 0, 2);
 
-        TableView<String> table = new TableView<>();
+        ChoiceBox<String> choices = new ChoiceBox<>();
+        choices.getItems().addAll(View.getInstance().getUsernameList("admin"));
+        GridPane.setConstraints(choices,1, 2 );
 
-        TableColumn<String, String> userNameColumn = new TableColumn<>("Username");
-        userNameColumn.setMinWidth(125);
-        userNameColumn.setCellValueFactory(new PropertyValueFactory<>("UserName"));
+        ArrayList<String> userList = new ArrayList<>();
 
-        table.setItems(addUsers());
-        table.getColumns().addAll(userNameColumn);
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setLayoutX(10); table.setLayoutY(50);
-        pane.getChildren().add(table);
+        if(!View.getInstance().findEmployee(View.getInstance().getCurrentUserName()).getEmployeeType().equals("PartTimeEmployee")) {
+            userList = View.getInstance().getUsernameList();
+        }
+        else{
+            userList.add(View.getInstance().getCurrentUserName());
+        }
+        ObservableList<String> userSelect = FXCollections.observableArrayList(userList);
 
-        Button delete = new Button("Delete Selected User");
-        delete.setMinWidth(30); delete.setMinHeight(70); //delete.setStyle();
-        delete.setOnAction(event -> {
-            //try {
-                String user = table.getSelectionModel().getSelectedItem();
-                //boolean del = ConfirmBox.yesOrNo("Delete User?", "Are you sure you want to delete\n" + emp.getFirstName() + " " + emp.getLastName() + "?");
-                //if (!del) return;
-                //else updateTable(table);
-            //}catch (IOException e){}
+        Button addUser = new Button("CONFIRM");
+        addUser.setMinHeight(50);
+        addUser.setMinWidth(100);
+        addUser.setOnAction(event -> { View.getInstance().getSMC().removeEmployee(choices.getValue());
+        View.getInstance().getSMC().update();
+        stg.close();
         });
 
-        delete.setLayoutX(550); delete.setLayoutY(50);
-        pane.getChildren().add(delete);
+        gridd.getChildren().addAll(choiceLab, lab, choices, addUser); //postCodeLab, postCode,
 
-        Scene scene = new Scene(pane, 700, 500);
-        //scene.getStylesheets().add("ManageUsersDeleteUsers.css");
+        Scene scene = new Scene(gridd, 600, 600);
+        scene.getStylesheets().add("ManageUsersCreateUsers.css");
         stg.setScene(scene);
+        stg.setMinWidth(900);
         stg.show();
-    }
 
-    private static ObservableList<String> addUsers (){
-        ObservableList<String> users = FXCollections.observableArrayList();
-        ArrayList<Employee> a =  View.getInstance().getEmployeeList();
-        for(int i = 0 ; i < a.size() ; i++){
-            if (!(a.get(i).getUserName().equals("Admin"))) {
-                System.out.println(a.get(i).getUserName());
-                users.add(a.get(i).getUserName());
-            }
-        }
-
-        return users;
     }
 
     public static void updateTable(TableView<String> table) throws IOException{

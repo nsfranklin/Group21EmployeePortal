@@ -95,11 +95,19 @@ public class Scheduler {
 	}
 
 	public Week getScheduleRules() {
-		return this.getScheduleRules();
+		return this.scheduleRules;
 	}
 
 	public void setScheduleRules(Week scheduleRules) {
 		this.scheduleRules = scheduleRules;
+	}
+
+	public Week getUnapprovedSchedule() {
+		return this.unapprovedSchedule;
+	}
+
+	public void setUnapprovedSchedule(Week unapprovedSchedule){
+		this.unapprovedSchedule = unapprovedSchedule;
 	}
 
 	public Boolean checkSchedule(Week managersAlteredSchedule) {

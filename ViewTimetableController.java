@@ -16,7 +16,7 @@ public class ViewTimetableController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.setTimeTable();
+        this.setTimeTable(); //single user 1 full schedule 0
 
     }
 
@@ -107,17 +107,15 @@ public class ViewTimetableController implements Initializable{
         AssignedDates current = (AssignedDates) View.getInstance().getCurrentSchedule().getDate(dayIndex);
         ArrayList<int[]> times = current.getTimes();
         ArrayList<String> users = current.getUserAssigned();
-        System.out.println(times.size());
-        System.out.println(users.size());
         for(int i = 0 ; i < times.size() ; i++){
             for(int j = (times.get(i)[0]/60)-9 ; j < (times.get(i)[1]/60) ; j++){
-                if(labels.get(j).getText().equals("")){
-                    labels.get(j).setText(labels.get(j).getText() + users.get(i));
-                }else{
-                    labels.get(j).setText(labels.get(j).getText() + ", " + users.get(i));
-                }
-                labels.get(j).setWrapText(true);
-                labels.get(j).setStyle("-fx-font: 8 arial");
+                    if (labels.get(j).getText().equals("")) {
+                        labels.get(j).setText(labels.get(j).getText() + users.get(i));
+                    } else {
+                        labels.get(j).setText(labels.get(j).getText() + ", " + users.get(i));
+                    }
+                    labels.get(j).setWrapText(true);
+                    labels.get(j).setStyle("-fx-font: 8 arial");
             }
         }
     }

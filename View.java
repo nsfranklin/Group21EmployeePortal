@@ -12,6 +12,7 @@ public class View {
     private ArrayList<Week> futureSchedules;
     private ArrayList<FinalHoursWorked> hoursWorkedLastMonth;
     private SystemManagerController SMC;
+    private Scheduler scheduler;
     private static View instance;
 
     private View(){
@@ -23,6 +24,7 @@ public class View {
         this.clockedHoursList = new ArrayList<>();
         this.futureSchedules = new ArrayList<>();
         this.hoursWorkedLastMonth = new ArrayList<>();
+        this.scheduler = new Scheduler();
         this.SMC = null;
     }
 
@@ -33,7 +35,7 @@ public class View {
         return instance;
     }
 
-    public void updateDetails(ArrayList<Employee> a, ArrayList<Requests> b, ArrayList<Requests> c, Week d, ArrayList<ClockedHours> clockedHoursList,ArrayList<Week> e, ArrayList<FinalHoursWorked> f){
+    public void updateDetails(ArrayList<Employee> a, ArrayList<Requests> b, ArrayList<Requests> c, Week d, ArrayList<ClockedHours> clockedHoursList,ArrayList<Week> e, ArrayList<FinalHoursWorked> f, Scheduler s){
         this.employeeList = a;
         this.requestList = b;
         this.approvedRequestList = c;
@@ -41,6 +43,7 @@ public class View {
         this.clockedHoursList = clockedHoursList;
         this.futureSchedules = e;
         this.hoursWorkedLastMonth = f;
+        this.scheduler = s;
 
     }
 
@@ -170,5 +173,13 @@ public class View {
             }
         }
         return a;
+    }
+
+    public Scheduler getScheduler() {
+        return this.scheduler;
+    }
+
+    public void setScheduler(Scheduler scheduler) {
+        this.scheduler = scheduler;
     }
 }

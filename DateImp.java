@@ -20,8 +20,6 @@ public class DateImp {
             temp[1] = length[i];
             times.add(temp);
         }
-        System.out.println(times.size());
-        System.out.println("__--__");
     }
 
     public DateImp(String[] startTime, String[] length){ //the constructor used for importing data for multiple entries per date
