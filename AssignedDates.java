@@ -20,6 +20,11 @@ public class AssignedDates extends DateImp {
 		}
 	}
 
+	public void addUserTimes(int startTime, int length, String userName ) {  //length is in minutes 60 is 1 hour. Has to be multiple of 30
+		super.addTimes(startTime,length);
+		this.userAssigned.add(userName);
+	}
+
 	public ArrayList<String> getUserAssigned(){
 		return this.userAssigned;
 	}

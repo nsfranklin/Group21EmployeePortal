@@ -1,6 +1,7 @@
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
@@ -14,6 +15,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import static java.lang.Thread.sleep;
+
 public class RequestTimeOffGuiController implements Initializable {
     @FXML private Label date;
     @FXML private Label time;
@@ -25,6 +28,7 @@ public class RequestTimeOffGuiController implements Initializable {
     @FXML private RadioButton other;
     @FXML private Pane pane;
     @FXML private TextArea description;
+    @FXML private Label errorText;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,12 +44,13 @@ public class RequestTimeOffGuiController implements Initializable {
 
 
     }
-    public void submit () {
+    public void submit () throws InterruptedException{
         Date currentDate = new Date();
         String typee = "";
         String userName = View.getInstance().getCurrentUserName();
-        String startDatee = startDate.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        String endDatee = endDate.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        if(startDate.getValue() != null && endDate.getValue() != null) {
+            String startDatee = startDate.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            String endDatee = endDate.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
             try {
                 if (holiday.isSelected()) {
                     typee = holiday.getText();
@@ -56,25 +61,30 @@ public class RequestTimeOffGuiController implements Initializable {
                 }
                 currentDate = new Date(); //SimpleDateFormat("dd/MM/yyyy").parse(date.getText());
                 SimpleDateFormat format = new SimpleDateFormat("ddMMyy");
-            } catch (Exception e) {}
-        if(parseEntry(currentDate, startDate.getValue(), endDate.getValue()))
-        {
-            Requests newRequest = new timeOff(currentDate, getTime(), typee, java.sql.Date.valueOf(startDate.getValue()), java.sql.Date.valueOf(endDate.getValue()), this.description.getText(), userName);
-            View.getInstance().addRequest(newRequest);
-            View.getInstance().getSMC().setRequestList(View.getInstance().getRequestList());
-            View.getInstance().getSMC().update();
-            System.out.println("submitted");
+            } catch (Exception e) {
+            }
+            if (parseEntry(currentDate, startDate.getValue(), endDate.getValue())) {
+                Requests newRequest = new timeOff(currentDate, getTime(), typee, java.sql.Date.valueOf(startDate.getValue()), java.sql.Date.valueOf(endDate.getValue()), this.description.getText(), userName);
+                View.getInstance().addRequest(newRequest);
+                View.getInstance().getSMC().setRequestList(View.getInstance().getRequestList());
+                View.getInstance().getSMC().update();
+                ConfirmBox.display("Request Added", "Successfully added " + typee + " Request from " + java.sql.Date.valueOf(startDate.getValue()) + " - " + java.sql.Date.valueOf(endDate.getValue()));
+                errorText.getScene().getWindow().hide();
+                }
+        }
+        else{
+            errorText.setText("Enter Dates of Request");
         }
         //close the window;
     }
 
     public Boolean parseEntry(Date currentDate,LocalDate startDate,LocalDate endDate){
         if(currentDate.after(java.sql.Date.valueOf(startDate))){
-            System.out.println("Start Date is before currentDate");
+            errorText.setText("Start Date is before currentDate");
             return false;
         }
         if(java.sql.Date.valueOf(startDate).after(java.sql.Date.valueOf(endDate))){
-            System.out.println("Start Date is after endDate");
+            errorText.setText("Start Date is after endDate");
             return false;
         }
         return true;

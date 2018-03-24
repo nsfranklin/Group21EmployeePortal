@@ -86,6 +86,7 @@ public class ManageTimeOffRequests {
     public static void moveFromRequestsListToApprovedRequestsList(Requests productSelected){
         Manager manager = (Manager) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
         manager.approveRequest(productSelected);
+        View.getInstance().getSMC().update();
         // Method should delete the Request object from the Requests List, AND THEN ADD the same one to Approved Requests List!!
     }
 }

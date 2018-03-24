@@ -12,10 +12,9 @@ public class SystemManagerController {
 	}
 
 	public void update() {
-		System.out.println(this.getCurrentSchedule().getDate(0).getTimes().size());
 		view.updateDetails(this.getEmployeeList(), this.getRequestList(),
 				this.getApprovedRequestList(), this.getCurrentSchedule(),
-				this.getClockedHoursList(),  new ArrayList<Week>(), new ArrayList<FinalHoursWorked>(), model.getScheduler());
+				this.getClockedHoursList(),  new ArrayList<Week>(), new ArrayList<FinalHoursWorked>(), this.getScheduler());
 	}
 
 	public ArrayList<Employee> getEmployeeList() {
@@ -62,6 +61,14 @@ public class SystemManagerController {
 
 	public void removeEmployee(String userName){
 		model.removeEmployee(userName);
+	}
+
+	public void setScheduler(Scheduler s){
+		model.setScheduler(s);
+	}
+
+	public Scheduler getScheduler(){
+		return model.getScheduler();
 	}
 
 }

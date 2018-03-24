@@ -10,13 +10,17 @@ import javafx.scene.control.cell.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.Scene;
 import javafx.geometry.*;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -26,8 +30,7 @@ public class Homepage{
 
     static Stage home;
 
-    public static void displayHomepage(/*String username, String password, String type, String staffID, String firstName, String lastName, String dob,
-                                       String email, String phoneNumber, String address, String country, String city, String postCode*/){
+    public static void displayHomepage() {
         Homepage hp = new Homepage();
         Employee loggedInUser = View.getInstance().findEmployee();
 
@@ -37,7 +40,9 @@ public class Homepage{
         Pane mainPane = new Pane();
         mainPane.getStylesheets().add("HomePageTheme.css");
 
-
+        Label empPort = new Label("Employee Portal");
+        empPort.setId("title");
+        empPort.setLayoutX(307); empPort.setLayoutY(40);
 
         HBox hbox = new HBox(48);
 
@@ -59,12 +64,12 @@ public class Homepage{
             f3.setDisable(true);
         }
         f3.setOnAction(event -> {
-                try {
-                    hp.viewChangePayrollDetails();
-                } catch (Exception e) {
-                }
-            });
-                    MenuItem f11 = new MenuItem("Time Off");
+            try {
+                hp.viewChangePayrollDetails();
+            } catch (Exception e) {
+            }
+        });
+        MenuItem f11 = new MenuItem("Time Off");
 
         empStuffMenu.getItems().addAll(f2, f3);
 
@@ -131,10 +136,12 @@ public class Homepage{
 
 
         Menu options = new Menu("Options");
+        MenuItem message = new MenuItem("Announcement");
+        message.setOnAction(event -> {try{hp.viewAnnouncement();} catch (Exception e) {}});
         MenuItem f8 = new MenuItem("Settings");
         MenuItem f9 = new MenuItem("Log Out");
         f9.setOnAction(event -> logOutEvent());
-        options.getItems().addAll(f8, f9);
+        options.getItems().addAll(message, f8, f9);
 
         bar.getMenus().addAll(payrollMenu, empStuffMenu, accountsMenu, manMenu, admMenu, options);
 
@@ -143,7 +150,8 @@ public class Homepage{
         //if (!emp.getIsAllowedManagerFunctions()) bf.setDisable(true);
         //if (!emp.getIsAllowedAdminFunctions()) bg.setDisable(true);
         Image image;
-        hbox.setLayoutX(100); hbox.setLayoutY(0);
+        hbox.setLayoutX(200); hbox.setLayoutY(0);
+        hbox.setMaxWidth(700);
         if(userProfilePicture(loggedInUser)){
             image = new Image("file:"+loggedInUser.getUserName()+".png");
         } else {
@@ -153,16 +161,16 @@ public class Homepage{
         iv.setFitWidth(200);
         iv.setFitHeight(200);
         iv.setImage(image);
-        iv.setLayoutY(50);
-        iv.setLayoutX(50);
+        iv.setLayoutY(100);
+        iv.setLayoutX(0);
 
-        Image timetableImage = new Image("file:timetable.jpg");
+        Image timetableImage = new Image("file:logo.png");
         ImageView ivt = new ImageView();
-        ivt.setFitWidth(450);
-        ivt.setFitHeight(400);
+        ivt.setFitWidth(140);
+        ivt.setFitHeight(105);
         ivt.setImage(timetableImage);
-        ivt.setLayoutX(300);
-        ivt.setLayoutY(50);
+        ivt.setLayoutX(30);
+        ivt.setLayoutY(-5);
 
         Label lfname = new Label( View.getInstance().getCurrentUserName());
         Label ldob = new Label("01/01/98"/*emp.getDob()*/);
@@ -172,16 +180,48 @@ public class Homepage{
         VBox vboxx = new VBox();
         vboxx.setId("UserInfo");
         vboxx.getChildren().addAll(lfname, ldob, laddress, lcountry, lemail);
-        vboxx.setLayoutX(50);
-        vboxx.setLayoutY(260);
+        vboxx.setLayoutX(5);
+        vboxx.setLayoutY(315);
 
-        mainPane.getChildren().addAll(hbox,iv, vboxx, ivt);
+
+
+        Line dline = new Line(200, 0, 200 ,550);
+        Line aline = new Line(0, 100, 774, 100);
+
+        Label announcements = new Label("Announcement Board");
+        announcements.setLayoutX(307); announcements.setLayoutY(110);
+        announcements.setStyle("-fx-font-size: 17pt;");
+
+        Label ancmntTitle = new Label(); ancmntTitle.setStyle("-fx-font-weight: bold;");
+        Label ancmntMessage = new Label(); //ancmntMessage.setLayoutX(300); ancmntMessage.setLayoutY(250);
+        Label ancmntDate = new Label(); //ancmntDate.setLayoutX(300); ancmntDate.setLayoutY(400);
+        Label ancmntTime = new Label(); //ancmntTime.setLayoutX(300); ancmntTime.setLayoutY(450);
+        VBox ancmntBox = new VBox();
+        ancmntBox.getChildren().addAll(ancmntTitle, ancmntMessage, ancmntDate, ancmntTime);
+        //ancmntBox.setLayoutX(315); ancmntBox.setLayoutY(15);
+
+        Button update = new Button("Update");
+        update.setLayoutX(552); update.setLayoutY(116);
+        update.setOnAction(event -> {
+            ArrayList<String> al = announcementStrings();
+            ancmntTitle.setText("Title: " + al.get(0));
+            ancmntMessage.setText("Announcement: " + al.get(1));
+            ancmntDate.setText("Date created: " + al.get(2));
+            ancmntTime.setText("Time sent: " + al.get(3));
+            ancmntBox.getChildren().addAll(ancmntTitle, ancmntMessage, ancmntDate, ancmntTime);
+            ancmntBox.setLayoutX(307); ancmntBox.setLayoutY(170);
+        });
+
+
+
+        mainPane.getChildren().addAll(hbox,iv, vboxx, ivt, empPort, dline, aline, ancmntTitle,
+                ancmntMessage, ancmntDate, ancmntTime, update, announcements, ancmntBox);
 
         Scene scene = new Scene(mainPane, 400, 350);
         //scene.getStylesheets().add("HomePageTheme.css");
         home.setScene(scene);
         home.setMinHeight(500);
-        home.setMinWidth(800);
+        home.setMinWidth(774);
         home.show();
     }
 
@@ -252,7 +292,6 @@ public class Homepage{
     }
 
 
-
     public void viewRequestTimeOff () throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RequestTimeOffGui.fxml"));
         Parent rooot = (Parent) fxmlLoader.load();
@@ -260,6 +299,7 @@ public class Homepage{
         stage.setScene(new Scene(rooot));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+
     }
 
     public void viewTimeOffApproval () throws Exception{
@@ -286,5 +326,36 @@ public class Homepage{
         stage.setScene(new Scene(root1));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+    }
+
+    public void viewAnnouncement() throws  Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewAnnouncement.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
+    public static ArrayList<String> announcementStrings (){
+        ArrayList<String> al = new ArrayList<>();
+        String[] lines;
+        String line="";
+        try{
+            BufferedReader r = new BufferedReader(new FileReader("message.txt"));
+
+            line=r.readLine();
+            lines = line.split(",");
+            al.add(lines[0]); System.out.println(al.get(0));
+            al.add(lines[1]); System.out.println(al.get(1));
+            al.add(lines[2]); System.out.println(al.get(2));
+            al.add(lines[3]); System.out.println(al.get(3));
+
+            r.close();
+        }
+        catch (IOException e){
+
+        }
+        return al;
     }
 }

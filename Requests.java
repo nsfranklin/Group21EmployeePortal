@@ -11,4 +11,7 @@ public class Requests {
         this.timeMade = timeMade;
     }
 
+    public Date getDateMade() {
+        return this.dateMade;
+    }
 }

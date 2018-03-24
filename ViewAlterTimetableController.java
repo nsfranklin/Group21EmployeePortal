@@ -3,6 +3,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 
+import javax.print.DocFlavor;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,10 +19,16 @@ public class ViewAlterTimetableController implements Initializable{
     @FXML private ChoiceBox<String> chs1, chs2, chs3, chs4, chs5, chs6, chs7, chs8, chs9;
     @FXML private ChoiceBox<String> chss1, chss2, chss3, chss4, chss5, chss6, chss7, chss8, chss9;
     @FXML private Button update;
+    @FXML private ChoiceBox<String> EmployeeSelect;
+    @FXML private ChoiceBox<String> mode;
+    //@FXML private Label text;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("test");
+        mode.getItems().addAll("remove" , "add");
+        for(int i = 0 ; i < View.getInstance().getEmployeeList().size() ; i++){
+            EmployeeSelect.getItems().add(View.getInstance().getEmployeeList().get(i).getUserName());
+        }
         this.updateTimetable();
     }
 
@@ -97,14 +104,6 @@ public class ViewAlterTimetableController implements Initializable{
         sun.add(chss8);
         sun.add(chss9);
 
-        System.out.println(mon.size());
-        System.out.println(tue.size());
-        System.out.println(wed.size());
-        System.out.println(thu.size());
-        System.out.println(fri.size());
-        System.out.println(sat.size());
-        System.out.println(sun.size());
-
 
         this.updateView(mon,0);
         this.updateView(tue,1);
@@ -113,12 +112,27 @@ public class ViewAlterTimetableController implements Initializable{
         this.updateView(fri,4);
         this.updateView(sat,5);
         this.updateView(sun,6);
+
+
+        update.setOnAction(event -> {
+            if(mode.getValue().equals("remove")){
+                updateProvisionalScheduleAdd(mon, tue, wed, thu, fri, sat, sun);
+            }else if(mode.getValue().equals("add")){
+                updateProvisionalScheduleAdd(mon, tue, wed, thu, fri, sat, sun);
+            }
+        });
     }
 
     public void updateView(ArrayList<ChoiceBox<String>> boxes, int dayIndex){
         AssignedDates current = (AssignedDates) View.getInstance().getScheduler().getUnapprovedSchedule().getDate(dayIndex);
         ArrayList<int[]> times = current.getTimes();
         ArrayList<String> users = current.getUserAssigned();
+
+        for(int u = 0 ; u < users.size() ; u++){
+            if(users.get(u) == null){
+                users.remove(u);
+            }
+        }
         for(int i = 0 ; i < times.size() ; i++){
             for(int j = (times.get(i)[0]/60)-9 ; j < (times.get(i)[1]/60) ; j++){
                 boxes.get(j).getItems().add(users.get(i));
@@ -127,11 +141,74 @@ public class ViewAlterTimetableController implements Initializable{
         for(int l = 0 ; l < 1 ; l++){
             for(int k = 0 ; k < 9 ; k++){
                 boxes.get(k).getItems().add("add new user");
+                boxes.get(k).getItems().add("");
+                boxes.get(k).setValue("");
             }
         }
     }
 
-    public Week updateProvisionalSchedule(){
+    public void updateProvisionalScheduleAdd(ArrayList<ChoiceBox<String>> mon, ArrayList<ChoiceBox<String>> tue, ArrayList<ChoiceBox<String>> wed, ArrayList<ChoiceBox<String>> thu, ArrayList<ChoiceBox<String>> fri, ArrayList<ChoiceBox<String>> sat,ArrayList<ChoiceBox<String>> sun){
+
+        Week temp = View.getInstance().getScheduler().getUnapprovedSchedule();
+        AssignedDates unapprovedMonday = (AssignedDates) temp.getDate(0);
+        AssignedDates unapprovedTuesday = (AssignedDates) temp.getDate(1);
+        AssignedDates unapprovedWednesday = (AssignedDates) temp.getDate(2);
+        AssignedDates unapprovedThursday = (AssignedDates) temp.getDate(3);
+        AssignedDates unapprovedFriday = (AssignedDates) temp.getDate(4);
+        AssignedDates unapprovedSaturday = (AssignedDates) temp.getDate(5);
+        AssignedDates unapprovedSunday = (AssignedDates) temp.getDate(6);
+
+        int monaddfound = -1;
+        int monaddlastfound = -1;
+        String montemp;
+        for(int i = 0 ; i < mon.size() ; i++)
+        {
+            System.out.println(i);
+            montemp = mon.get(i).getValue();
+            if(!montemp.equals("add new user")){
+            System.out.println(i +" add new user not found");
+            }
+            else{
+                System.out.println(i + "Found");
+                if(monaddfound == -1){
+                    monaddfound = i;
+                    monaddlastfound = 1;
+                }
+                else{
+                    monaddlastfound = i + 1 - monaddfound;
+                }
+            }
+        }
+        if(monaddfound > -1) {
+            System.out.println(EmployeeSelect.getValue());
+            unapprovedMonday.addUserTimes((monaddfound+9)*60, monaddlastfound*60, EmployeeSelect.getValue());
+        }
+
+
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(0,unapprovedMonday);
+        View.getInstance().getSMC().setScheduler(View.getInstance().getScheduler());
+        View.getInstance().getSMC().update();
+
+    }
+
+    public Week updateProvisionalScheduledRemove(ArrayList<ChoiceBox<String>> mon, ArrayList<ChoiceBox<String>> tue, ArrayList<ChoiceBox<String>> wed, ArrayList<ChoiceBox<String>> thu, ArrayList<ChoiceBox<String>> fri, ArrayList<ChoiceBox<String>> sat,ArrayList<ChoiceBox<String>> sun){
+
+        Week temp = View.getInstance().getScheduler().getUnapprovedSchedule();
+        AssignedDates unapprovedMonday = (AssignedDates) temp.getDate(0);
+        AssignedDates unapprovedTuesday = (AssignedDates) temp.getDate(1);
+        AssignedDates unapprovedWednesday = (AssignedDates) temp.getDate(2);
+        AssignedDates unapprovedThursday = (AssignedDates) temp.getDate(3);
+        AssignedDates unapprovedFriday = (AssignedDates) temp.getDate(4);
+        AssignedDates unapprovedSaturday = (AssignedDates) temp.getDate(5);
+        AssignedDates unapprovedSunday = (AssignedDates) temp.getDate(6);
+
+
+        for(int i = 0 ; i < mon.size() ; i++)
+        {
+
+        }
+
         return new Week();
     }
+
 }

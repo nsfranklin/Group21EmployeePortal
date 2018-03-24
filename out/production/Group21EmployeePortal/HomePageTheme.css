@@ -1,10 +1,10 @@
 .root{
-    -fx-background-color: black;
+    -fx-background-image: url("http://wallpoper.com/images/00/39/56/26/abstract_00395626.jpg");
 }
 
 .label{
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 15pt;
+    -fx-font-size: 14pt;
 }
 
 .menu-bar{
@@ -12,12 +12,21 @@
 }
 
 .menu-button {
-    -fx-background-color:blue;
+    /*-fx-background-color:blue;*/
+    -fx-background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqRZXG2JutVc704JkPo71Wzo2qrbQeLRspBZVynkhRdgMhk7fl");
+
     -fx-font-size: 10pt;
 }
 
 .menu-button .label {
     /*-fx-background-color:pink;*/
+    -fx-background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqRZXG2JutVc704JkPo71Wzo2qrbQeLRspBZVynkhRdgMhk7fl");
     -fx-text-fill: black;
-    -fx-font-size: 10pt;
+    -fx-font-size: 12pt;
+}
+#title{
+
+    -fx-font-weight: bold;
+    -fx-font-family: Georgia, Times, "Times New Roman", serif;
+    -fx-font-size: 40px;
 }

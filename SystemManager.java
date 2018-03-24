@@ -35,6 +35,7 @@ public class SystemManager {
 		}
 		SystemManager.getInstance().schedulerInstance.setScheduleRules(SystemManager.getInstance().getDataManager().getSchedule("scheduleRules"));
 		SystemManager.getInstance().schedulerInstance.setUnapprovedSchedule(SystemManager.getInstance().getDataManager().getScheduleWithAssignedUsers("provisional"));
+
 	}
 
 	public Boolean login(String userName, String Password) {
