@@ -14,7 +14,7 @@ public class SystemManagerController {
 	public void update() {
 		view.updateDetails(this.getEmployeeList(), this.getRequestList(),
 				this.getApprovedRequestList(), this.getCurrentSchedule(),
-				this.getClockedHoursList(),  new ArrayList<Week>(), new ArrayList<FinalHoursWorked>(), this.getScheduler());
+				this.getClockedHoursList(), this.getFutureSchedules(), new ArrayList<FinalHoursWorked>(), this.getScheduler());
 	}
 
 	public ArrayList<Employee> getEmployeeList() {
@@ -70,5 +70,9 @@ public class SystemManagerController {
 	public Scheduler getScheduler(){
 		return model.getScheduler();
 	}
+
+	public ArrayList<Week> getFutureSchedules(){return model.getFutureSchedules();}
+
+	public void setFutureSchedules(ArrayList<Week> schedulesToAdd){ model.setFutureSchedules(schedulesToAdd);}
 
 }

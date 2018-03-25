@@ -5,7 +5,7 @@ public class Week {
 
 	private DateImp[] days; //array because week are 7 days always
 
-	public Week() // when a week is first called it is populated with empty DateImp
+	public Week()
     {
 	    days = new DateImp[7];
         for(int i = 0 ; i < 7 ; i++)
@@ -14,7 +14,8 @@ public class Week {
         }
 	}
 
-	public Week(int startMon, int lengthMon, int startTue, int lengthTue, int startWed, int lengthWed, int startThu, int lengthThu, int startFri, int lengthFri, int startSat, int lengthSat, int startSun, int lengthSun){
+
+    public Week(int startMon, int lengthMon, int startTue, int lengthTue, int startWed, int lengthWed, int startThu, int lengthThu, int startFri, int lengthFri, int startSat, int lengthSat, int startSun, int lengthSun){
         days = new DateImp[7];
         for(int i = 0 ; i < 7 ; i++)
             days[i] = new DateImp();

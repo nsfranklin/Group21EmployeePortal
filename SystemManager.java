@@ -13,6 +13,7 @@ public class SystemManager {
 	private Week currentSchedule;
 	private static SystemManager instance;
 	private ArrayList<ClockedHours> clockedHoursList;
+	private ArrayList<Week> futureSchedules;
 
 
 	private SystemManager() {
@@ -23,6 +24,7 @@ public class SystemManager {
         employeeList = new ArrayList<>();
         currentSchedule = new Week();
         clockedHoursList = new ArrayList<>();
+        futureSchedules = new ArrayList<>();
 	}
 
 	public void initializer() {
@@ -183,6 +185,16 @@ public class SystemManager {
 	public void setClockedHoursList(ArrayList<ClockedHours> a){
 		this.clockedHoursList = a;
 	}
+
+	public ArrayList<Week> getFutureSchedules() {
+		return this.futureSchedules;
+	}
+
+	public void setFutureSchedules(ArrayList<Week> futureSchedules) {
+		this.futureSchedules = futureSchedules;
+	}
+
+
 }
 
 

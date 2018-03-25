@@ -115,9 +115,37 @@ public class Scheduler {
 		throw new UnsupportedOperationException();
 	}
 
-	public Boolean approveSchedule(Week finalSchedule) {
-		// TODO - implement Scheduler.approveSchedule
-		throw new UnsupportedOperationException();
+	public Boolean approvable(){
+		Week rules = this.scheduleRules;
+		Week target = this.unapprovedSchedule;
+		int rulesTotalTime = 0;
+		int targetTotalTime = 0;
+
+		for(int i = 0 ; i < 7 ; i++){
+			if(rules.getDate(i).getTimes().size() > target.getDate(i).getTimes().size()){
+				return false;
+			}
+			for(int j = 0 ; (j < rules.getDate(i).getTimes().size()) && (j < target.getDate(i).getTimes().size()) ; j++ ) {
+				if (rules.getDate(i).getTimes().get(j) != null) {
+					rulesTotalTime = rulesTotalTime + rules.getDate(i).getTimes().get(j)[1];
+				}
+				if (target.getDate(i).getTimes().get(j) != null){
+					targetTotalTime = targetTotalTime + target.getDate(i).getTimes().get(j)[1];
+				}
+			}
+			if(rulesTotalTime > targetTotalTime){
+				return false;
+			}
+			rulesTotalTime = 0;
+			targetTotalTime = 0;
+		}
+		return true;
+	}
+
+	public void approveSchedule() {
+		View.getInstance().getSMC().getFutureSchedules().add(View.getInstance().getScheduler().getUnapprovedSchedule());
+		View.getInstance().getSMC().getScheduler().setUnapprovedSchedule(new Week());
+		View.getInstance().getSMC().update();
 	}
 
 	public void createSystemRequest(int deadline) {

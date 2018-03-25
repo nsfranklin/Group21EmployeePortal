@@ -2,6 +2,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.text.Text;
 
 import javax.print.DocFlavor;
 import java.lang.reflect.Array;
@@ -11,6 +12,7 @@ import java.util.ResourceBundle;
 
 public class ViewAlterTimetableController implements Initializable{
 
+    @FXML private Text title;
     @FXML private ChoiceBox<String> chm1, chm2, chm3, chm4, chm5, chm6, chm7, chm8, chm9;
     @FXML private ChoiceBox<String> cht1, cht2, cht3, cht4, cht5, cht6, cht7, cht8, cht9;
     @FXML private ChoiceBox<String> chw1, chw2, chw3, chw4, chw5, chw6, chw7, chw8, chw9;
@@ -19,12 +21,28 @@ public class ViewAlterTimetableController implements Initializable{
     @FXML private ChoiceBox<String> chs1, chs2, chs3, chs4, chs5, chs6, chs7, chs8, chs9;
     @FXML private ChoiceBox<String> chss1, chss2, chss3, chss4, chss5, chss6, chss7, chss8, chss9;
     @FXML private Button update;
+    @FXML private Button approve;
     @FXML private ChoiceBox<String> EmployeeSelect;
     @FXML private ChoiceBox<String> mode;
     //@FXML private Label text;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        approve.setOnAction(event -> {
+            if(View.getInstance().getScheduler().approvable()){
+                View.getInstance().getScheduler().approveSchedule();
+                ConfirmBox.display("Approved", "Schedule approved");
+            }else if(View.getInstance().findEmployee(View.getInstance().getCurrentUserName()).getEmployeeType().equals("Manager") ){
+                ConfirmBox.display("Warning", "Schedule not approve doesn't follow rules well enough");
+            }else{
+                Boolean confirm = ConfirmBox.yesOrNo("Warning", "Schedule does not follow set rules. Approve?");
+                if(confirm){
+                    View.getInstance().getScheduler().approveSchedule();
+                    ConfirmBox.display("Approved", "Schedule approved");
+                }
+            }
+
+        });
         mode.getItems().addAll("remove" , "add");
         for(int i = 0 ; i < View.getInstance().getEmployeeList().size() ; i++){
             EmployeeSelect.getItems().add(View.getInstance().getEmployeeList().get(i).getUserName());
