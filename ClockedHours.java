@@ -23,7 +23,7 @@ public class ClockedHours {
 
     public void clockOut(){
         this.clockedOut = this.getCurrentTime();
-        AssignedDates a = (AssignedDates)SystemManager.getInstance().getCurrentSchedule().getDate((Calendar.getInstance().DAY_OF_WEEK)-1);
+        AssignedDates a = (AssignedDates) SystemManager.getInstance().getCurrentSchedule().getDate((Calendar.getInstance().DAY_OF_WEEK)-1);
         for(int i = 0 ; i < a.getUserAssigned().size() ; i++){
             if(this.userName.equals(a.getUserAssigned().get(i))) {
                 int startTime = a.getTimes().get(i)[0];

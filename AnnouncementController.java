@@ -34,7 +34,7 @@ public class AnnouncementController implements Initializable{
     @FXML
     void submitClicked() {
         try {
-            File file = new File("C:\\Users\\User\\IdeaProjects\\EmployeePortalPrototype\\message.txt");
+            File file = new File("message.txt");
             FileWriter fw = new FileWriter(file);
             fw.write(title.getText() + "," + message.getText() + "," + date.getText() + "," + time.getText());
             fw.close();

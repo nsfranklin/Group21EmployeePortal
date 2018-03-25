@@ -40,7 +40,7 @@ public class Employee {
 
 	public void clockOut() {
 		for(int i = 0 ; i < SystemManager.getInstance().getClockedHoursList().size() ; i++){
-			if(SystemManager.getInstance().getClockedHoursList().get(i).equals(this.userName)){
+			if(SystemManager.getInstance().getClockedHoursList().get(i).getUserName().equals(this.userName)){
 				SystemManager.getInstance().getClockedHoursList().get(i).clockOut();
 			}
 		}

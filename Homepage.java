@@ -51,9 +51,23 @@ public class Homepage{
         MenuBar bar = new MenuBar();
         bar.setStyle("-fx-padding: 1 60 1 1;");
 
+        Label lfname = new Label( View.getInstance().getCurrentUserName());
+        Label ldob = new Label("Clocked In:");
+        Label laddress = new Label("--------------");
+        Label lcountry = new Label("Clocked Out:");
+        Label lclockedout = new Label("--------------");
+        Label lemail = new Label(View.getInstance().getCurrentUserName() + "@prototype.com");
+
+
+        VBox vboxx = new VBox();
+        vboxx.setId("UserInfo");
+        vboxx.getChildren().addAll(lfname, ldob, laddress, lcountry, lclockedout , lemail);
+        vboxx.setLayoutX(5);
+        vboxx.setLayoutY(315);
+
         Menu payrollMenu = new Menu("Clock");
         MenuItem cico = new MenuItem("Clock In / Clock Out");
-        cico.setOnAction(event -> hp.clockedHandler());
+        cico.setOnAction(event -> hp.clockedHandler(laddress,lclockedout));
         payrollMenu.getItems().add(cico);
 
         Menu empStuffMenu = new Menu("Payroll");
@@ -172,16 +186,7 @@ public class Homepage{
         ivt.setLayoutX(30);
         ivt.setLayoutY(-5);
 
-        Label lfname = new Label( View.getInstance().getCurrentUserName());
-        Label ldob = new Label("01/01/98"/*emp.getDob()*/);
-        Label laddress = new Label("1 Sample Road"/*emp.getAddress()*/);
-        Label lcountry = new Label("England"/*emp.getCountry()*/);
-        Label lemail = new Label(View.getInstance().getCurrentUserName() + "@prototype.com");
-        VBox vboxx = new VBox();
-        vboxx.setId("UserInfo");
-        vboxx.getChildren().addAll(lfname, ldob, laddress, lcountry, lemail);
-        vboxx.setLayoutX(5);
-        vboxx.setLayoutY(315);
+
 
 
 
@@ -220,7 +225,7 @@ public class Homepage{
         Scene scene = new Scene(mainPane, 400, 350);
         //scene.getStylesheets().add("HomePageTheme.css");
         home.setScene(scene);
-        home.setMinHeight(500);
+        home.setMinHeight(530);
         home.setMinWidth(774);
         home.show();
     }
@@ -252,17 +257,17 @@ public class Homepage{
         stage.show();
     }
 
-    public void clockedHandler(){
+    public void clockedHandler(Label a, Label b){
         String currentUser = View.getInstance().getCurrentUserName();
         int temp = findClockUser(currentUser);
         if(temp == -1){
-            System.out.println("clocked in handler");
             View.getInstance().getSMC().findEmployee(currentUser).clockIn();
             View.getInstance().getSMC().update();
+            a.setText(String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedIn()/60) + ":" +  String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedIn()%60));
         }else{
-            System.out.println("Clocked out handler");
             View.getInstance().getSMC().findEmployee(currentUser).clockOut();
             View.getInstance().getSMC().update();
+            b.setText(String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedOut()/60) + ":" + String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedOut()%60));
         }
     }
 
@@ -277,12 +282,9 @@ public class Homepage{
 
     public int findClockUser(String username){
         ArrayList<ClockedHours> temp = View.getInstance().getClockedHoursList();
-        System.out.println(temp);
         if(!temp.isEmpty()) {
-            System.out.println(temp.get(0).getUserName());
         }
         for(int i = 0 ; i < View.getInstance().getClockedHoursList().size() ; i++){
-            System.out.println(i);
             if(temp.get(i).getUserName().equals(username)) {
 
                 return i;
