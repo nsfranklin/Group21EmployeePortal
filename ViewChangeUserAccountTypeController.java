@@ -37,7 +37,6 @@ public class ViewChangeUserAccountTypeController implements Initializable {
         //this.update = new Button();
         update.setOnAction(event -> updateType());
 
-
     }
 
     public void choiceBoxChosen(){
@@ -58,22 +57,29 @@ public class ViewChangeUserAccountTypeController implements Initializable {
                Employee e = View.getInstance().getSMC().findEmployee(username);
                m.changeEmployeeToPartTimeEmployee(e);
                View.getInstance().getSMC().update();
-            }else if(newType.equals("Full-Time Employee")){
+               ConfirmBox.display("Successful",username + " is now a Part-Time Employee");
+               update.getScene().getWindow().hide();
 
+            }else if(newType.equals("Full-Time Employee")){
+                ConfirmBox.display("Error",username + " is already a Full-Time Employee");
             }else if(newType.equals("Manager")){
                 Admin a = (Admin) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
                 Employee e = View.getInstance().getSMC().findEmployee(username);
                 a.markEmployeeAsManager(e);
                 View.getInstance().getSMC().update();
+                ConfirmBox.display("Successful",username + " is now a Manager");
+                update.getScene().getWindow().hide();
             }
         }else if(View.getInstance().findEmployee(username).getEmployeeType().equals("PartTimeEmployee")){
             if(newType.equals("Part-Time Employee")){
-
+                ConfirmBox.display("Error",username + " is already a Part-Time Employee");
             }else if(newType.equals("Full-Time Employee")){
                 Admin a = (Admin) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
                 PartTimeEmployee p = (PartTimeEmployee) View.getInstance().getSMC().findEmployee(username);
                 a.changePartTimeEmployeeToEmployee(p);
                 View.getInstance().getSMC().update();
+                ConfirmBox.display("Successful",username + " is now a Full-Time Employee");
+                update.getScene().getWindow().hide();
 
             }else if(newType.equals("Manager")){
                 Admin a = (Admin) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
@@ -83,7 +89,8 @@ public class ViewChangeUserAccountTypeController implements Initializable {
                 Employee e = View.getInstance().getSMC().findEmployee(username);
                 a.markEmployeeAsManager(e);
                 View.getInstance().getSMC().update();
-
+                ConfirmBox.display("Successful",username + " is now a Manager");
+                update.getScene().getWindow().hide();
             }
         }else if(View.getInstance().findEmployee(username).getEmployeeType().equals("Manager")){
             if(newType.equals("Part-Time Employee")){
@@ -94,12 +101,19 @@ public class ViewChangeUserAccountTypeController implements Initializable {
                 Employee e = View.getInstance().getSMC().findEmployee(username);
                 a.changeEmployeeToPartTimeEmployee(e);
                 View.getInstance().getSMC().update();
+                ConfirmBox.display("Successful",username + " is now a Part-Time Employee");
+                update.getScene().getWindow().hide();
+
+
             }else if(newType.equals("Full-Time Employee")){
                 Admin a = (Admin) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
                 Employee e = View.getInstance().getSMC().findEmployee(username);
                 a.changeEmployeeToPartTimeEmployee(e);
                 View.getInstance().getSMC().update();
+                ConfirmBox.display("Successful",username + " is now a Full-Time Employee");
+                update.getScene().getWindow().hide();
             }else if(newType.equals("Manager")){
+                ConfirmBox.display("Error",username + " is already a Manager");
 
             }
         }
