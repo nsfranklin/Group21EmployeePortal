@@ -42,7 +42,8 @@ public class AnnouncementController implements Initializable{
         catch (IOException e){
 
         }
-
+        ConfirmBox.display("Annoucement Added" , "Announcement successfully added");
+        submit.getScene().getWindow().hide();
     }
 
 }

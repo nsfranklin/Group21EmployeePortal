@@ -25,6 +25,19 @@ public class AssignedDates extends DateImp {
 		this.userAssigned.add(userName);
 	}
 
+	public void removeUserTimes( String userName ){
+		for(int i = 0 ; i < userAssigned.size() ; i++){
+			if(userAssigned.get(i).equals(userName)){
+				userAssigned.remove(i);
+				super.removeTimes(i);
+
+			}
+		}
+
+
+
+	}
+
 	public ArrayList<String> getUserAssigned(){
 		return this.userAssigned;
 	}

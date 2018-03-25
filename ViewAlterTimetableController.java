@@ -116,7 +116,7 @@ public class ViewAlterTimetableController implements Initializable{
 
         update.setOnAction(event -> {
             if(mode.getValue().equals("remove")){
-                updateProvisionalScheduleAdd(mon, tue, wed, thu, fri, sat, sun);
+                updateProvisionalScheduledRemove(mon, tue, wed, thu, fri, sat, sun);
             }else if(mode.getValue().equals("add")){
                 updateProvisionalScheduleAdd(mon, tue, wed, thu, fri, sat, sun);
             }
@@ -127,6 +127,10 @@ public class ViewAlterTimetableController implements Initializable{
         AssignedDates current = (AssignedDates) View.getInstance().getScheduler().getUnapprovedSchedule().getDate(dayIndex);
         ArrayList<int[]> times = current.getTimes();
         ArrayList<String> users = current.getUserAssigned();
+
+        for(int q = 0 ; q < boxes.size() ; q++){
+            boxes.get(q).getItems().clear();
+        }
 
         for(int u = 0 ; u < users.size() ; u++){
             if(users.get(u) == null){
@@ -184,14 +188,181 @@ public class ViewAlterTimetableController implements Initializable{
             unapprovedMonday.addUserTimes((monaddfound+9)*60, monaddlastfound*60, EmployeeSelect.getValue());
         }
 
+        int tueaddfound = -1;
+        int tueaddlastfound = -1;
+        String tuetemp;
+        for(int i = 0 ; i < tue.size() ; i++)
+        {
+            System.out.println(i);
+            tuetemp = tue.get(i).getValue();
+            if(!tuetemp.equals("add new user")){
+                System.out.println(i +" add new user not found");
+            }
+            else{
+                System.out.println(i + "Found");
+                if(tueaddfound == -1){
+                    tueaddfound = i;
+                    tueaddlastfound = 1;
+                }
+                else{
+                    tueaddlastfound = i + 1 - tueaddfound;
+                }
+            }
+        }
+        if(tueaddfound > -1) {
+            System.out.println(EmployeeSelect.getValue());
+            unapprovedTuesday.addUserTimes((tueaddfound+9)*60, tueaddlastfound*60, EmployeeSelect.getValue());
+        }
 
+        int wedaddfound = -1;
+        int wedaddlastfound = -1;
+        String wedtemp;
+        for(int i = 0 ; i < wed.size() ; i++)
+        {
+            System.out.println(i);
+            wedtemp = wed.get(i).getValue();
+            if(!wedtemp.equals("add new user")){
+                System.out.println(i +" add new user not found");
+            }
+            else{
+                System.out.println(i + "Found");
+                if(wedaddfound == -1){
+                    wedaddfound = i;
+                    wedaddlastfound = 1;
+                }
+                else{
+                    wedaddlastfound = i + 1 - wedaddfound;
+                }
+            }
+        }
+        if(wedaddfound > -1) {
+            System.out.println(EmployeeSelect.getValue());
+            unapprovedWednesday.addUserTimes((wedaddfound+9)*60, wedaddlastfound*60, EmployeeSelect.getValue());
+        }
+
+        int thuaddfound = -1;
+        int thuaddlastfound = -1;
+        String thutemp;
+        for(int i = 0 ; i < thu.size() ; i++)
+        {
+            System.out.println(i);
+            thutemp = thu.get(i).getValue();
+            if(!thutemp.equals("add new user")){
+                System.out.println(i +" add new user not found");
+            }
+            else{
+                System.out.println(i + "Found");
+                if(thuaddfound == -1){
+                    thuaddfound = i;
+                    thuaddlastfound = 1;
+                }
+                else{
+                    thuaddlastfound = i + 1 - thuaddfound;
+                }
+            }
+        }
+        if(thuaddfound > -1) {
+            System.out.println(EmployeeSelect.getValue());
+            unapprovedThursday.addUserTimes((thuaddfound+9)*60, thuaddlastfound*60, EmployeeSelect.getValue());
+        }
+
+        int friaddfound = -1;
+        int friaddlastfound = -1;
+        String fritemp;
+        for(int i = 0 ; i < fri.size() ; i++)
+        {
+            System.out.println(i);
+            fritemp = fri.get(i).getValue();
+            if(!fritemp.equals("add new user")){
+                System.out.println(i +" add new user not found");
+            }
+            else{
+                System.out.println(i + "Found");
+                if(friaddfound == -1){
+                    friaddfound = i;
+                    friaddlastfound = 1;
+                }
+                else{
+                    friaddlastfound = i + 1 - friaddfound;
+                }
+            }
+        }
+        if(friaddfound > -1) {
+            System.out.println(EmployeeSelect.getValue());
+            unapprovedFriday.addUserTimes((friaddfound+9)*60, friaddlastfound*60, EmployeeSelect.getValue());
+        }
+
+        int sataddfound = -1;
+        int sataddlastfound = -1;
+        String sattemp;
+        for(int i = 0 ; i < sat.size() ; i++)
+        {
+            System.out.println(i);
+            sattemp = sat.get(i).getValue();
+            if(!sattemp.equals("add new user")){
+                System.out.println(i +" add new user not found");
+            }
+            else{
+                System.out.println(i + "Found");
+                if(sataddfound == -1){
+                    sataddfound = i;
+                    sataddlastfound = 1;
+                }
+                else{
+                    sataddlastfound = i + 1 - sataddfound;
+                }
+            }
+        }
+        if(sataddfound > -1) {
+            System.out.println(EmployeeSelect.getValue());
+            unapprovedSaturday.addUserTimes((sataddfound+9)*60, sataddlastfound*60, EmployeeSelect.getValue());
+        }
+
+        int sunaddfound = -1;
+        int sunaddlastfound = -1;
+        String suntemp;
+        for(int i = 0 ; i < sun.size() ; i++)
+        {
+            System.out.println(i);
+            suntemp = sun.get(i).getValue();
+            if(!suntemp.equals("add new user")){
+                System.out.println(i +" add new user not found");
+            }
+            else{
+                System.out.println(i + "Found");
+                if(sunaddfound == -1){
+                    sunaddfound = i;
+                    sunaddlastfound = 1;
+                }
+                else{
+                    sunaddlastfound = i + 1 - sunaddfound;
+                }
+            }
+        }
+        if(sunaddfound > -1) {
+            System.out.println(EmployeeSelect.getValue());
+            unapprovedSunday.addUserTimes((sunaddfound+9)*60, sunaddlastfound*60, EmployeeSelect.getValue());
+        }
+        
         View.getInstance().getScheduler().getUnapprovedSchedule().addDay(0,unapprovedMonday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(1,unapprovedTuesday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(2,unapprovedWednesday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(3,unapprovedThursday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(4,unapprovedFriday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(5,unapprovedSaturday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(6,unapprovedSunday);
         View.getInstance().getSMC().setScheduler(View.getInstance().getScheduler());
         View.getInstance().getSMC().update();
-
+        this.updateView(mon,0);
+        this.updateView(tue,1);
+        this.updateView(wed,2);
+        this.updateView(thu,3);
+        this.updateView(fri,4);
+        this.updateView(sat,5);
+        this.updateView(sun,6);
     }
 
-    public Week updateProvisionalScheduledRemove(ArrayList<ChoiceBox<String>> mon, ArrayList<ChoiceBox<String>> tue, ArrayList<ChoiceBox<String>> wed, ArrayList<ChoiceBox<String>> thu, ArrayList<ChoiceBox<String>> fri, ArrayList<ChoiceBox<String>> sat,ArrayList<ChoiceBox<String>> sun){
+    public void updateProvisionalScheduledRemove(ArrayList<ChoiceBox<String>> mon, ArrayList<ChoiceBox<String>> tue, ArrayList<ChoiceBox<String>> wed, ArrayList<ChoiceBox<String>> thu, ArrayList<ChoiceBox<String>> fri, ArrayList<ChoiceBox<String>> sat,ArrayList<ChoiceBox<String>> sun){
 
         Week temp = View.getInstance().getScheduler().getUnapprovedSchedule();
         AssignedDates unapprovedMonday = (AssignedDates) temp.getDate(0);
@@ -203,12 +374,48 @@ public class ViewAlterTimetableController implements Initializable{
         AssignedDates unapprovedSunday = (AssignedDates) temp.getDate(6);
 
 
+
+        String selected = EmployeeSelect.getValue();
+
+        String montemp;
+        int monaddfound = -1;
         for(int i = 0 ; i < mon.size() ; i++)
         {
+            System.out.println(i);
+            montemp = mon.get(i).getValue();
+            if(!(montemp.equals(selected))){
+                System.out.println(i +" " + selected + "not found");
+            }
+            else{
+                System.out.println(i + "Found");
 
+                    monaddfound = i;
+            }
+        }
+        if(monaddfound > -1) {
+        System.out.println("found");
+        unapprovedMonday.removeUserTimes(selected);
         }
 
-        return new Week();
+
+
+
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(0,unapprovedMonday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(1,unapprovedTuesday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(2,unapprovedWednesday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(3,unapprovedThursday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(4,unapprovedFriday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(5,unapprovedSaturday);
+        View.getInstance().getScheduler().getUnapprovedSchedule().addDay(6,unapprovedSunday);
+        View.getInstance().getSMC().setScheduler(View.getInstance().getScheduler());
+        View.getInstance().getSMC().update();
+        this.updateView(mon,0);
+        this.updateView(tue,1);
+        this.updateView(wed,2);
+        this.updateView(thu,3);
+        this.updateView(fri,4);
+        this.updateView(sat,5);
+        this.updateView(sun,6);
     }
 
 }

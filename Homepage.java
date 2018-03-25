@@ -209,12 +209,16 @@ public class Homepage{
         update.setLayoutX(552); update.setLayoutY(116);
         update.setOnAction(event -> {
             ArrayList<String> al = announcementStrings();
-            ancmntTitle.setText("Title: " + al.get(0));
-            ancmntMessage.setText("Announcement: " + al.get(1));
-            ancmntDate.setText("Date created: " + al.get(2));
-            ancmntTime.setText("Time sent: " + al.get(3));
-            ancmntBox.getChildren().addAll(ancmntTitle, ancmntMessage, ancmntDate, ancmntTime);
-            ancmntBox.setLayoutX(307); ancmntBox.setLayoutY(170);
+            if(al.size() > 2) {
+                ancmntTitle.setText("Title: " + al.get(0));
+                ancmntMessage.setText("Announcement: " + al.get(1));
+                ancmntDate.setText("Date created: " + al.get(2));
+                ancmntTime.setText("Time sent: " + al.get(3));
+                ancmntBox.getChildren().removeAll(ancmntTitle, ancmntMessage, ancmntDate, ancmntTime);
+                ancmntBox.getChildren().addAll(ancmntTitle, ancmntMessage, ancmntDate, ancmntTime);
+                ancmntBox.setLayoutX(307);
+                ancmntBox.setLayoutY(170);
+            }
         });
 
 
@@ -343,21 +347,22 @@ public class Homepage{
         ArrayList<String> al = new ArrayList<>();
         String[] lines;
         String line="";
-        try{
-            BufferedReader r = new BufferedReader(new FileReader("message.txt"));
+        if(new File("message.txt").exists()){
+            try{
+                BufferedReader r = new BufferedReader(new FileReader("message.txt"));
 
-            line=r.readLine();
-            lines = line.split(",");
-            al.add(lines[0]); System.out.println(al.get(0));
-            al.add(lines[1]); System.out.println(al.get(1));
-            al.add(lines[2]); System.out.println(al.get(2));
-            al.add(lines[3]); System.out.println(al.get(3));
-
-            r.close();
+                line=r.readLine();
+                lines = line.split(",");
+                al.add(lines[0]); System.out.println(al.get(0));
+                al.add(lines[1]); System.out.println(al.get(1));
+                al.add(lines[2]); System.out.println(al.get(2));
+                al.add(lines[3]); System.out.println(al.get(3));
+                r.close();
+            }
+            catch (IOException e) {
+            }
         }
-        catch (IOException e){
 
-        }
         return al;
     }
 }

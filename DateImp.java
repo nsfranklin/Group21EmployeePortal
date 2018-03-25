@@ -44,6 +44,10 @@ public class DateImp {
             times.add(temp);
     }
 
+    public void removeTimes(int index){
+        times.remove(index);
+    }
+
     public ArrayList<int[]> getTimes(){
         return this.times;
     }
