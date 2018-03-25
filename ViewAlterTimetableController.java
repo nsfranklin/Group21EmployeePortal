@@ -167,13 +167,10 @@ public class ViewAlterTimetableController implements Initializable{
         String montemp;
         for(int i = 0 ; i < mon.size() ; i++)
         {
-            System.out.println(i);
             montemp = mon.get(i).getValue();
             if(!montemp.equals("add new user")){
-            System.out.println(i +" add new user not found");
             }
             else{
-                System.out.println(i + "Found");
                 if(monaddfound == -1){
                     monaddfound = i;
                     monaddlastfound = 1;
@@ -184,7 +181,6 @@ public class ViewAlterTimetableController implements Initializable{
             }
         }
         if(monaddfound > -1) {
-            System.out.println(EmployeeSelect.getValue());
             unapprovedMonday.addUserTimes((monaddfound+9)*60, monaddlastfound*60, EmployeeSelect.getValue());
         }
 
@@ -193,13 +189,10 @@ public class ViewAlterTimetableController implements Initializable{
         String tuetemp;
         for(int i = 0 ; i < tue.size() ; i++)
         {
-            System.out.println(i);
             tuetemp = tue.get(i).getValue();
             if(!tuetemp.equals("add new user")){
-                System.out.println(i +" add new user not found");
             }
             else{
-                System.out.println(i + "Found");
                 if(tueaddfound == -1){
                     tueaddfound = i;
                     tueaddlastfound = 1;
@@ -210,7 +203,6 @@ public class ViewAlterTimetableController implements Initializable{
             }
         }
         if(tueaddfound > -1) {
-            System.out.println(EmployeeSelect.getValue());
             unapprovedTuesday.addUserTimes((tueaddfound+9)*60, tueaddlastfound*60, EmployeeSelect.getValue());
         }
 
@@ -219,13 +211,10 @@ public class ViewAlterTimetableController implements Initializable{
         String wedtemp;
         for(int i = 0 ; i < wed.size() ; i++)
         {
-            System.out.println(i);
             wedtemp = wed.get(i).getValue();
             if(!wedtemp.equals("add new user")){
-                System.out.println(i +" add new user not found");
             }
             else{
-                System.out.println(i + "Found");
                 if(wedaddfound == -1){
                     wedaddfound = i;
                     wedaddlastfound = 1;
@@ -236,7 +225,6 @@ public class ViewAlterTimetableController implements Initializable{
             }
         }
         if(wedaddfound > -1) {
-            System.out.println(EmployeeSelect.getValue());
             unapprovedWednesday.addUserTimes((wedaddfound+9)*60, wedaddlastfound*60, EmployeeSelect.getValue());
         }
 
@@ -245,13 +233,10 @@ public class ViewAlterTimetableController implements Initializable{
         String thutemp;
         for(int i = 0 ; i < thu.size() ; i++)
         {
-            System.out.println(i);
             thutemp = thu.get(i).getValue();
             if(!thutemp.equals("add new user")){
-                System.out.println(i +" add new user not found");
             }
             else{
-                System.out.println(i + "Found");
                 if(thuaddfound == -1){
                     thuaddfound = i;
                     thuaddlastfound = 1;
@@ -262,7 +247,6 @@ public class ViewAlterTimetableController implements Initializable{
             }
         }
         if(thuaddfound > -1) {
-            System.out.println(EmployeeSelect.getValue());
             unapprovedThursday.addUserTimes((thuaddfound+9)*60, thuaddlastfound*60, EmployeeSelect.getValue());
         }
 
@@ -271,13 +255,10 @@ public class ViewAlterTimetableController implements Initializable{
         String fritemp;
         for(int i = 0 ; i < fri.size() ; i++)
         {
-            System.out.println(i);
             fritemp = fri.get(i).getValue();
             if(!fritemp.equals("add new user")){
-                System.out.println(i +" add new user not found");
             }
             else{
-                System.out.println(i + "Found");
                 if(friaddfound == -1){
                     friaddfound = i;
                     friaddlastfound = 1;
@@ -288,7 +269,6 @@ public class ViewAlterTimetableController implements Initializable{
             }
         }
         if(friaddfound > -1) {
-            System.out.println(EmployeeSelect.getValue());
             unapprovedFriday.addUserTimes((friaddfound+9)*60, friaddlastfound*60, EmployeeSelect.getValue());
         }
 
@@ -297,13 +277,10 @@ public class ViewAlterTimetableController implements Initializable{
         String sattemp;
         for(int i = 0 ; i < sat.size() ; i++)
         {
-            System.out.println(i);
             sattemp = sat.get(i).getValue();
             if(!sattemp.equals("add new user")){
-                System.out.println(i +" add new user not found");
             }
             else{
-                System.out.println(i + "Found");
                 if(sataddfound == -1){
                     sataddfound = i;
                     sataddlastfound = 1;
@@ -314,7 +291,6 @@ public class ViewAlterTimetableController implements Initializable{
             }
         }
         if(sataddfound > -1) {
-            System.out.println(EmployeeSelect.getValue());
             unapprovedSaturday.addUserTimes((sataddfound+9)*60, sataddlastfound*60, EmployeeSelect.getValue());
         }
 
@@ -323,13 +299,10 @@ public class ViewAlterTimetableController implements Initializable{
         String suntemp;
         for(int i = 0 ; i < sun.size() ; i++)
         {
-            System.out.println(i);
             suntemp = sun.get(i).getValue();
             if(!suntemp.equals("add new user")){
-                System.out.println(i +" add new user not found");
             }
             else{
-                System.out.println(i + "Found");
                 if(sunaddfound == -1){
                     sunaddfound = i;
                     sunaddlastfound = 1;
@@ -340,7 +313,6 @@ public class ViewAlterTimetableController implements Initializable{
             }
         }
         if(sunaddfound > -1) {
-            System.out.println(EmployeeSelect.getValue());
             unapprovedSunday.addUserTimes((sunaddfound+9)*60, sunaddlastfound*60, EmployeeSelect.getValue());
         }
         
@@ -381,25 +353,109 @@ public class ViewAlterTimetableController implements Initializable{
         int monaddfound = -1;
         for(int i = 0 ; i < mon.size() ; i++)
         {
-            System.out.println(i);
             montemp = mon.get(i).getValue();
             if(!(montemp.equals(selected))){
-                System.out.println(i +" " + selected + "not found");
             }
             else{
-                System.out.println(i + "Found");
 
                     monaddfound = i;
             }
         }
         if(monaddfound > -1) {
-        System.out.println("found");
         unapprovedMonday.removeUserTimes(selected);
         }
 
+        String tuetemp;
+        int tueaddfound = -1;
+        for(int i = 0 ; i < tue.size() ; i++)
+        {
+            tuetemp = tue.get(i).getValue();
+            if(!(tuetemp.equals(selected))){
+            }
+            else{
+                tueaddfound = i;
+            }
+        }
+        if(tueaddfound > -1) {
+            unapprovedTuesday.removeUserTimes(selected);
+        }
 
+        String wedtemp;
+        int wedaddfound = -1;
+        for(int i = 0 ; i < wed.size() ; i++)
+        {
+            wedtemp = wed.get(i).getValue();
+            if(!(wedtemp.equals(selected))){
+            }
+            else{
+                wedaddfound = i;
+            }
+        }
+        if(wedaddfound > -1) {
+            unapprovedWednesday.removeUserTimes(selected);
+        }
 
+        String thutemp;
+        int thuaddfound = -1;
+        for(int i = 0 ; i < thu.size() ; i++)
+        {
+            thutemp = thu.get(i).getValue();
+            if(!(thutemp.equals(selected))){
+            }
+            else{
 
+                thuaddfound = i;
+            }
+        }
+        if(thuaddfound > -1) {
+            unapprovedThursday.removeUserTimes(selected);
+        }
+
+        String fritemp;
+        int friaddfound = -1;
+        for(int i = 0 ; i < fri.size() ; i++)
+        {
+            fritemp = fri.get(i).getValue();
+            if(!(fritemp.equals(selected))){
+            }
+            else{
+                friaddfound = i;
+            }
+        }
+        if(friaddfound > -1) {
+            unapprovedFriday.removeUserTimes(selected);
+        }
+
+        String sattemp;
+        int sataddfound = -1;
+        for(int i = 0 ; i < sat.size() ; i++)
+        {
+            sattemp = sat.get(i).getValue();
+            if(!(sattemp.equals(selected))){
+            }
+            else{
+                sataddfound = i;
+            }
+        }
+        if(sataddfound > -1) {
+            unapprovedSaturday.removeUserTimes(selected);
+        }
+
+        String suntemp;
+        int sunaddfound = -1;
+        for(int i = 0 ; i < sun.size() ; i++)
+        {
+            suntemp = sun.get(i).getValue();
+            if(!(suntemp.equals(selected))){
+            }
+            else{
+                sunaddfound = i;
+            }
+        }
+        if(sunaddfound > -1) {
+            unapprovedSunday.removeUserTimes(selected);
+        }
+        
         View.getInstance().getScheduler().getUnapprovedSchedule().addDay(0,unapprovedMonday);
         View.getInstance().getScheduler().getUnapprovedSchedule().addDay(1,unapprovedTuesday);
         View.getInstance().getScheduler().getUnapprovedSchedule().addDay(2,unapprovedWednesday);

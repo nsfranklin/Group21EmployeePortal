@@ -4,28 +4,35 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Button;
-
+import java.lang.String;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ViewTimetableController implements Initializable{
+public class ViewTimetableController implements Initializable {
 
-    @FXML private Label m1, m2, m3, m4, m5, m6, m7, m8, m9, t1, t2, t3, t4, t5, t6, t7, t8, t9;
-    @FXML private Label w1, w2, w3, w4, w5, w6, w7, w8, w9, tt1, tt2, tt3, tt4, tt5, tt6, tt7, tt8, tt9;
-    @FXML private Label f1, f2, f3, f4, f5, f6, f7 ,f8, f9, s1, s2, s3, s4, s5, s6, s7, s8, s9;
-    @FXML private Label ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9;
-    @FXML private ChoiceBox<String> selectUser;
-    @FXML private Button update;
+    @FXML
+    private Label m1, m2, m3, m4, m5, m6, m7, m8, m9, t1, t2, t3, t4, t5, t6, t7, t8, t9;
+    @FXML
+    private Label w1, w2, w3, w4, w5, w6, w7, w8, w9, tt1, tt2, tt3, tt4, tt5, tt6, tt7, tt8, tt9;
+    @FXML
+    private Label f1, f2, f3, f4, f5, f6, f7, f8, f9, s1, s2, s3, s4, s5, s6, s7, s8, s9;
+    @FXML
+    private Label ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8, ss9;
+    @FXML
+    private ChoiceBox<String> selectUser;
+    @FXML
+    private Button update;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.setTimeTable();
 
     }
 
-    public void setTimeTable(){
-        for(int i = 0 ; i < View.getInstance().getEmployeeList().size() ; i++){
+    public void setTimeTable() {
+        for (int i = 0; i < View.getInstance().getEmployeeList().size(); i++) {
             selectUser.getItems().add(View.getInstance().getEmployeeList().get(i).getUserName());
         }
         selectUser.getItems().add("Complete Schedule");
@@ -103,58 +110,61 @@ public class ViewTimetableController implements Initializable{
 
         Week current = View.getInstance().getCurrentSchedule();
 
-        this.updateView(mon,0);
+        this.updateView(mon, 0);
         this.updateView(tue, 1);
         this.updateView(wed, 2);
-        this.updateView(thu,3);
-        this.updateView(fri,4);
-        this.updateView(sat,5);
-        this.updateView(sun,6);
+        this.updateView(thu, 3);
+        this.updateView(fri, 4);
+        this.updateView(sat, 5);
+        this.updateView(sun, 6);
 
         update.setOnAction(event -> {
-            this.updateView(mon,0);
+            this.updateView(mon, 0);
             this.updateView(tue, 1);
             this.updateView(wed, 2);
-            this.updateView(thu,3);
-            this.updateView(fri,4);
-            this.updateView(sat,5);
-            this.updateView(sun,6);
+            this.updateView(thu, 3);
+            this.updateView(fri, 4);
+            this.updateView(sat, 5);
+            this.updateView(sun, 6);
         });
 
     }
 
-    public void updateView(ArrayList<Label> labels, int dayIndex ){
+    public void updateView(ArrayList<Label> labels, int dayIndex) {
         AssignedDates current = (AssignedDates) View.getInstance().getCurrentSchedule().getDate(dayIndex);
         ArrayList<int[]> times = current.getTimes();
         ArrayList<String> users = current.getUserAssigned();
 
 
-        for(int q = 0 ; q < labels.size() ; q++){
+        for (int q = 0; q < labels.size(); q++) {
             labels.get(q).setText("");
         }
 
-        for(int u = 0 ; u < users.size() ; u++){
-            if(users.get(u) == null){
+        for (int u = 0; u < users.size(); u++) {
+            if (users.get(u) == null) {
                 users.remove(u);
             }
         }
 
-        for(int i = 0 ; i < times.size() ; i++){
-            System.out.println(i + " number of times");
-            for(int j = (times.get(i)[0]/60)-9 ; j < (times.get(i)[1]/60) ; j++){
-               if(selectUser.getValue().equals("Complete Schedule")) {
-                    if (labels.get(j).getText().equals("")) {
-                        labels.get(j).setText(labels.get(j).getText() + users.get(i));
-                    } else {
-                        labels.get(j).setText(labels.get(j).getText() + ", " + users.get(i));
-                    }
-               }else {
-                   if (labels.get(j).getText().equals("") && users.get(j).equals(selectUser.getValue())) {
-                           labels.get(j).setText(labels.get(j).getText() + users.get(i));
-                   }
-                   labels.get(j).setWrapText(true);
-                   labels.get(j).setStyle("-fx-font: 8 arial");
-               }
+        for (int i = 0; i < times.size(); i++) {
+            for (int j = (times.get(i)[0] / 60) - 9; j < (times.get(i)[1] / 60); j++) {
+                if (labels.get(j).getText().equals("")) {
+                    labels.get(j).setText(labels.get(j).getText() + users.get(i));
+                } else {
+                    labels.get(j).setText(labels.get(j).getText() + ", " + users.get(i));
+                }
+                labels.get(j).setWrapText(true);
+                labels.get(j).setStyle("-fx-font: 8 arial");
+            }
+        }
+        if (!(selectUser.getValue().equals("Complete Schedule"))) {
+            for (int k = 0; k < labels.size(); k++) {
+                if (labels.get(k).getText().contains(selectUser.getValue())) {
+                    labels.get(k).setText(selectUser.getValue());
+                }
+                else{
+                    labels.get(k).setText("");
+                }
             }
         }
     }

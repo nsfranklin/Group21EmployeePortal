@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b67caed8-f4e5-465b-b26f-ffd5a6e99e79" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/AnnouncementController.java" afterPath="$PROJECT_DIR$/AnnouncementController.java" />
-      <change beforePath="$PROJECT_DIR$/AssignedDates.java" afterPath="$PROJECT_DIR$/AssignedDates.java" />
-      <change beforePath="$PROJECT_DIR$/DateImp.java" afterPath="$PROJECT_DIR$/DateImp.java" />
-      <change beforePath="$PROJECT_DIR$/Homepage.java" afterPath="$PROJECT_DIR$/Homepage.java" />
       <change beforePath="$PROJECT_DIR$/ViewAlterTimetableController.java" afterPath="$PROJECT_DIR$/ViewAlterTimetableController.java" />
-      <change beforePath="$PROJECT_DIR$/ViewTimetable.fxml" afterPath="$PROJECT_DIR$/ViewTimetable.fxml" />
       <change beforePath="$PROJECT_DIR$/ViewTimetableController.java" afterPath="$PROJECT_DIR$/ViewTimetableController.java" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/AnnouncementController.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/AnnouncementController.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/AssignedDates.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/AssignedDates.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/DateImp.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/DateImp.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Homepage.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Homepage.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewAlterTimetableController.class" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewAlterTimetableController.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewTimetable.fxml" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewTimetable.fxml" />
       <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewTimetableController.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -38,21 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="message.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/message.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewAlterTimetableController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ViewAlterTimetableController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ViewAlterTimetableController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="134" column="8" lean-forward="false" selection-start-line="134" selection-start-column="8" selection-end-line="138" selection-end-column="9" />
+            <state relative-caret-position="-1785">
+              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1613#1632#0" expanded="true" />
@@ -62,61 +39,6 @@
                 <element signature="e#2766#2785#0" expanded="true" />
                 <element signature="e#3052#3071#0" expanded="true" />
                 <element signature="e#3338#3357#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewAlterTimetable.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ViewAlterTimetable.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3885">
-              <caret line="185" column="6" lean-forward="false" selection-start-line="185" selection-start-column="6" selection-end-line="189" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewTimetableController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ViewTimetableController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1070">
-              <caret line="155" column="63" lean-forward="true" selection-start-line="155" selection-start-column="63" selection-end-line="155" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1292#1299#0" expanded="true" />
-                <element signature="e#1536#1543#0" expanded="true" />
-                <element signature="e#1780#1787#0" expanded="true" />
-                <element signature="e#2024#2031#0" expanded="true" />
-                <element signature="e#2277#2284#0" expanded="true" />
-                <element signature="e#2521#2528#0" expanded="true" />
-                <element signature="e#2765#2772#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Week.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Week.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AssignedDates.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AssignedDates.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-              <folding>
-                <element signature="e#1050#1051#0" expanded="true" />
-                <element signature="e#1081#1082#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,6 +70,7 @@
       <find>account</find>
       <find>announce</find>
       <find>mon</find>
+      <find>Sys</find>
     </findStrings>
     <replaceStrings>
       <replace>DateImp</replace>
@@ -213,9 +136,9 @@
         <option value="$PROJECT_DIR$/AnnouncementController.java" />
         <option value="$PROJECT_DIR$/DateImp.java" />
         <option value="$PROJECT_DIR$/AssignedDates.java" />
-        <option value="$PROJECT_DIR$/ViewAlterTimetableController.java" />
         <option value="$PROJECT_DIR$/ViewTimetable.fxml" />
         <option value="$PROJECT_DIR$/ViewTimetableController.java" />
+        <option value="$PROJECT_DIR$/ViewAlterTimetableController.java" />
       </list>
     </option>
   </component>
@@ -827,14 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Week.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DateImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
@@ -842,25 +757,6 @@
           <folding>
             <element signature="e#1578#1579#0" expanded="true" />
             <element signature="e#1613#1614#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/message.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AssignedDates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding>
-            <element signature="e#1050#1051#0" expanded="true" />
-            <element signature="e#1081#1082#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -876,19 +772,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ViewAlterTimetableController.java">
+    <entry file="file://$PROJECT_DIR$/ViewTimetableController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="134" column="8" lean-forward="false" selection-start-line="134" selection-start-column="8" selection-end-line="138" selection-end-column="9" />
+        <state relative-caret-position="744">
+          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1613#1632#0" expanded="true" />
-            <element signature="e#1899#1918#0" expanded="true" />
-            <element signature="e#2185#2204#0" expanded="true" />
-            <element signature="e#2471#2490#0" expanded="true" />
-            <element signature="e#2766#2785#0" expanded="true" />
-            <element signature="e#3052#3071#0" expanded="true" />
-            <element signature="e#3338#3357#0" expanded="true" />
+            <element signature="e#1343#1350#0" expanded="true" />
+            <element signature="e#1587#1594#0" expanded="true" />
+            <element signature="e#1831#1838#0" expanded="true" />
+            <element signature="e#2075#2082#0" expanded="true" />
+            <element signature="e#2328#2335#0" expanded="true" />
+            <element signature="e#2572#2579#0" expanded="true" />
+            <element signature="e#2816#2823#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -904,19 +800,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ViewTimetableController.java">
+    <entry file="file://$PROJECT_DIR$/message.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1070">
-          <caret line="155" column="63" lean-forward="true" selection-start-line="155" selection-start-column="63" selection-end-line="155" selection-end-column="63" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Week.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AssignedDates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding>
+            <element signature="e#1050#1051#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViewAlterTimetableController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1785">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1292#1299#0" expanded="true" />
-            <element signature="e#1536#1543#0" expanded="true" />
-            <element signature="e#1780#1787#0" expanded="true" />
-            <element signature="e#2024#2031#0" expanded="true" />
-            <element signature="e#2277#2284#0" expanded="true" />
-            <element signature="e#2521#2528#0" expanded="true" />
-            <element signature="e#2765#2772#0" expanded="true" />
+            <element signature="e#1613#1632#0" expanded="true" />
+            <element signature="e#1899#1918#0" expanded="true" />
+            <element signature="e#2185#2204#0" expanded="true" />
+            <element signature="e#2471#2490#0" expanded="true" />
+            <element signature="e#2766#2785#0" expanded="true" />
+            <element signature="e#3052#3071#0" expanded="true" />
+            <element signature="e#3338#3357#0" expanded="true" />
           </folding>
         </state>
       </provider>
