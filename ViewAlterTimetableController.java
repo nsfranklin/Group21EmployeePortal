@@ -133,10 +133,12 @@ public class ViewAlterTimetableController implements Initializable{
 
 
         update.setOnAction(event -> {
-            if(mode.getValue().equals("remove")){
-                updateProvisionalScheduledRemove(mon, tue, wed, thu, fri, sat, sun);
-            }else if(mode.getValue().equals("add")){
-                updateProvisionalScheduleAdd(mon, tue, wed, thu, fri, sat, sun);
+            if(singleSelectionCheck(mon,tue,wed,thu,fri,sat,sun)) {
+                if (mode.getValue().equals("remove")) {
+                    updateProvisionalScheduledRemove(mon, tue, wed, thu, fri, sat, sun);
+                } else if (mode.getValue().equals("add")) {
+                    updateProvisionalScheduleAdd(mon, tue, wed, thu, fri, sat, sun);
+                }
             }
         });
     }
@@ -167,6 +169,7 @@ public class ViewAlterTimetableController implements Initializable{
                 boxes.get(k).setValue("");
             }
         }
+
     }
 
     public void updateProvisionalScheduleAdd(ArrayList<ChoiceBox<String>> mon, ArrayList<ChoiceBox<String>> tue, ArrayList<ChoiceBox<String>> wed, ArrayList<ChoiceBox<String>> thu, ArrayList<ChoiceBox<String>> fri, ArrayList<ChoiceBox<String>> sat,ArrayList<ChoiceBox<String>> sun){
@@ -492,4 +495,113 @@ public class ViewAlterTimetableController implements Initializable{
         this.updateView(sun,6);
     }
 
+    public Boolean singleSelectionCheck(ArrayList<ChoiceBox<String>> mon, ArrayList<ChoiceBox<String>> tue, ArrayList<ChoiceBox<String>> wed, ArrayList<ChoiceBox<String>> thu, ArrayList<ChoiceBox<String>> fri, ArrayList<ChoiceBox<String>> sat,ArrayList<ChoiceBox<String>> sun){
+        String firstFound = "";
+        if((EmployeeSelect.getValue() == null)  ||  (mode.getValue() == null)){
+            System.out.println("Employee not selected or mode not selected");
+            return false;
+        }
+        for(int i = 0 ; i < mon.size() ; i++){
+            if((mon.get(i).getValue().equals("") && firstFound.equals(""))){
+
+            }else if(!(mon.get(i).getValue().equals("")) && firstFound.equals("")){
+                firstFound = mon.get(i).getValue();
+            }else{
+                if(!(mon.get(i).getValue().equals(firstFound)) && (!(mon.get(i).getValue().equals("")))){
+                    System.out.println("incorrect entry");
+                    return false;
+                }
+            }
+        }
+
+        for(int i = 0 ; i < tue.size() ; i++){
+            if((tue.get(i).getValue().equals("") && firstFound.equals(""))){
+
+            }else if(!(tue.get(i).getValue().equals("")) && firstFound.equals("")){
+                firstFound = tue.get(i).getValue();
+            }else{
+                if(!(tue.get(i).getValue().equals(firstFound)) && (!(tue.get(i).getValue().equals("")))){
+                    System.out.println("incorrect entry");
+                    return false;
+                }
+            }
+        }
+
+        for(int i = 0 ; i < wed.size() ; i++){
+            if((wed.get(i).getValue().equals("") && firstFound.equals(""))){
+
+            }else if(!(wed.get(i).getValue().equals("")) && firstFound.equals("")){
+                firstFound = wed.get(i).getValue();
+            }else{
+                if(!(wed.get(i).getValue().equals(firstFound)) && (!(wed.get(i).getValue().equals("")))){
+                    System.out.println("incorrect entry");
+                    return false;
+                }
+            }
+        }
+
+        for(int i = 0 ; i < thu.size() ; i++){
+            if((thu.get(i).getValue().equals("") && firstFound.equals(""))){
+
+            }else if(!(thu.get(i).getValue().equals("")) && firstFound.equals("")){
+                firstFound = thu.get(i).getValue();
+            }else{
+                if(!(thu.get(i).getValue().equals(firstFound)) && (!(thu.get(i).getValue().equals("")))){
+                    System.out.println("incorrect entry");
+                    return false;
+                }
+            }
+        }
+
+        for(int i = 0 ; i < fri.size() ; i++){
+            if((fri.get(i).getValue().equals("") && firstFound.equals(""))){
+
+            }else if(!(fri.get(i).getValue().equals("")) && firstFound.equals("")){
+                firstFound = fri.get(i).getValue();
+            }else{
+                if(!(fri.get(i).getValue().equals(firstFound)) && (!(fri.get(i).getValue().equals("")))){
+                    System.out.println("incorrect entry");
+                    return false;
+                }
+            }
+        }
+
+        for(int i = 0 ; i < sat.size() ; i++){
+            if((sat.get(i).getValue().equals("") && firstFound.equals(""))){
+
+            }else if(!(sat.get(i).getValue().equals("")) && firstFound.equals("")){
+                firstFound = sat.get(i).getValue();
+            }else{
+                if(!(sat.get(i).getValue().equals(firstFound)) && (!(sat.get(i).getValue().equals("")))){
+                    System.out.println("incorrect entry");
+                    return false;
+                }
+            }
+        }
+
+        for(int i = 0 ; i < sun.size() ; i++){
+            if((sun.get(i).getValue().equals("") && firstFound.equals(""))){
+
+            }else if(!(sun.get(i).getValue().equals("")) && firstFound.equals("")){
+                firstFound = sun.get(i).getValue();
+            }else{
+                if(!(sun.get(i).getValue().equals(firstFound)) && (!(sun.get(i).getValue().equals("")))){
+                    System.out.println("incorrect entry");
+                    return false;
+                }
+            }
+        }
+
+        if(mode.getValue().equals("add") && !firstFound.equals("add new user"))
+        {
+            System.out.println("adding mode selected yet employees entered in timetable");
+            return false;
+        }
+
+        if(mode.getValue().equals("remove") && !firstFound.equals(EmployeeSelect.getValue())){
+            System.out.println("remove mode selected yet employees entered in timetable don't match the selected employee");
+            return false;
+        }
+        return true;
+    }
 }

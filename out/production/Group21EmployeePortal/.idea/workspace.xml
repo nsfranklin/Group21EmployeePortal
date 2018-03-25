@@ -4,42 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/DataManager.java" line="115" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b67caed8-f4e5-465b-b26f-ffd5a6e99e79" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Scheduler.java" afterPath="$PROJECT_DIR$/Scheduler.java" />
-      <change beforePath="$PROJECT_DIR$/SystemManager.java" afterPath="$PROJECT_DIR$/SystemManager.java" />
-      <change beforePath="$PROJECT_DIR$/SystemManagerController.java" afterPath="$PROJECT_DIR$/SystemManagerController.java" />
-      <change beforePath="$PROJECT_DIR$/ViewAlterTimetable.fxml" afterPath="$PROJECT_DIR$/ViewAlterTimetable.fxml" />
-      <change beforePath="$PROJECT_DIR$/ViewAlterTimetableController.java" afterPath="$PROJECT_DIR$/ViewAlterTimetableController.java" />
-      <change beforePath="$PROJECT_DIR$/Week.java" afterPath="$PROJECT_DIR$/Week.java" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Admin.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ClockedHours.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/DataManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Employee.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/EmployeeController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/FinalHoursWorked.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Homepage.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Login.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ManageAvailability.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ManageTimeOffRequests.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ManageUsers.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Manager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/PartTimeEmployee.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/RequestTimeOffGuiController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Requests.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Scheduler.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Start.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/SystemManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/SystemManagerController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/View.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewAlterTimetable.fxml" afterPath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewAlterTimetable.fxml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewAlterTimetableController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewChangeUserAccountTypeController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/ViewTimetableController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/Week.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/systemRequest.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Group21EmployeePortal/timeOff.class" afterPath="" />
-    </list>
+    <list default="true" id="b67caed8-f4e5-465b-b26f-ffd5a6e99e79" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -88,14 +53,24 @@
       <file leaf-file-name="Scheduler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1592">
-              <caret line="141" column="20" lean-forward="false" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="20" />
+            <state relative-caret-position="1172">
+              <caret line="127" column="20" lean-forward="false" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SystemManagerController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scheduleRules.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scheduleRules.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SystemManagerController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SystemManagerController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1008">
@@ -109,22 +84,12 @@
         <entry file="file://$PROJECT_DIR$/SystemManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1508">
-              <caret line="188" column="49" lean-forward="true" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
+              <caret line="188" column="49" lean-forward="false" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
               <folding>
                 <element signature="e#5199#5200#0" expanded="true" />
                 <element signature="e#5267#5268#0" expanded="true" />
                 <element signature="e#5312#5313#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Week.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Week.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -277,9 +242,9 @@
         <option value="$PROJECT_DIR$/ViewAlterTimetable.fxml" />
         <option value="$PROJECT_DIR$/Week.java" />
         <option value="$PROJECT_DIR$/SystemManager.java" />
-        <option value="$PROJECT_DIR$/Scheduler.java" />
         <option value="$PROJECT_DIR$/ViewAlterTimetableController.java" />
         <option value="$PROJECT_DIR$/SystemManagerController.java" />
+        <option value="$PROJECT_DIR$/Scheduler.java" />
       </list>
     </option>
   </component>
@@ -493,7 +458,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3301363" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3301363" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -600,13 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-227">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scheduleRules.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -850,8 +808,8 @@
         <state relative-caret-position="945">
           <caret line="47" column="28" lean-forward="false" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
           <folding>
-            <element signature="e#1578#1579#0" expanded="true" />
-            <element signature="e#1613#1614#0" expanded="true" />
+            <element signature="e#1578#1579#0" expanded="false" />
+            <element signature="e#1613#1614#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -880,8 +838,8 @@
         <state relative-caret-position="588">
           <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
           <folding>
-            <element signature="e#1050#1051#0" expanded="true" />
-            <element signature="e#1081#1082#0" expanded="true" />
+            <element signature="e#1050#1051#0" expanded="false" />
+            <element signature="e#1081#1082#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -905,7 +863,7 @@
     <entry file="file://$PROJECT_DIR$/SystemManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1508">
-          <caret line="188" column="49" lean-forward="true" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
+          <caret line="188" column="49" lean-forward="false" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
           <folding>
             <element signature="e#5199#5200#0" expanded="true" />
             <element signature="e#5267#5268#0" expanded="true" />
@@ -969,14 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1592">
-          <caret line="141" column="20" lean-forward="false" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ViewAlterTimetableController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="693">
@@ -998,6 +948,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
           <caret line="75" column="109" lean-forward="false" selection-start-line="75" selection-start-column="109" selection-end-line="75" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1172">
+          <caret line="127" column="20" lean-forward="false" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scheduleRules.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
           <folding />
         </state>
       </provider>

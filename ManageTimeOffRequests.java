@@ -79,13 +79,14 @@ public class ManageTimeOffRequests {
         allProducts = table.getItems();
         productSelected = table.getSelectionModel().getSelectedItems();
         //Employee emp = table.getSelectionModel().getSelectedItem();
-        productSelected.forEach(allProducts::remove);
         moveFromRequestsListToApprovedRequestsList((table.getSelectionModel().getSelectedItem()));
+        productSelected.forEach(allProducts::remove);
     }
 
     public static void moveFromRequestsListToApprovedRequestsList(Requests productSelected){
         Manager manager = (Manager) View.getInstance().getSMC().findEmployee(View.getInstance().getCurrentUserName());
         manager.approveRequest(productSelected);
+        System.out.println(productSelected.getDateMade());
         View.getInstance().getSMC().update();
         // Method should delete the Request object from the Requests List, AND THEN ADD the same one to Approved Requests List!!
     }

@@ -264,14 +264,29 @@ public class Homepage{
     public void clockedHandler(Label a, Label b){
         String currentUser = View.getInstance().getCurrentUserName();
         int temp = findClockUser(currentUser);
-        if(temp == -1){
+        String minutes;
+        if(temp == -1) {
             View.getInstance().getSMC().findEmployee(currentUser).clockIn();
             View.getInstance().getSMC().update();
-            a.setText(String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedIn()/60) + ":" +  String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedIn()%60));
+            if (View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedIn() % 60 < 10) {
+               minutes = "0" + String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedIn() % 60);
+            }
+            else
+            {
+                minutes = String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedIn() % 60);
+            }
+                a.setText(String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedIn()/60) + ":" + minutes );
         }else{
             View.getInstance().getSMC().findEmployee(currentUser).clockOut();
             View.getInstance().getSMC().update();
-            b.setText(String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedOut()/60) + ":" + String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedOut()%60));
+            if(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedOut()%60 < 10) {
+                minutes = String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedOut() % 60);
+            }
+            else
+            {
+                minutes = String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedOut() % 60);
+            }
+            b.setText(String.valueOf(View.getInstance().getClockedHoursList().get(findClockUser(currentUser)).getClockedOut()/60) + ":" + minutes );
         }
     }
 
