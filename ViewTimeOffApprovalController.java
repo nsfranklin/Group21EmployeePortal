@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,7 +12,7 @@ public class ViewTimeOffApprovalController implements Initializable {
     @FXML private Label startDate;
     @FXML private Label endDate;
     @FXML private Label status;
-
+    @FXML private Button close;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -26,6 +27,7 @@ public class ViewTimeOffApprovalController implements Initializable {
             status.setText("Approved");
 
          */
+        close.setOnAction(event -> close.getScene().getWindow().hide());
     }
 
 

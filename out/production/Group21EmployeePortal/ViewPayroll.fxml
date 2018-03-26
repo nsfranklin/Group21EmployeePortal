@@ -28,7 +28,7 @@
                 <Font name="System Bold" size="12.0" />
             </font></Label>
         <Text layoutX="67.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee's Name:" />
-        <Text layoutX="67.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff ID:" />
+        <Text layoutX="67.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Number:" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="74.0" layoutX="64.0" layoutY="228.0" stroke="BLACK" strokeType="INSIDE" width="483.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0b0aab" height="32.0" layoutX="64.0" layoutY="204.0" stroke="BLACK" strokeType="INSIDE" width="483.0" />
         <Text fill="WHITE" layoutX="76.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wages (Monthly)">
@@ -124,7 +124,7 @@
         <Text layoutX="66.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mile End" />
         <Text layoutX="66.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="London" />
         <Text layoutX="66.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E1 4NS" />
-        <Text layoutX="67.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="National Insurance Number:" />
+        <Text layoutX="67.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sort Code:" />
         <Label fx:id="nationalInsuranceNumber" layoutX="228.0" layoutY="175.0" text="SRK103TAH12">
             <font>
                 <Font name="System Bold" size="12.0" />

@@ -48,16 +48,13 @@ public class Login{
         login.setMinWidth(60); login.setMinHeight(30);
         login.setLayoutX(180); login.setLayoutY(170);
 
-        Button forgot = new Button("Forgot Password?");
-        forgot.setMinWidth(60); forgot.setMinHeight(30);
-        forgot.setLayoutX(250); forgot.setLayoutY(170);
 
         login.setOnKeyPressed(event -> checkLoginDetails(inputUser.getText(), inputPass.getText()));
         login.setOnAction(event -> checkLoginDetails(inputUser.getText(), inputPass.getText()));
 
 
 
-        grid.getChildren().addAll(empPort, username, password, inputUser, inputPass, login, forgot);
+        grid.getChildren().addAll(empPort, username, password, inputUser, inputPass, login);
 
         Scene scene = new Scene(grid);
         window.setScene(scene);

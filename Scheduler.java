@@ -144,7 +144,7 @@ public class Scheduler {
 
 	public void approveSchedule() {
 		View.getInstance().getSMC().getFutureSchedules().add(View.getInstance().getScheduler().getUnapprovedSchedule());
-		View.getInstance().getSMC().getScheduler().setUnapprovedSchedule(new Week());
+		View.getInstance().getSMC().getScheduler().setUnapprovedSchedule(null);
 		View.getInstance().getSMC().update();
 	}
 

@@ -91,8 +91,6 @@ public class DataManager {
 	public Week getScheduleWithAssignedUsers(String date){
         String data = fetchData(date + ".txt");
         String[] splitData = data.split(",,,");
-
-
 		String[][] furtherSplitData = new String[7][];
         for(int i = 0 ; i < 7 ; i++)                //preparing the data for the week constructor
         {

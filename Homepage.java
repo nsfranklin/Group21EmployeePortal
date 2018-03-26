@@ -36,7 +36,7 @@ public class Homepage{
 
 
         home = new Stage();
-
+        home.setTitle("Employee Portal");
         Pane mainPane = new Pane();
         mainPane.getStylesheets().add("HomePageTheme.css");
 
@@ -57,7 +57,7 @@ public class Homepage{
         Label lcountry = new Label("Clocked Out:");
         Label lclockedout = new Label("--------------");
         Label lemail = new Label(View.getInstance().getCurrentUserName() + "@prototype.com");
-
+        lemail.setStyle("-fx-font: 14 arial");
 
         VBox vboxx = new VBox();
         vboxx.setId("UserInfo");
@@ -74,9 +74,8 @@ public class Homepage{
         MenuItem f2 = new MenuItem("View Payroll");
         f2.setOnAction(event -> { try { hp.viewPayroll(); } catch (Exception e){} });
         MenuItem f3 = new MenuItem("Change Payroll Details");
-        if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin") || (loggedInUser.getEmployeeType().equals("PartTimeEmployee"))))){
-            f3.setDisable(true);
-        }
+        f3.setDisable(true);
+
         f3.setOnAction(event -> {
             try {
                 hp.viewChangePayrollDetails();
@@ -131,7 +130,13 @@ public class Homepage{
         if (!((loggedInUser.getEmployeeType().equals("Manager")) || (loggedInUser.getEmployeeType().equals("Admin")))){
             f10.setDisable(true);
         }
-        f10.setOnAction(event -> { try {hp.viewAlterTimetable();} catch (Exception e){}});
+        f10.setOnAction(event -> { try {
+            if(View.getInstance().getScheduler().getUnapprovedSchedule() == null){
+                ConfirmBox.display("Warning", "No schedule to approve at this time");
+            }else {
+                hp.viewAlterTimetable();
+            }
+        } catch (Exception e){}});
 
         manMenu.getItems().addAll(f4, f5, f10);
 
@@ -153,6 +158,7 @@ public class Homepage{
         MenuItem message = new MenuItem("Announcement");
         message.setOnAction(event -> {try{hp.viewAnnouncement();} catch (Exception e) {}});
         MenuItem f8 = new MenuItem("Settings");
+        f8.setDisable(true);
         MenuItem f9 = new MenuItem("Log Out");
         f9.setOnAction(event -> logOutEvent());
         options.getItems().addAll(message, f8, f9);
@@ -194,30 +200,30 @@ public class Homepage{
         Line aline = new Line(0, 100, 774, 100);
 
         Label announcements = new Label("Announcement Board");
-        announcements.setLayoutX(307); announcements.setLayoutY(110);
-        announcements.setStyle("-fx-font-size: 17pt;");
+        announcements.setLayoutX(207); announcements.setLayoutY(110);
+        announcements.setStyle("-fx-font-size: 18pt;" + "-fx-font-weight: bold;");
 
         Label ancmntTitle = new Label(); ancmntTitle.setStyle("-fx-font-weight: bold;");
-        Label ancmntMessage = new Label(); //ancmntMessage.setLayoutX(300); ancmntMessage.setLayoutY(250);
+        TextArea ancmntMessage = new TextArea(); //ancmntMessage.setLayoutX(300); ancmntMessage.setLayoutY(250);
+        ancmntMessage.setMaxWidth(500); ancmntMessage.setLayoutX(207); ancmntMessage.setLayoutY(196);
         Label ancmntDate = new Label(); //ancmntDate.setLayoutX(300); ancmntDate.setLayoutY(400);
         Label ancmntTime = new Label(); //ancmntTime.setLayoutX(300); ancmntTime.setLayoutY(450);
         VBox ancmntBox = new VBox();
+        ancmntMessage.setEditable(false);
         ancmntBox.getChildren().addAll(ancmntTitle, ancmntMessage, ancmntDate, ancmntTime);
-        //ancmntBox.setLayoutX(315); ancmntBox.setLayoutY(15);
-
         Button update = new Button("Update");
-        update.setLayoutX(552); update.setLayoutY(116);
+        update.setLayoutX(468); update.setLayoutY(116);
         update.setOnAction(event -> {
             ArrayList<String> al = announcementStrings();
             if(al.size() > 2) {
-                ancmntTitle.setText("Title: " + al.get(0));
-                ancmntMessage.setText("Announcement: " + al.get(1));
+                ancmntTitle.setText(al.get(0));
+                ancmntMessage.setText(al.get(1));
                 ancmntDate.setText("Date created: " + al.get(2));
                 ancmntTime.setText("Time sent: " + al.get(3));
                 ancmntBox.getChildren().removeAll(ancmntTitle, ancmntMessage, ancmntDate, ancmntTime);
                 ancmntBox.getChildren().addAll(ancmntTitle, ancmntMessage, ancmntDate, ancmntTime);
-                ancmntBox.setLayoutX(307);
-                ancmntBox.setLayoutY(170);
+                ancmntBox.setLayoutX(207);
+                ancmntBox.setLayoutY(160);
             }
         });
 
@@ -364,14 +370,29 @@ public class Homepage{
         String line="";
         if(new File("message.txt").exists()){
             try{
-                BufferedReader r = new BufferedReader(new FileReader("message.txt"));
+                int count = 0;
 
-                line=r.readLine();
-                lines = line.split(",");
-                al.add(lines[0]); System.out.println(al.get(0));
-                al.add(lines[1]); System.out.println(al.get(1));
-                al.add(lines[2]); System.out.println(al.get(2));
-                al.add(lines[3]); System.out.println(al.get(3));
+                BufferedReader r = new BufferedReader(new FileReader("message.txt"));
+                while ((line = r.readLine())!=null){
+                    count++;
+                    System.out.println("tutti: " + line);
+                }
+                System.out.println(count);
+
+                BufferedReader rr = new BufferedReader(new FileReader("message.txt"));
+                line = rr.readLine();
+                al.add(line);
+                String message = "";
+                for (int i=1; i<count-2; i++){
+                    line = rr.readLine();
+                    message = message + line + "\n";
+                }
+                al.add(message);
+                line = rr.readLine();
+                al.add(line);
+                line = rr.readLine();
+                al.add(line);
+
                 r.close();
             }
             catch (IOException e) {

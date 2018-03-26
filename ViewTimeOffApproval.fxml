@@ -45,7 +45,7 @@
                 <Font name="System Bold Italic" size="22.0" />
             </font>
         </Label>
-        <Button layoutX="283.0" layoutY="198.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="74.0" text="Go Back">
+        <Button fx:id="close" layoutX="283.0" layoutY="198.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="74.0" text="Close">
             <effect>
                 <SepiaTone />
             </effect>

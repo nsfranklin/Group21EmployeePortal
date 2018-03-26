@@ -23,8 +23,11 @@ public class ViewPayrollController implements Initializable{
         SimpleDateFormat sdf = new SimpleDateFormat("EEE d MMM yyyy");
         currentDate.setText(sdf.format(d));
         background.setStyle("-fx-background-color: white");
+        employeeName.setText(View.getInstance().getCurrentUserName());
+        staffID.setText(View.getInstance().findEmployee(View.getInstance().getCurrentUserName()).getPayrollDetails().getAccountNumber());
+        nationalInsurance.setText(View.getInstance().findEmployee(View.getInstance().getCurrentUserName()).getPayrollDetails().getSortCode());
         /*
-        employeeName.setText(); dateOfPayment.setText();
+        dateOfPayment.setText();
         totalEarned.setText(); totalDeductions.setText();
         netPay.setText(); nationalInsurance.setText();
         hourlyRate.setText(); hoursWorked.setText();

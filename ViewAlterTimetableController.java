@@ -32,6 +32,7 @@ public class ViewAlterTimetableController implements Initializable{
             if(View.getInstance().getScheduler().approvable()){
                 View.getInstance().getScheduler().approveSchedule();
                 ConfirmBox.display("Approved", "Schedule approved");
+                update.getScene().getWindow().hide();
             }else if(View.getInstance().findEmployee(View.getInstance().getCurrentUserName()).getEmployeeType().equals("Manager") ){
                 ConfirmBox.display("Warning", "Schedule not approve doesn't follow rules well enough");
             }else{
@@ -39,6 +40,7 @@ public class ViewAlterTimetableController implements Initializable{
                 if(confirm){
                     View.getInstance().getScheduler().approveSchedule();
                     ConfirmBox.display("Approved", "Schedule approved");
+                    update.getScene().getWindow().hide();
                 }
             }
 
